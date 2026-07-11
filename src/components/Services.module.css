@@ -1,0 +1,205 @@
+.servicesSection {
+  composes: section from global;
+  position: relative;
+  background: var(--bg-secondary);
+}
+
+.filterTabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3.5rem;
+  flex-wrap: wrap;
+}
+
+.tabBtn {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 0.6rem 1.5rem;
+  border-radius: 50px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.tabBtn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+  border-color: rgba(0, 82, 255, 0.3);
+}
+
+.activeTabBtn {
+  background: var(--accent-gradient);
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 4px 15px var(--accent-glow);
+}
+
+.activeTabBtn:hover {
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 4px 20px rgba(0, 82, 255, 0.4);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  composes: glass-panel from global;
+  padding: 2.5rem 2rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.iconWrapper {
+  background: rgba(0, 82, 255, 0.1);
+  color: var(--accent-light);
+  width: 56px;
+  height: 56px;
+  border-radius: var(--border-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0, 82, 255, 0.15);
+  transition: transform var(--transition-normal), background var(--transition-normal);
+}
+
+.card:hover .iconWrapper {
+  transform: scale(1.08) translateY(-2px);
+  background: rgba(0, 82, 255, 0.2);
+}
+
+.cardTitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.cardDesc {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.learnMoreBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--accent-light);
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  width: fit-content;
+  padding: 0;
+  margin-top: 1rem;
+  transition: gap var(--transition-fast);
+}
+
+.learnMoreBtn:hover {
+  gap: 0.75rem;
+}
+
+/* Modal details */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.modalContent {
+  composes: glass-panel from global;
+  background: var(--bg-tertiary);
+  width: 100%;
+  max-width: 600px;
+  padding: 3rem 2.5rem;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modalCloseBtn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.modalCloseBtn:hover {
+  color: var(--text-primary);
+}
+
+.modalTitleWrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.modalTitle {
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+.modalBody {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.modalDesc {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.featureList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.featureItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.featureBullet {
+  color: var(--accent-light);
+  margin-top: 0.25rem;
+}
+
+.modalCTA {
+  margin-top: 2rem;
+  width: 100%;
+}

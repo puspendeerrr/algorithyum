@@ -1,0 +1,207 @@
+.page {
+  padding-top: 120px; /* Offset navbar */
+  min-height: 100vh;
+  background: var(--bg-primary);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--accent-light);
+  font-weight: 600;
+  font-size: 0.9rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 2rem;
+  width: fit-content;
+  transition: transform var(--transition-fast);
+}
+
+.backLink:hover {
+  transform: translateX(-4px);
+}
+
+.header {
+  text-align: left;
+  max-width: 800px;
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.25rem;
+  }
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.sectionHeader {
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem;
+  text-align: left;
+}
+
+/* Service Capabilities List */
+.capabilitiesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+}
+
+.capCard {
+  composes: glass-panel from global;
+  padding: 1.75rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-radius: var(--border-radius-sm);
+}
+
+.capTitle {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.capDesc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Tech List Specific */
+.techGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 4rem;
+}
+
+.techTag {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.6rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* FAQ Layout */
+.faqSection {
+  margin-bottom: 5rem;
+  text-align: left;
+}
+
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.faqItem {
+  composes: glass-panel from global;
+  border-radius: var(--border-radius-sm);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.faqHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--text-primary);
+}
+
+.faqItem:hover .faqHeader {
+  color: var(--accent-light);
+}
+
+.faqActive {
+  border-color: var(--accent);
+  background: rgba(0, 82, 255, 0.01);
+}
+
+.faqActive .faqHeader {
+  color: var(--accent-light);
+}
+
+.faqContent {
+  color: var(--text-secondary);
+  font-size: 0.925rem;
+  line-height: 1.6;
+  padding: 0 1.5rem 1.5rem;
+}
+
+.faqIcon {
+  color: var(--text-secondary);
+  transition: transform var(--transition-fast);
+}
+
+.faqActive .faqIcon {
+  transform: rotate(180deg);
+  color: var(--accent-light);
+}
+
+/* CTA */
+.ctaWrapper {
+  margin-bottom: 6rem;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.breadcrumbs a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color var(--transition-fast);
+}
+
+.breadcrumbs a:hover {
+  color: var(--accent-light);
+}
+
+.breadcrumbs span {
+  color: var(--text-muted);
+}

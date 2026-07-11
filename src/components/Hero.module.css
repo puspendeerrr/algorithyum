@@ -1,0 +1,115 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding-top: 80px; /* offset navbar */
+  background: radial-gradient(circle at 50% 50%, rgba(0, 82, 255, 0.05) 0%, transparent 70%);
+}
+
+.canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(0, 82, 255, 0.1);
+  border: 1px solid rgba(0, 82, 255, 0.2);
+  color: var(--accent-light);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.headline {
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 1024px) {
+  .headline {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .headline {
+    font-size: 2.25rem;
+  }
+}
+
+.subheadline {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  max-width: 750px;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .subheadline {
+    font-size: 1rem;
+  }
+}
+
+.btnGroup {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media (max-width: 480px) {
+  .btnGroup {
+    flex-direction: column;
+    width: 100%;
+  }
+  .btnGroup button {
+    width: 100%;
+  }
+}
+
+/* Background floating decorative circles */
+.gridOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(var(--border-color) 1px, transparent 1px),
+                    linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
+  background-size: 100px 100px;
+  background-position: center;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+}
