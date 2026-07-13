@@ -133,14 +133,19 @@ export const ContactPage: React.FC = () => {
 
     try {
       const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || '';
-      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || '';
+      const customerTemplateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_djfthkb';
+      const adminTemplateId = 'template_af14tdf';
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '';
 
-      if (!serviceId || !templateId || !publicKey) {
+      if (!serviceId || !customerTemplateId || !publicKey) {
         throw new Error('EmailJS environment configurations are missing.');
       }
 
-      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      // Send the Admin Notification email first
+      await emailjs.send(serviceId, adminTemplateId, templateParams, publicKey);
+
+      // After admin succeeds, send the Customer Auto Reply email
+      await emailjs.send(serviceId, customerTemplateId, templateParams, publicKey);
       
       setSubmitStatus('success');
       setFormData({
