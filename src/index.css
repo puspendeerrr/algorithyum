@@ -28,7 +28,7 @@
   --border-radius-sm: 8px;
   --border-radius-md: 16px;
   --border-radius-lg: 24px;
-  --max-width: 1400px;
+  --max-width: 1200px;
   
   /* Timing and Easing */
   --transition-fast: 0.2s ease;
@@ -208,13 +208,13 @@ p, li, span, a, label, td, th {
 /* Ultra-wide containment */
 @media (min-width: 1920px) {
   .container {
-    max-width: 1600px;
+    max-width: 1200px;
   }
 }
 
 @media (min-width: 2560px) {
   .container {
-    max-width: 1800px;
+    max-width: 1200px;
     padding: 0 3rem;
   }
 }
@@ -318,7 +318,7 @@ p, li, span, a, label, td, th {
 }
 
 .section-header {
-  text-align: center;
+  text-align: left;
   margin-bottom: var(--space-xl);
 }
 
@@ -339,7 +339,7 @@ p, li, span, a, label, td, th {
 
 .section-desc {
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0;
   color: var(--text-secondary);
   font-size: var(--fs-body);
 }
@@ -669,3 +669,46 @@ select.form-input {
     margin: 1.5cm;
   }
 }
+
+/* ===================================
+   BLOG CONTENT LAYOUT & TYPOGRAPHY
+   =================================== */
+.blog-content h2 {
+  font-size: var(--fs-h2);
+  font-weight: 800;
+  margin-top: 3.5rem;
+  margin-bottom: 1.25rem;
+  color: var(--text-primary);
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+}
+
+.blog-content h2:first-child {
+  margin-top: 0;
+}
+
+.blog-content h3 {
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.blog-content p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+}
+
+.blog-content p:last-child {
+  margin-bottom: 0 !important;
+}
+
+.blog-content section {
+  margin-bottom: 0;
+}
+

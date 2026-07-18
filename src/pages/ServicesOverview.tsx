@@ -19,7 +19,7 @@ export const ServicesOverview: React.FC = () => {
       </div>
       
       {/* Services grid module */}
-      <Services />
+      <Services hideHeader={true} />
     </div>
   );
 };

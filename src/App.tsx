@@ -14,15 +14,13 @@ const ServiceDetail = lazy(() => import('./pages/ServiceDetail').then(m => ({ de
 const Solutions = lazy(() => import('./pages/Solutions').then(m => ({ default: m.Solutions })));
 const IndustriesPage = lazy(() => import('./pages/IndustriesPage').then(m => ({ default: m.IndustriesPage })));
 const TechnologiesPage = lazy(() => import('./pages/TechnologiesPage').then(m => ({ default: m.TechnologiesPage })));
-const BlogArchive = lazy(() => import('./pages/BlogArchive').then(m => ({ default: m.BlogArchive })));
-const BlogDetail = lazy(() => import('./pages/BlogDetail').then(m => ({ default: m.BlogDetail })));
+const BlogListing = lazy(() => import('./pages/BlogListing').then(m => ({ default: m.BlogListing })));
+const BlogPage = lazy(() => import('./pages/BlogPage').then(m => ({ default: m.BlogPage })));
 const CareersPage = lazy(() => import('./pages/CareersPage').then(m => ({ default: m.CareersPage })));
 const ContactPage = lazy(() => import('./pages/ContactPage').then(m => ({ default: m.ContactPage })));
 const LegalPage = lazy(() => import('./pages/LegalPage').then(m => ({ default: m.LegalPage })));
 const SitemapPage = lazy(() => import('./pages/SitemapPage').then(m => ({ default: m.SitemapPage })));
 const NotFound = lazy(() => import('./pages/NotFound').then(m => ({ default: m.NotFound })));
-
-// SEO Content Engine lazy templates
 const TechnologyTemplate = lazy(() => import('./components/TechnologyTemplate').then(m => ({ default: m.TechnologyTemplate })));
 const IndustryTemplate = lazy(() => import('./components/IndustryTemplate').then(m => ({ default: m.IndustryTemplate })));
 const ComparisonTemplate = lazy(() => import('./components/ComparisonTemplate').then(m => ({ default: m.ComparisonTemplate })));
@@ -61,7 +59,7 @@ function App() {
       </a>
 
       {/* Navigation Header */}
-      <Navbar onOpenConsultation={() => setIsConsultationOpen(true)} />
+      <Navbar onOpenConsultation={() => navigate('/contact')} />
 
       {/* Main Content Area */}
       <main id="main-content" role="main">
@@ -69,11 +67,11 @@ function App() {
           <Routes>
             <Route 
               path="/" 
-              element={<Home onOpenConsultation={() => setIsConsultationOpen(true)} onOpenContact={() => navigate('/contact')} />} 
+              element={<Home onOpenConsultation={() => navigate('/contact')} onOpenContact={() => navigate('/contact')} />} 
             />
             <Route 
               path="/about" 
-              element={<About onOpenConsultation={() => setIsConsultationOpen(true)} />} 
+              element={<About onOpenConsultation={() => navigate('/contact')} />} 
             />
             <Route 
               path="/services" 
@@ -81,11 +79,11 @@ function App() {
             />
             <Route 
               path="/services/:serviceId" 
-              element={<ServiceDetail onOpenConsultation={() => setIsConsultationOpen(true)} />} 
+              element={<ServiceDetail onOpenConsultation={() => navigate('/contact')} />} 
             />
             <Route 
               path="/solutions" 
-              element={<Solutions onOpenConsultation={() => setIsConsultationOpen(true)} />} 
+              element={<Solutions onOpenConsultation={() => navigate('/contact')} />} 
             />
             <Route 
               path="/industries" 
@@ -105,11 +103,11 @@ function App() {
             />
             <Route 
               path="/blog" 
-              element={<BlogArchive />} 
+              element={<BlogListing />} 
             />
             <Route 
-              path="/blog/:articleId" 
-              element={<BlogDetail />} 
+              path="/blog/:slug" 
+              element={<BlogPage />} 
             />
             
             {/* Dynamic Guides Engine */}
@@ -191,7 +189,7 @@ function App() {
       </main>
 
       {/* Footer */}
-      <Footer onOpenConsultation={() => setIsConsultationOpen(true)} />
+      <Footer onOpenConsultation={() => navigate('/contact')} />
 
       {/* Overlays / Modals */}
       <ConsultationModal

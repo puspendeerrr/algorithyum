@@ -8,7 +8,11 @@ interface TechItem {
   logo: React.ReactNode;
 }
 
-export const TechStack: React.FC = () => {
+interface TechStackProps {
+  hideHeader?: boolean;
+}
+
+export const TechStack: React.FC<TechStackProps> = ({ hideHeader = false }) => {
   const [activeTab, setActiveTab] = useState<string>('all');
 
   const categories = [
@@ -260,13 +264,15 @@ export const TechStack: React.FC = () => {
       <div className="container">
         
         {/* Section Header */}
-        <div className="section-header">
-          <span className="section-subtitle">Technology Stack</span>
-          <h2 className="section-title">Enterprise-Grade Tooling & Infrastructure</h2>
-          <p className="section-desc">
-            We design, build, and support software platforms using industry-proven developer ecosystems and cognitive frameworks.
-          </p>
-        </div>
+        {!hideHeader && (
+          <div className="section-header">
+            <span className="section-subtitle">Technology Stack</span>
+            <h2 className="section-title">Enterprise-Grade Tooling & Infrastructure</h2>
+            <p className="section-desc">
+              We design, build, and support software platforms using industry-proven developer ecosystems and cognitive frameworks.
+            </p>
+          </div>
+        )}
 
         {/* Tab Switcher */}
         <div className={styles.filterTabs} role="tablist" aria-label="Technology Stack Categories">

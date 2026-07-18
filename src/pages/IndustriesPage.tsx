@@ -19,7 +19,7 @@ export const IndustriesPage: React.FC = () => {
       </div>
       
       {/* Industries grid module */}
-      <Industries />
+      <Industries hideHeader={true} />
     </div>
   );
 };

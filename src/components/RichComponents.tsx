@@ -6,7 +6,7 @@ interface InfoCardsProps {
   items: { title: string; desc: string }[];
 }
 export const InfoCards: React.FC<InfoCardsProps> = ({ items }) => (
-  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', margin: '2rem 0' }}>
+  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', margin: '1.25rem 0 0' }}>
     {items.map((item, idx) => (
       <div key={idx} className="glass-panel" style={{ padding: '2rem', borderRadius: 'var(--border-radius-sm)', border: '1px solid var(--border-color)', textAlign: 'left' }}>
         <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--accent-light)', marginBottom: '0.75rem' }}>{item.title}</h3>
@@ -21,7 +21,7 @@ interface FeatureCardsProps {
   items: { title: string; desc: string; highlight?: boolean }[];
 }
 export const FeatureCards: React.FC<FeatureCardsProps> = ({ items }) => (
-  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem', margin: '2rem 0' }}>
+  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem', margin: '1.25rem 0 0' }}>
     {items.map((item, idx) => (
       <div 
         key={idx} 
@@ -46,7 +46,7 @@ interface TimelineProps {
   steps: { step: string; title: string; desc: string }[];
 }
 export const Timeline: React.FC<TimelineProps> = ({ steps }) => (
-  <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', margin: '2.5rem 0', position: 'relative', paddingLeft: '2rem', borderLeft: '2px solid var(--border-color)', textAlign: 'left' }}>
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', margin: '1.5rem 0 0', position: 'relative', paddingLeft: '2rem', borderLeft: '2px solid var(--border-color)', textAlign: 'left' }}>
     {steps.map((item, idx) => (
       <div key={idx} style={{ position: 'relative' }}>
         <div style={{ 
@@ -75,7 +75,7 @@ interface ComparisonTableProps {
   rows: { feature: string; val1: string; val2: string }[];
 }
 export const ComparisonTable: React.FC<ComparisonTableProps> = ({ headers, rows }) => (
-  <div style={{ overflowX: 'auto', border: '1px solid var(--border-color)', borderRadius: 'var(--border-radius-sm)', margin: '2rem 0', background: 'rgba(255,255,255,0.01)' }}>
+  <div style={{ overflowX: 'auto', border: '1px solid var(--border-color)', borderRadius: 'var(--border-radius-sm)', margin: '1.25rem 0 0', background: 'rgba(255,255,255,0.01)' }}>
     <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.95rem', minWidth: '500px' }}>
       <thead>
         <tr style={{ background: 'rgba(255,255,255,0.02)', borderBottom: '1px solid var(--border-color)' }}>
@@ -123,7 +123,7 @@ export const CalloutBox: React.FC<CalloutBoxProps> = ({ type, message }) => {
       display: 'flex', 
       gap: '1rem', 
       alignItems: 'flex-start', 
-      margin: '2rem 0',
+      margin: '1.25rem 0 0',
       textAlign: 'left'
     }}>
       <div style={{ color: config.color, flexShrink: 0, marginTop: '0.15rem' }}>{config.icon}</div>
@@ -137,7 +137,7 @@ interface ChecklistProps {
   items: string[];
 }
 export const Checklist: React.FC<ChecklistProps> = ({ items }) => (
-  <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem', margin: '2rem 0', textAlign: 'left' }}>
+  <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem', margin: '1.25rem 0 0', textAlign: 'left' }}>
     {items.map((item, idx) => (
       <li key={idx} style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start', color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
         <CheckCircle2 size={18} style={{ color: 'var(--accent-light)', flexShrink: 0, marginTop: '0.15rem' }} aria-hidden="true" />
@@ -153,7 +153,7 @@ interface CodeBlockProps {
   language?: string;
 }
 export const CodeBlock: React.FC<CodeBlockProps> = ({ code, language }) => (
-  <div style={{ position: 'relative', background: '#0a0b10', border: '1px solid var(--border-color)', borderRadius: 'var(--border-radius-sm)', margin: '2rem 0', overflow: 'hidden' }}>
+  <div style={{ position: 'relative', background: '#0a0b10', border: '1px solid var(--border-color)', borderRadius: 'var(--border-radius-sm)', margin: '1.25rem 0 0', overflow: 'hidden' }}>
     {language && (
       <div style={{ background: '#0f111a', borderBottom: '1px solid var(--border-color)', padding: '0.5rem 1rem', fontSize: '0.75rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', textAlign: 'left' }}>
         {language}
@@ -171,7 +171,7 @@ interface QuoteProps {
   author?: string;
 }
 export const Quote: React.FC<QuoteProps> = ({ text, author }) => (
-  <blockquote style={{ borderLeft: '4px solid var(--accent)', padding: '1rem 2rem', margin: '2.5rem 0', textAlign: 'left', background: 'rgba(255,255,255,0.01)', borderRadius: '0 var(--border-radius-sm) var(--border-radius-sm) 0' }}>
+  <blockquote style={{ borderLeft: '4px solid var(--accent)', padding: '1rem 2rem', margin: '1.5rem 0 0', textAlign: 'left', background: 'rgba(255,255,255,0.01)', borderRadius: '0 var(--border-radius-sm) var(--border-radius-sm) 0' }}>
     <p style={{ fontSize: '1.15rem', fontStyle: 'italic', color: 'var(--text-primary)', lineHeight: '1.6', margin: 0 }}>
       "{text}"
     </p>
@@ -220,7 +220,7 @@ export const ShareWidget: React.FC<ShareWidgetProps> = ({ readingTime, lastUpdat
       gap: '1.5rem', 
       borderBottom: '1px solid var(--border-color)', 
       paddingBottom: '1.5rem', 
-      marginBottom: '2.5rem',
+      marginBottom: '1.5rem',
       fontSize: '0.85rem',
       color: 'var(--text-muted)',
       textAlign: 'left'
@@ -394,7 +394,7 @@ export const ArchitectureDiagram: React.FC<ArchitectureDiagramProps> = ({ layers
   ];
 
   return (
-    <div className="glass-panel" style={{ padding: '2rem', border: '1px solid var(--border-color)', borderRadius: 'var(--border-radius-sm)', margin: '2.5rem 0', textAlign: 'left' }}>
+    <div className="glass-panel" style={{ padding: '2rem', border: '1px solid var(--border-color)', borderRadius: 'var(--border-radius-sm)', margin: '1.5rem 0 0', textAlign: 'left' }}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginBottom: '2rem' }}>
         {activeLayers.map((layer, idx) => (
           <div key={idx} style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', position: 'relative' }}>
@@ -463,7 +463,7 @@ interface PricingTableProps {
 }
 export const PricingTable: React.FC<PricingTableProps> = ({ tiers, onOpenConsultation }) => {
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem', margin: '2.5rem 0' }}>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem', margin: '1.5rem 0 0' }}>
       {tiers.map((tier, idx) => (
         <div 
           key={idx} 

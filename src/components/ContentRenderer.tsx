@@ -40,7 +40,7 @@ export const ContentRenderer: React.FC<ContentRendererProps> = ({
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem', width: '100%' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem', width: '100%' }}>
       {blocks.map((block) => {
         switch (block.type) {
           case 'hero':

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Algorithyum Blog</title>
+    <link>https://algorithyum.in/blog</link>
+    <description>Enterprise Software Engineering, Security &amp; AI Insights</description>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 18 Jul 2026 04:55:22 GMT</lastBuildDate>
+    <atom:link href="https://algorithyum.in/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Decoupling Architecture in Multi-Cloud Environments</title>
+      <link>https://algorithyum.in/blog/cloud-computing</link>
+      <guid>https://algorithyum.in/blog/cloud-computing</guid>
+      <pubDate>Fri, 15 May 2026 00:00:00 GMT</pubDate>
+      <description>Master multi-region application deployments, serverless database replication patterns, and high-availability DNS routing configurations.</description>
+      <category>Cloud Architecture</category>
+    </item>
+    <item>
+      <title>Designing Resilient Kubernetes Scaling Protocols</title>
+      <link>https://algorithyum.in/blog/k8s-scaling</link>
+      <guid>https://algorithyum.in/blog/k8s-scaling</guid>
+      <pubDate>Fri, 29 May 2026 00:00:00 GMT</pubDate>
+      <description>Analyze automated Kubernetes node balancing structures, ingress configurations, and cost-effective spot instance scaling templates for production SaaS platforms.</description>
+      <category>Cloud Infrastructure</category>
+    </item>
+    <item>
+      <title>Optimizing LLM Agents for Enterprise Workflows</title>
+      <link>https://algorithyum.in/blog/llm-agents</link>
+      <guid>https://algorithyum.in/blog/llm-agents</guid>
+      <pubDate>Thu, 18 Jun 2026 00:00:00 GMT</pubDate>
+      <description>Uncover strategies to structure LangChain agents, reduce hallucination rates, and run semantic database queries safely in enterprise production environments.</description>
+      <category>AI Engineering</category>
+    </item>
+    <item>
+      <title>Building Production-Ready RAG Systems: A Complete Architecture Guide for Enterprise AI</title>
+      <link>https://algorithyum.in/blog/production-ready-rag-systems-architecture-guide</link>
+      <guid>https://algorithyum.in/blog/production-ready-rag-systems-architecture-guide</guid>
+      <pubDate>Fri, 17 Jul 2026 00:00:00 GMT</pubDate>
+      <description>A deep technical guide to designing, deploying, and scaling Retrieval-Augmented Generation (RAG) systems in production, covering architecture, vector databases, chunking strategies, security, and observability.</description>
+      <category>AI Development</category>
+    </item>
+    <item>
+      <title>React vs Next.js: Architectural Trade-Offs</title>
+      <link>https://algorithyum.in/blog/react-vs-nextjs</link>
+      <guid>https://algorithyum.in/blog/react-vs-nextjs</guid>
+      <pubDate>Thu, 25 Jun 2026 00:00:00 GMT</pubDate>
+      <description>Compare Single Page Application (SPA) CSR architecture with Next.js Server Components, SSR, and Static Site Generation (SSG) for enterprise portals.</description>
+      <category>Software Architecture</category>
+    </item>
+    <item>
+      <title>Technical SEO Guide for Modern JavaScript Frameworks</title>
+      <link>https://algorithyum.in/blog/technical-seo</link>
+      <guid>https://algorithyum.in/blog/technical-seo</guid>
+      <pubDate>Fri, 10 Jul 2026 00:00:00 GMT</pubDate>
+      <description>Master server-side rendering, dynamic XML sitemaps, semantic structure, schema generation, and Core Web Vitals optimization for high-traffic platforms.</description>
+      <category>Search Engineering</category>
+    </item>
+    <item>
+      <title>Zero-Trust Microservices Security Architecture</title>
+      <link>https://algorithyum.in/blog/zero-trust</link>
+      <guid>https://algorithyum.in/blog/zero-trust</guid>
+      <pubDate>Thu, 02 Jul 2026 00:00:00 GMT</pubDate>
+      <description>Learn how to configure Mutual TLS (mTLS), isolate node networks, and verify identity headers under a Zero-Trust microservices security model.</description>
+      <category>Security Operations</category>
+    </item>
+  </channel>
+</rss>

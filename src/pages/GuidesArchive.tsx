@@ -9,7 +9,7 @@ export const GuidesArchive: React.FC = () => {
 
   return (
     <div style={{ paddingTop: '120px', minHeight: '100vh', paddingBottom: '6rem' }}>
-      <div className="container" style={{ maxWidth: '1000px' }}>
+      <div className="container">
         <header style={{ display: 'flex', flexDirection: 'column', gap: '1rem', borderBottom: '1px solid var(--border-color)', paddingBottom: '2rem', marginBottom: '3rem', textAlign: 'left' }}>
           <span style={{ fontSize: '0.85rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--accent)', letterSpacing: '0.15em' }}>
             Technical Documentation

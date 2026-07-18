@@ -6,7 +6,7 @@
 
 .filterTabs {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 1rem;
   margin-bottom: 3.5rem;
   flex-wrap: wrap;

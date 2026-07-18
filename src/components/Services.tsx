@@ -16,9 +16,11 @@ interface ServicePillar {
   items: string[];
 }
 
-interface ServicesProps {}
+interface ServicesProps {
+  hideHeader?: boolean;
+}
 
-export const Services: React.FC<ServicesProps> = () => {
+export const Services: React.FC<ServicesProps> = ({ hideHeader = false }) => {
   const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState<string>('all');
 
@@ -127,13 +129,15 @@ export const Services: React.FC<ServicesProps> = () => {
       <div className="container">
         
         {/* Section Header */}
-        <div className="section-header">
-          <span className="section-subtitle">Pillars of Delivery</span>
-          <h2 className="section-title">Technology &amp; Business Solutions</h2>
-          <p className="section-desc">
-            We provide structured engineering, cognitive systems, secure hosting, and digital growth services tailored to your objectives.
-          </p>
-        </div>
+        {!hideHeader && (
+          <div className="section-header">
+            <span className="section-subtitle">Pillars of Delivery</span>
+            <h2 className="section-title">Technology &amp; Business Solutions</h2>
+            <p className="section-desc">
+              We provide structured engineering, cognitive systems, secure hosting, and digital growth services tailored to your objectives.
+            </p>
+          </div>
+        )}
 
         {/* Categories Bar */}
         <div className={styles.filterTabs}>

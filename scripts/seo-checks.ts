@@ -378,6 +378,53 @@ if (!fs.existsSync(publicDir)) {
 fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), sitemapXml, 'utf-8');
 console.log(`✅ Success: Automatically generated sitemap.xml in [public/sitemap.xml] with ${allRoutes.length} URLs`);
 
+// Helper to escape XML special characters
+function escapeXml(unsafe: string): string {
+  return unsafe.replace(/[<>&'"]/g, (c) => {
+    switch (c) {
+      case '<': return '&lt;';
+      case '>': return '&gt;';
+      case '&': return '&amp;';
+      case '\'': return '&apos;';
+      case '"': return '&quot;';
+      default: return c;
+    }
+  });
+}
+
+// 5.5. Automatically Generate rss.xml from Markdown articles
+let rssXml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+rssXml += `<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n`;
+rssXml += `  <channel>\n`;
+rssXml += `    <title>Algorithyum Blog</title>\n`;
+rssXml += `    <link>https://algorithyum.in/blog</link>\n`;
+rssXml += `    <description>Enterprise Software Engineering, Security &amp; AI Insights</description>\n`;
+rssXml += `    <language>en-us</language>\n`;
+rssXml += `    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>\n`;
+rssXml += `    <atom:link href="https://algorithyum.in/rss.xml" rel="self" type="application/rss+xml" />\n`;
+
+Object.entries(blogMap).forEach(([id, data]) => {
+  const url = `https://algorithyum.in/blog/${id}`;
+  const pubDate = data.datePublished ? new Date(data.datePublished).toUTCString() : new Date().toUTCString();
+  
+  rssXml += `    <item>\n`;
+  rssXml += `      <title>${escapeXml(data.title.split('|')[0].trim())}</title>\n`;
+  rssXml += `      <link>${url}</link>\n`;
+  rssXml += `      <guid>${url}</guid>\n`;
+  rssXml += `      <pubDate>${pubDate}</pubDate>\n`;
+  rssXml += `      <description>${escapeXml(data.description)}</description>\n`;
+  if (data.category) {
+    rssXml += `      <category>${escapeXml(data.category)}</category>\n`;
+  }
+  rssXml += `    </item>\n`;
+});
+
+rssXml += `  </channel>\n`;
+rssXml += `</rss>\n`;
+
+fs.writeFileSync(path.join(publicDir, 'rss.xml'), rssXml, 'utf-8');
+console.log(`✅ Success: Automatically generated rss.xml in [public/rss.xml] with ${Object.keys(blogMap).length} items`);
+
 // 6. Automatically Generate robots.txt
 let robotsTxt = `User-agent: *\n`;
 robotsTxt += `Allow: /\n`;

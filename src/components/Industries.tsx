@@ -18,7 +18,11 @@ interface IndustryItem {
   focusDesc: string;
 }
 
-export const Industries: React.FC = () => {
+interface IndustriesProps {
+  hideHeader?: boolean;
+}
+
+export const Industries: React.FC<IndustriesProps> = ({ hideHeader = false }) => {
   const navigate = useNavigate();
   const [selectedId, setSelectedId] = useState<string>('finance');
 
@@ -132,13 +136,15 @@ export const Industries: React.FC = () => {
       <div className="container">
         
         {/* Section Header */}
-        <div className="section-header">
-          <span className="section-subtitle">Industries We Serve</span>
-          <h2 className="section-title">Sector-Specific Solutions</h2>
-          <p className="section-desc">
-            We adapt our core capabilities to address the compliance, scaling, and database needs of specific sectors.
-          </p>
-        </div>
+        {!hideHeader && (
+          <div className="section-header">
+            <span className="section-subtitle">Industries We Serve</span>
+            <h2 className="section-title">Sector-Specific Solutions</h2>
+            <p className="section-desc">
+              We adapt our core capabilities to address the compliance, scaling, and database needs of specific sectors.
+            </p>
+          </div>
+        )}
 
         {/* Industries Grid */}
         <div className={styles.grid}>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle2, ChevronRight } from 'lucide-react';
 import styles from './Process.module.css';
@@ -57,6 +57,13 @@ export const Process: React.FC = () => {
       deliverables: ['Load test simulation metrics', 'Cache optimization logs', 'Annual scale plan advisory', '24/7 SLA monitoring setup']
     }
   ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveStep((prev) => (prev + 1) % steps.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [activeStep, steps.length]);
 
   const currentStep = steps[activeStep];
   const progressPercent = (activeStep / (steps.length - 1)) * 90;

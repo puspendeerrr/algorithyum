@@ -19,7 +19,7 @@ export const TechnologiesPage: React.FC = () => {
       </div>
       
       {/* TechStack grid module */}
-      <TechStack />
+      <TechStack hideHeader={true} />
     </div>
   );
 };

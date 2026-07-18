@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Calendar, Sparkles } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import styles from './Hero.module.css';
 
 interface HeroProps {
@@ -8,6 +9,7 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
+  const navigate = useNavigate();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {
@@ -134,13 +136,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
   }, []);
 
   const handleGetStarted = () => {
-    const el = document.getElementById('services');
-    if (el) {
-      window.scrollTo({
-        top: el.offsetTop - 80,
-        behavior: 'smooth',
-      });
-    }
+    navigate('/contact');
   };
 
   return (

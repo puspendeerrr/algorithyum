@@ -74,7 +74,7 @@ export const SitemapPage: React.FC = () => {
 
   return (
     <div style={{ paddingTop: '120px', minHeight: '100vh', paddingBottom: '6rem' }}>
-      <div className="container" style={{ textAlign: 'left', maxWidth: '1200px' }}>
+      <div className="container" style={{ textAlign: 'left' }}>
         
         {/* Page Header */}
         <header style={{ marginBottom: '4.5rem', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>

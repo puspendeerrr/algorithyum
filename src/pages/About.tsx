@@ -8,7 +8,7 @@ interface AboutProps {
 export const About: React.FC<AboutProps> = ({ onOpenConsultation }) => {
   return (
     <div style={{ paddingTop: '120px', minHeight: '100vh', paddingBottom: '6rem' }}>
-      <div className="container" style={{ textAlign: 'left', maxWidth: '900px' }}>
+      <div className="container" style={{ textAlign: 'left' }}>
         
         {/* Page Header */}
         <header style={{ marginBottom: '4rem', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
@@ -86,7 +86,7 @@ export const About: React.FC<AboutProps> = ({ onOpenConsultation }) => {
         </section>
 
         {/* CTA */}
-        <div style={{ display: 'flex', gap: '1rem', marginTop: '2rem' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '2rem' }}>
           <button onClick={onOpenConsultation} className="btn btn-primary" aria-label="Schedule Virtual Briefing consultation">
             Schedule Virtual Briefing
             <ArrowRight size={16} aria-hidden="true" />

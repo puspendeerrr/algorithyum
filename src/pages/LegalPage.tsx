@@ -92,7 +92,7 @@ export const LegalPage: React.FC<LegalPageProps> = ({ type }) => {
 
   return (
     <div style={{ paddingTop: '120px', minHeight: '100vh', paddingBottom: '6rem' }}>
-      <div className="container" style={{ textAlign: 'left', maxWidth: '800px' }}>
+      <div className="container" style={{ textAlign: 'left' }}>
         {renderContent()}
       </div>
     </div>

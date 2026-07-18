@@ -169,7 +169,7 @@ export const ContactPage: React.FC = () => {
 
   return (
     <div style={{ paddingTop: '120px', minHeight: '100vh', paddingBottom: '6rem' }}>
-      <div className="container" style={{ textAlign: 'left', maxWidth: '1100px' }}>
+      <div className="container" style={{ textAlign: 'left' }}>
         
         {/* Page Header */}
         <header style={{ marginBottom: '4rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>

@@ -26,7 +26,7 @@ export const CareersPage: React.FC<CareersPageProps> = ({ onOpenContact }) => {
 
   return (
     <div style={{ paddingTop: '120px', minHeight: '100vh', paddingBottom: '6rem' }}>
-      <div className="container" style={{ textAlign: 'left', maxWidth: '900px' }}>
+      <div className="container" style={{ textAlign: 'left' }}>
         
         {/* Page Header */}
         <header style={{ marginBottom: '4.5rem', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
