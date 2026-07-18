@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <defs>
+    <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0052ff" />
+      <stop offset="100%" stop-color="#00d2ff" />
+    </linearGradient>
+    <filter id="logo-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <!-- Outer glowing network rings -->
+  <circle cx="50" cy="50" r="42" fill="none" stroke="url(#logo-grad)" stroke-width="1.5" stroke-opacity="0.2" stroke-dasharray="4, 4" />
+  <circle cx="50" cy="50" r="32" fill="none" stroke="url(#logo-grad)" stroke-width="1" stroke-opacity="0.3" />
+  
+  <!-- Interconnected nodes & paths of the algorithm -->
+  <g filter="url(#logo-glow)">
+    <!-- Paths -->
+    <path d="M 50 18 L 22 68 L 78 68 Z" fill="none" stroke="url(#logo-grad)" stroke-width="3" stroke-linejoin="round" />
+    <path d="M 50 18 L 50 51 L 22 68" fill="none" stroke="url(#logo-grad)" stroke-width="2" stroke-opacity="0.7" />
+    <path d="M 50 51 L 78 68" fill="none" stroke="url(#logo-grad)" stroke-width="2" stroke-opacity="0.7" />
+    
+    <!-- Nodes -->
+    <circle cx="50" cy="18" r="4.5" fill="#ffffff" stroke="#0052ff" stroke-width="2.5" />
+    <circle cx="22" cy="68" r="4.5" fill="#ffffff" stroke="#0052ff" stroke-width="2.5" />
+    <circle cx="78" cy="68" r="4.5" fill="#ffffff" stroke="#0052ff" stroke-width="2.5" />
+    <circle cx="50" cy="51" r="5.5" fill="url(#logo-grad)" stroke="#ffffff" stroke-width="1.5" />
+  </g>
+</svg>

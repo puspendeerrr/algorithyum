@@ -195,9 +195,7 @@ allRoutes.forEach((route) => {
 
   const contentText = extractBlockContent(blocks);
   const faqCount = countFAQs(blocks);
-  const hasInternalLinks = hasCTA(blocks);
   const headingsList = extractHeadings(blocks);
-
 
   // Run validation metrics on the resolved page contents
   if (contentText) {
@@ -299,11 +297,13 @@ function getFiles(dir: string, files_: string[] = []): string[] {
 const srcDir = path.resolve(__dirname, '../src');
 const srcFiles = getFiles(srcDir);
 const linkRegexes = [
-  /to=["'](\/[^"']*)["']/g,
-  /href=["'](\/[^"']*)["']/g,
-  /navigate\(["'](\/[^"']*)["']\)/g,
-  /handleLinkClick\(e,\s*["'](\/[^"']*)["']\)/g
+  new RegExp('to=["\'](\\/[^"\']*)[\'"]', 'g'),
+  new RegExp('href=["\'](\\/[^"\']*)[\'"]', 'g'),
+  new RegExp('navigate\\(["\'](\\/[^"\']*)[\'"\\)]', 'g'),
+  new RegExp('handleLinkClick\\(e,\\s*["\'](\\/[^"\']*)[\'"]\\)', 'g')
 ];
+
+
 
 let brokenLinksCount = 0;
 
@@ -333,51 +333,6 @@ srcFiles.forEach((file) => {
   });
 });
 
-// 5. Automatically Generate sitemap.xml
-const today = new Date().toISOString().split('T')[0];
-let sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
-sitemapXml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
-
-allRoutes.forEach((route) => {
-  if (route === '/404' || route === '/not-found') return;
-
-  const url = `https://algorithyum.in${route}`;
-  
-  let priority = '0.6';
-  let changefreq = 'weekly';
-
-  if (route === '/') {
-    priority = '1.0';
-    changefreq = 'daily';
-  } else if (route === '/services' || route === '/blog' || route === '/solutions' || route === '/technologies' || route === '/industries' || route === '/guides') {
-    priority = '0.8';
-    changefreq = 'weekly';
-  } else if (route.startsWith('/blog/') || route.startsWith('/guides/')) {
-    priority = '0.7';
-    changefreq = 'monthly';
-  } else if (route === '/privacy' || route === '/terms' || route === '/cookies') {
-    priority = '0.3';
-    changefreq = 'monthly';
-  }
-
-  sitemapXml += `  <url>\n`;
-  sitemapXml += `    <loc>${url}</loc>\n`;
-  sitemapXml += `    <lastmod>${today}</lastmod>\n`;
-  sitemapXml += `    <changefreq>${changefreq}</changefreq>\n`;
-  sitemapXml += `    <priority>${priority}</priority>\n`;
-  sitemapXml += `  </url>\n`;
-});
-
-sitemapXml += `</urlset>\n`;
-
-const publicDir = path.resolve(__dirname, '../public');
-if (!fs.existsSync(publicDir)) {
-  fs.mkdirSync(publicDir, { recursive: true });
-}
-
-fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), sitemapXml, 'utf-8');
-console.log(`✅ Success: Automatically generated sitemap.xml in [public/sitemap.xml] with ${allRoutes.length} URLs`);
-
 // Helper to escape XML special characters
 function escapeXml(unsafe: string): string {
   return unsafe.replace(/[<>&'"]/g, (c) => {
@@ -385,14 +340,101 @@ function escapeXml(unsafe: string): string {
       case '<': return '&lt;';
       case '>': return '&gt;';
       case '&': return '&amp;';
-      case '\'': return '&apos;';
+      case "'": return '&apos;';
       case '"': return '&quot;';
       default: return c;
     }
   });
 }
 
-// 5.5. Automatically Generate rss.xml from Markdown articles
+// Ensure public directory exists
+const publicDir = path.resolve(__dirname, '../public');
+if (!fs.existsSync(publicDir)) {
+  fs.mkdirSync(publicDir, { recursive: true });
+}
+
+// ─────────────────────────────────────────────────────────
+// 5. Automatically Generate sitemap.xml
+// Excludes:
+//   - /404, /not-found
+//   - /sitemap (HTML page — crawlers use the XML sitemap)
+//   - Tech alias routes (e.g. /react) — canonical is /technologies/react
+// Uses datePublished/dateUpdated for lastmod on blog/guide pages
+// ─────────────────────────────────────────────────────────
+const techAliasSlugs = [
+  'react', 'nextjs', 'nodejs', 'typescript', 'docker', 'kubernetes',
+  'aws', 'azure', 'google-cloud', 'openai', 'langchain', 'mongodb',
+  'postgresql', 'redis', 'firebase', 'flutter', 'react-native'
+];
+
+const today = new Date().toISOString().split('T')[0];
+let sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+sitemapXml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+
+allRoutes.forEach((route) => {
+  if (route === '/404' || route === '/not-found') return;
+  if (route === '/sitemap') return;
+  const routeParts = route.split('/').filter(Boolean);
+  if (routeParts.length === 1 && techAliasSlugs.includes(routeParts[0])) return;
+
+  const url = `https://algorithyum.in${route}`;
+  let priority = '0.6';
+  let changefreq = 'monthly';
+  let lastmod = today;
+
+  if (route === '/') {
+    priority = '1.0'; changefreq = 'daily';
+  } else if (
+    route === '/services' || route === '/blog' || route === '/solutions' ||
+    route === '/technologies' || route === '/industries' || route === '/guides'
+  ) {
+    priority = '0.8'; changefreq = 'weekly';
+  } else if (route.startsWith('/services/')) {
+    priority = '0.75'; changefreq = 'monthly';
+  } else if (route.startsWith('/technologies/') || route.startsWith('/industries/')) {
+    priority = '0.7'; changefreq = 'monthly';
+  } else if (route.startsWith('/blog/')) {
+    priority = '0.75'; changefreq = 'monthly';
+    const slug = routeParts[1];
+    const blogData = blogMap[slug] as any;
+    if (blogData?.dateUpdated) lastmod = blogData.dateUpdated;
+    else if (blogData?.datePublished) lastmod = blogData.datePublished;
+  } else if (route.startsWith('/guides/')) {
+    priority = '0.7'; changefreq = 'monthly';
+    const slug = routeParts[1];
+    const guideData = (guideMap as any)[slug];
+    if (guideData?.dateUpdated) lastmod = guideData.dateUpdated;
+    else if (guideData?.datePublished) lastmod = guideData.datePublished;
+  } else if (route === '/contact') {
+    priority = '0.7'; changefreq = 'monthly';
+  } else if (route === '/about' || route === '/careers') {
+    priority = '0.6'; changefreq = 'monthly';
+  } else if (route === '/privacy' || route === '/terms' || route === '/cookies') {
+    priority = '0.2'; changefreq = 'yearly';
+  }
+
+  sitemapXml += `  <url>\n`;
+  sitemapXml += `    <loc>${url}</loc>\n`;
+  sitemapXml += `    <lastmod>${lastmod}</lastmod>\n`;
+  sitemapXml += `    <changefreq>${changefreq}</changefreq>\n`;
+  sitemapXml += `    <priority>${priority}</priority>\n`;
+  sitemapXml += `  </url>\n`;
+});
+
+sitemapXml += `</urlset>\n`;
+
+fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), sitemapXml, 'utf-8');
+const sitemapUrlCount = allRoutes.filter(route => {
+  if (route === '/404' || route === '/not-found' || route === '/sitemap') return false;
+  const rp = route.split('/').filter(Boolean);
+  if (rp.length === 1 && techAliasSlugs.includes(rp[0])) return false;
+  return true;
+}).length;
+console.log(`✅ Success: Automatically generated sitemap.xml in [public/sitemap.xml] with ${sitemapUrlCount} URLs`);
+
+// ─────────────────────────────────────────────────────────
+// 5.5. Automatically Generate rss.xml from blog posts
+// ─────────────────────────────────────────────────────────
 let rssXml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
 rssXml += `<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n`;
 rssXml += `  <channel>\n`;
@@ -425,16 +467,42 @@ rssXml += `</rss>\n`;
 fs.writeFileSync(path.join(publicDir, 'rss.xml'), rssXml, 'utf-8');
 console.log(`✅ Success: Automatically generated rss.xml in [public/rss.xml] with ${Object.keys(blogMap).length} items`);
 
+// ─────────────────────────────────────────────────────────
 // 6. Automatically Generate robots.txt
-let robotsTxt = `User-agent: *\n`;
+// Disallows: /404, /sitemap (HTML page), legacy tech alias routes
+// Adds crawl-delay for heavy SEO/AI audit bots
+// Points to XML sitemap + RSS feed
+// ─────────────────────────────────────────────────────────
+let robotsTxt = `# Algorithyum robots.txt — auto-generated at build time\n\n`;
+robotsTxt += `User-agent: *\n`;
 robotsTxt += `Allow: /\n`;
-robotsTxt += `Disallow: /404\n\n`;
+robotsTxt += `Disallow: /404\n`;
+robotsTxt += `Disallow: /sitemap\n`;
+// Disallow tech alias routes to consolidate crawl equity to canonical /technologies/:id
+techAliasSlugs.forEach(slug => {
+  robotsTxt += `Disallow: /${slug}\n`;
+});
+robotsTxt += `\n`;
+
+robotsTxt += `# Slow down heavy-crawl SEO audit and AI training bots\n`;
+robotsTxt += `User-agent: AhrefsBot\n`;
+robotsTxt += `Crawl-delay: 10\n\n`;
+robotsTxt += `User-agent: SemrushBot\n`;
+robotsTxt += `Crawl-delay: 10\n\n`;
+robotsTxt += `User-agent: MJ12bot\n`;
+robotsTxt += `Crawl-delay: 10\n\n`;
+robotsTxt += `User-agent: DotBot\n`;
+robotsTxt += `Disallow: /\n\n`;
+
 robotsTxt += `Sitemap: https://algorithyum.in/sitemap.xml\n`;
+robotsTxt += `Sitemap: https://algorithyum.in/rss.xml\n`;
 
 fs.writeFileSync(path.join(publicDir, 'robots.txt'), robotsTxt, 'utf-8');
 console.log(`✅ Success: Automatically generated robots.txt in [public/robots.txt]`);
 
+// ─────────────────────────────────────────────────────────
 // 7. Final validation report outcome
+// ─────────────────────────────────────────────────────────
 if (hasCriticalErrors) {
   console.error('\n❌ SEO Build validation check failed! Fix the duplicate meta tags or broken links listed above before building.');
   process.exit(1);

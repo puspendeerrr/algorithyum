@@ -5,10 +5,10 @@ export const softwareDevelopment: ServicePageData = {
   title: 'Custom Software Engineering & Enterprise Applications | Algorithyum',
   description: 'Construct bespoke database frameworks, ERP systems, and cloud platforms engineered for stability and growth. Contact us to discuss your requirements and schedule a consultation.',
   category: 'engineering',
-  ogImage: 'https://algorithyum.in/src/assets/logo.svg',
+  ogImage: 'https://algorithyum.in/logo.svg',
   ogImageWidth: '1200',
   ogImageHeight: '630',
-  twitterImage: 'https://algorithyum.in/src/assets/logo.svg',
+  twitterImage: 'https://algorithyum.in/logo.svg',
   keywords: ['Custom Software', 'Enterprise Software', 'SaaS Platforms', 'ERP CRM Development'],
   blocks: [
     {

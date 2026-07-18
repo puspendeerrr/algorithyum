@@ -6,10 +6,10 @@ export const ai: ServicePageData = {
   title: 'Generative AI, Cognitive Agents & Machine Learning | Algorithyum',
   description: 'Deploy cognitive generative AI agents and machine learning pipelines built on proven mathematical models. Contact us to discuss your requirements and schedule a consultation.',
   category: 'intelligent',
-  ogImage: 'https://algorithyum.in/src/assets/logo.svg',
+  ogImage: 'https://algorithyum.in/logo.svg',
   ogImageWidth: '1200',
   ogImageHeight: '630',
-  twitterImage: 'https://algorithyum.in/src/assets/logo.svg',
+  twitterImage: 'https://algorithyum.in/logo.svg',
   keywords: ['Generative AI', 'AI Agents', 'Machine Learning', 'NLP'],
   blocks: [
     {
@@ -90,10 +90,10 @@ export const seo: ServicePageData = {
   title: 'Enterprise Search Engine Optimization (SEO) | Algorithyum',
   description: 'Build sustainable visibility and capture high-intent organic visitors using robust technical search engineering. Contact us to discuss your requirements and schedule a consultation.',
   category: 'growth',
-  ogImage: 'https://algorithyum.in/src/assets/logo.svg',
+  ogImage: 'https://algorithyum.in/logo.svg',
   ogImageWidth: '1200',
   ogImageHeight: '630',
-  twitterImage: 'https://algorithyum.in/src/assets/logo.svg',
+  twitterImage: 'https://algorithyum.in/logo.svg',
   keywords: ['Technical SEO', 'Enterprise SEO', 'Programmatic SEO', 'Local SEO'],
   blocks: [
     {
@@ -163,10 +163,10 @@ export const digitalMarketing: ServicePageData = {
   title: 'Data-Driven Digital Marketing & Pay-Per-Click | Algorithyum',
   description: 'Optimize search presence and organic conversion pathways using performance PPC campaign adjustments and CRO. Contact us to discuss your requirements and schedule a consultation.',
   category: 'growth',
-  ogImage: 'https://algorithyum.in/src/assets/logo.svg',
+  ogImage: 'https://algorithyum.in/logo.svg',
   ogImageWidth: '1200',
   ogImageHeight: '630',
-  twitterImage: 'https://algorithyum.in/src/assets/logo.svg',
+  twitterImage: 'https://algorithyum.in/logo.svg',
   keywords: ['Performance Marketing', 'PPC Ads', 'Email Campaigns', 'CRO'],
   blocks: [
     {
@@ -235,10 +235,10 @@ export const cloud: ServicePageData = {
   title: 'Multi-Cloud Computing, Deployments & Migration | Algorithyum',
   description: 'Design, optimize, and migrate to scalable, redundant cloud hosting environments (AWS, Azure, Google Cloud). Contact us to discuss your requirements and schedule a consultation.',
   category: 'infrastructure',
-  ogImage: 'https://algorithyum.in/src/assets/logo.svg',
+  ogImage: 'https://algorithyum.in/logo.svg',
   ogImageWidth: '1200',
   ogImageHeight: '630',
-  twitterImage: 'https://algorithyum.in/src/assets/logo.svg',
+  twitterImage: 'https://algorithyum.in/logo.svg',
   keywords: ['Multi-Cloud', 'Cloud Migration', 'Serverless', 'Infrastructure Audit'],
   blocks: [
     {
@@ -307,10 +307,10 @@ export const cybersecurity: ServicePageData = {
   title: 'Cybersecurity, Penetration Diagnostics & Compliance | Algorithyum',
   description: 'Secure digital assets, protect codebases, and maintain compliance (GDPR, SOC2, HIPAA, ISO). Contact us to discuss your requirements and schedule a consultation.',
   category: 'infrastructure',
-  ogImage: 'https://algorithyum.in/src/assets/logo.svg',
+  ogImage: 'https://algorithyum.in/logo.svg',
   ogImageWidth: '1200',
   ogImageHeight: '630',
-  twitterImage: 'https://algorithyum.in/src/assets/logo.svg',
+  twitterImage: 'https://algorithyum.in/logo.svg',
   keywords: ['Penetration Testing', 'Security Audits', 'Compliance Counseling', 'Vulnerability Assessment'],
   blocks: [
     {
@@ -379,10 +379,10 @@ export const devops: ServicePageData = {
   title: 'DevOps Engineering, CI/CD Pipelines & Containers | Algorithyum',
   description: 'Accelerate your software release cycles using continuous deployment pipelines and container automations. Contact us to discuss your requirements and schedule a consultation.',
   category: 'infrastructure',
-  ogImage: 'https://algorithyum.in/src/assets/logo.svg',
+  ogImage: 'https://algorithyum.in/logo.svg',
   ogImageWidth: '1200',
   ogImageHeight: '630',
-  twitterImage: 'https://algorithyum.in/src/assets/logo.svg',
+  twitterImage: 'https://algorithyum.in/logo.svg',
   keywords: ['CI/CD Pipeline', 'Kubernetes Orchestration', 'Infrastructure as Code', 'System Monitoring'],
   blocks: [
     {
@@ -451,10 +451,10 @@ export const dataEngineering: ServicePageData = {
   title: 'Data Engineering, Pipelines & Warehouse Schemas | Algorithyum',
   description: 'Aggregate, clean, and structure raw business datasets into secure database warehouse infrastructures. Contact us to discuss your requirements and schedule a consultation.',
   category: 'engineering',
-  ogImage: 'https://algorithyum.in/src/assets/logo.svg',
+  ogImage: 'https://algorithyum.in/logo.svg',
   ogImageWidth: '1200',
   ogImageHeight: '630',
-  twitterImage: 'https://algorithyum.in/src/assets/logo.svg',
+  twitterImage: 'https://algorithyum.in/logo.svg',
   keywords: ['ETL Pipeline', 'Data Warehousing', 'Big Data', 'Business Intelligence'],
   blocks: [
     {
@@ -523,10 +523,10 @@ export const mobileAppDevelopment: ServicePageData = {
   title: 'Mobile App Development, React Native & Flutter | Algorithyum',
   description: 'Build responsive, secure native and hybrid cross-platform mobile apps for iOS and Android devices. Contact us to discuss your requirements and schedule a consultation.',
   category: 'engineering',
-  ogImage: 'https://algorithyum.in/src/assets/logo.svg',
+  ogImage: 'https://algorithyum.in/logo.svg',
   ogImageWidth: '1200',
   ogImageHeight: '630',
-  twitterImage: 'https://algorithyum.in/src/assets/logo.svg',
+  twitterImage: 'https://algorithyum.in/logo.svg',
   keywords: ['Mobile App', 'React Native', 'Flutter', 'Offline-First Client'],
   blocks: [
     {
@@ -595,10 +595,10 @@ export const webDevelopment: ServicePageData = {
   title: 'Web Development, High-Performance Next.js & APIs | Algorithyum',
   description: 'Deploy high-performance React frontends and secure transactional backend API controllers. Contact us to discuss your requirements and schedule a consultation.',
   category: 'engineering',
-  ogImage: 'https://algorithyum.in/src/assets/logo.svg',
+  ogImage: 'https://algorithyum.in/logo.svg',
   ogImageWidth: '1200',
   ogImageHeight: '630',
-  twitterImage: 'https://algorithyum.in/src/assets/logo.svg',
+  twitterImage: 'https://algorithyum.in/logo.svg',
   keywords: ['Web Development', 'Next.js App', 'Secure API Backend', 'Web Vitals Optimization'],
   blocks: [
     {
@@ -667,10 +667,10 @@ export const uiUx: ServicePageData = {
   title: 'UI/UX Design, Figma Component Systems & Journey Maps | Algorithyum',
   description: 'Design clean layouts, responsive interface wireframes, and standardized component systems in Figma. Contact us to discuss your requirements and schedule a consultation.',
   category: 'design',
-  ogImage: 'https://algorithyum.in/src/assets/logo.svg',
+  ogImage: 'https://algorithyum.in/logo.svg',
   ogImageWidth: '1200',
   ogImageHeight: '630',
-  twitterImage: 'https://algorithyum.in/src/assets/logo.svg',
+  twitterImage: 'https://algorithyum.in/logo.svg',
   keywords: ['UI/UX Design', 'Figma Wireframes', 'Design Systems', 'User Journey Maps'],
   blocks: [
     {
@@ -739,10 +739,10 @@ export const itConsulting: ServicePageData = {
   title: 'IT Strategy Consulting, Transformation & Fractional CTO | Algorithyum',
   description: 'Align technology investments with commercial outcomes. We advise leadership through technical transformations. Contact us to discuss your requirements and schedule a consultation.',
   category: 'consulting',
-  ogImage: 'https://algorithyum.in/src/assets/logo.svg',
+  ogImage: 'https://algorithyum.in/logo.svg',
   ogImageWidth: '1200',
   ogImageHeight: '630',
-  twitterImage: 'https://algorithyum.in/src/assets/logo.svg',
+  twitterImage: 'https://algorithyum.in/logo.svg',
   keywords: ['Digital Transformation', 'Fractional CTO', 'MVP Architecture', 'Advisory discovery'],
   blocks: [
     {
@@ -811,10 +811,10 @@ export const automation: ServicePageData = {
   title: 'Workflow Automation, RPA & CRM Sync Triggers | Algorithyum',
   description: 'Eliminate manual operational bottlenecks. We program custom scripts and database triggers. Contact us to discuss your requirements and schedule a consultation.',
   category: 'intelligent',
-  ogImage: 'https://algorithyum.in/src/assets/logo.svg',
+  ogImage: 'https://algorithyum.in/logo.svg',
   ogImageWidth: '1200',
   ogImageHeight: '630',
-  twitterImage: 'https://algorithyum.in/src/assets/logo.svg',
+  twitterImage: 'https://algorithyum.in/logo.svg',
   keywords: ['Workflow Automation', 'CRM Integration', 'RPA bots', 'AI automation'],
   blocks: [
     {
@@ -883,10 +883,10 @@ export const branding: ServicePageData = {
   title: 'Branding Systems & Vector SVG Styles | Algorithyum',
   description: 'Shape professional corporate brand guides, typographic scales, and responsive SVG logo files. Contact us to discuss your requirements and schedule a consultation.',
   category: 'design',
-  ogImage: 'https://algorithyum.in/src/assets/logo.svg',
+  ogImage: 'https://algorithyum.in/logo.svg',
   ogImageWidth: '1200',
   ogImageHeight: '630',
-  twitterImage: 'https://algorithyum.in/src/assets/logo.svg',
+  twitterImage: 'https://algorithyum.in/logo.svg',
   keywords: ['Corporate Identity', 'SVG Vector Logo', 'Typography scale', 'Brand guide guidelines'],
   blocks: [
     {

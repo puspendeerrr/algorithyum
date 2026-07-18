@@ -5,18 +5,19 @@ import { ShareWidget, AutoTOC, ScrollProgress } from './RichComponents';
 import { ContentRenderer } from './ContentRenderer';
 import styles from './templates.module.css';
 
-const parentMap: Record<string, { label: string; path: string }> = {
+const parentMap: Record<string, { label: string; path: string } | null> = {
   service: { label: 'Services', path: '/services' },
   technology: { label: 'Technologies', path: '/technologies' },
   industry: { label: 'Industries', path: '/industries' },
-  comparison: { label: 'Comparisons', path: '/' },
+  comparison: null,    // No comparisons archive page — show Home > Page directly
   guide: { label: 'Guides', path: '/guides' },
   blog: { label: 'Blog', path: '/blog' },
-  'case-study': { label: 'Case Studies', path: '/' },
-  resource: { label: 'Resources', path: '/' },
-  cost: { label: 'Cost Guides', path: '/' },
-  faq: { label: 'FAQ Hub', path: '/' }
+  'case-study': null,  // No case studies archive page
+  resource: null,      // No resources archive page
+  cost: null,          // No cost guides archive page
+  faq: null            // No FAQ hub archive page
 };
+
 
 interface DynamicPageTemplateProps {
   pageType?: 'service' | 'technology' | 'industry' | 'comparison' | 'guide' | 'blog' | 'case-study' | 'resource' | 'cost' | 'faq';

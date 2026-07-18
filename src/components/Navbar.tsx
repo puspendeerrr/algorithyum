@@ -89,7 +89,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             aria-label="Algorithyum Home"
           >
             <img 
-              src="/src/assets/logo.svg" 
+              src="/logo.svg" 
               alt="Algorithyum Logo" 
               title="Algorithyum Homepage" 
               width="32" 

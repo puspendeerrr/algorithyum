@@ -122,7 +122,7 @@ export const SEOManager: React.FC = () => {
               'name': 'Algorithyum',
               'logo': {
                 '@type': 'ImageObject',
-                'url': 'https://algorithyum.in/src/assets/logo.svg'
+                'url': 'https://algorithyum.in/logo.svg'
               }
             }
           });
@@ -162,6 +162,8 @@ export const SEOManager: React.FC = () => {
           twitterImage: dynamicData.twitterImage,
           schema: schemas
         };
+        // Tag type for og:type injection below
+        (seoData as any)._pageType = type;
       }
     }
 
@@ -186,14 +188,52 @@ export const SEOManager: React.FC = () => {
     }
     descMeta.setAttribute('content', seoData.description);
 
-    // Update Canonical URL link tag
+    // Robots meta — all resolved pages are indexable
+    let robotsMeta = document.querySelector('meta[name="robots"]');
+    if (!robotsMeta) {
+      robotsMeta = document.createElement('meta');
+      robotsMeta.setAttribute('name', 'robots');
+      document.head.appendChild(robotsMeta);
+    }
+    robotsMeta.setAttribute('content', 'index, follow');
+
+    // Canonical URL — for tech alias routes (/react, /nextjs etc.) point to /technologies/:id
+    const techAliases = [
+      'react', 'nextjs', 'nodejs', 'typescript', 'docker', 'kubernetes',
+      'aws', 'azure', 'google-cloud', 'openai', 'langchain', 'mongodb',
+      'postgresql', 'redis', 'firebase', 'flutter', 'react-native'
+    ];
+    const parts2 = matchPath.split('/').filter(Boolean);
+    const isTechAlias = parts2.length === 1 && techAliases.includes(parts2[0]);
+    const canonicalPath = isTechAlias ? `/technologies/${parts2[0]}` : matchPath;
+
     let canonicalLink = document.querySelector('link[rel="canonical"]');
     if (!canonicalLink) {
       canonicalLink = document.createElement('link');
       canonicalLink.setAttribute('rel', 'canonical');
       document.head.appendChild(canonicalLink);
     }
-    canonicalLink.setAttribute('href', `https://algorithyum.in${matchPath}`);
+    canonicalLink.setAttribute('href', `https://algorithyum.in${canonicalPath}`);
+
+    // Update Open Graph Type — 'article' for blog/guide, 'website' for all others
+    let ogTypeMeta = document.querySelector('meta[property="og:type"]');
+    if (!ogTypeMeta) {
+      ogTypeMeta = document.createElement('meta');
+      ogTypeMeta.setAttribute('property', 'og:type');
+      document.head.appendChild(ogTypeMeta);
+    }
+    const pageType = (seoData as any)._pageType;
+    const isArticle = pageType === 'blog' || pageType === 'guide';
+    ogTypeMeta.setAttribute('content', isArticle ? 'article' : 'website');
+
+    // Update Open Graph Site Name
+    let ogSiteNameMeta = document.querySelector('meta[property="og:site_name"]');
+    if (!ogSiteNameMeta) {
+      ogSiteNameMeta = document.createElement('meta');
+      ogSiteNameMeta.setAttribute('property', 'og:site_name');
+      document.head.appendChild(ogSiteNameMeta);
+    }
+    ogSiteNameMeta.setAttribute('content', 'Algorithyum');
 
     // Update Open Graph Title tag
     let ogTitleMeta = document.querySelector('meta[property="og:title"]');
@@ -213,14 +253,14 @@ export const SEOManager: React.FC = () => {
     }
     ogDescMeta.setAttribute('content', seoData.description);
 
-    // Update Open Graph URL tag
+    // Update Open Graph URL — use canonical path (handles tech alias routes)
     let ogUrlMeta = document.querySelector('meta[property="og:url"]');
     if (!ogUrlMeta) {
       ogUrlMeta = document.createElement('meta');
       ogUrlMeta.setAttribute('property', 'og:url');
       document.head.appendChild(ogUrlMeta);
     }
-    ogUrlMeta.setAttribute('content', `https://algorithyum.in${matchPath}`);
+    ogUrlMeta.setAttribute('content', `https://algorithyum.in${canonicalPath}`);
 
     // Update Open Graph Image and dimensions tags
     let ogImageMeta = document.querySelector('meta[property="og:image"]');
@@ -229,7 +269,7 @@ export const SEOManager: React.FC = () => {
       ogImageMeta.setAttribute('property', 'og:image');
       document.head.appendChild(ogImageMeta);
     }
-    ogImageMeta.setAttribute('content', seoData.ogImage || 'https://algorithyum.in/src/assets/logo.svg');
+    ogImageMeta.setAttribute('content', seoData.ogImage || 'https://algorithyum.in/logo.svg');
 
     let ogWidthMeta = document.querySelector('meta[property="og:image:width"]');
     if (!ogWidthMeta) {
@@ -278,9 +318,9 @@ export const SEOManager: React.FC = () => {
       twitterImageMeta.setAttribute('name', 'twitter:image');
       document.head.appendChild(twitterImageMeta);
     }
-    twitterImageMeta.setAttribute('content', seoData.twitterImage || 'https://algorithyum.in/src/assets/logo.svg');
+    twitterImageMeta.setAttribute('content', seoData.twitterImage || 'https://algorithyum.in/logo.svg');
 
-    // Generate Dynamic BreadcrumbList Schema
+    // Generate Dynamic BreadcrumbList Schema (uses canonicalPath for tech aliases)
     const parts = matchPath.split('/').filter(Boolean);
     const itemListElement = [
       {
@@ -301,11 +341,16 @@ export const SEOManager: React.FC = () => {
       else if (part === 'it-consulting') name = 'IT Strategy Consulting';
       else name = name.replace(/-/g, ' ');
 
+      // For tech alias routes, fix the breadcrumb to reflect the canonical path
+      const breadcrumbPath = isTechAlias && index === 0
+        ? `/technologies/${part}`
+        : cumulativePath;
+
       itemListElement.push({
         '@type': 'ListItem',
         'position': index + 2,
         'name': name,
-        'item': `https://algorithyum.in${cumulativePath}`
+        'item': `https://algorithyum.in${breadcrumbPath}`
       });
     });
 

@@ -1,5 +1,39 @@
+# Algorithyum robots.txt — auto-generated at build time
+
 User-agent: *
 Allow: /
 Disallow: /404
+Disallow: /sitemap
+Disallow: /react
+Disallow: /nextjs
+Disallow: /nodejs
+Disallow: /typescript
+Disallow: /docker
+Disallow: /kubernetes
+Disallow: /aws
+Disallow: /azure
+Disallow: /google-cloud
+Disallow: /openai
+Disallow: /langchain
+Disallow: /mongodb
+Disallow: /postgresql
+Disallow: /redis
+Disallow: /firebase
+Disallow: /flutter
+Disallow: /react-native
+
+# Slow down heavy-crawl SEO audit and AI training bots
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Crawl-delay: 10
+
+User-agent: DotBot
+Disallow: /
 
 Sitemap: https://algorithyum.in/sitemap.xml
+Sitemap: https://algorithyum.in/rss.xml
