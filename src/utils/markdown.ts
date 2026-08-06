@@ -77,27 +77,27 @@ function parseFrontMatter(yamlString: string): FrontMatter {
     const trimmed = line.trim();
     if (!trimmed) continue;
 
-    // Check if it's a list item for FAQ
-    if (trimmed.startsWith('-')) {
-      const rest = trimmed.substring(1).trim();
-      if (rest.startsWith('q:')) {
-        if (currentFaqItem && currentFaqItem.q && currentFaqItem.a) {
-          faqList.push(currentFaqItem as { q: string; a: string });
-        }
-        currentFaqItem = { q: cleanValue(rest.substring(2)) };
-      } else if (rest.startsWith('a:')) {
-        if (currentFaqItem) {
-          currentFaqItem.a = cleanValue(rest.substring(2));
-        }
-      }
-      continue;
-    }
-
     const colonIdx = line.indexOf(':');
     if (colonIdx === -1) continue;
 
-    const key = line.substring(0, colonIdx).trim();
+    let key = line.substring(0, colonIdx).trim();
+    if (key.startsWith('-')) {
+      key = key.substring(1).trim();
+    }
     const val = line.substring(colonIdx + 1).trim();
+
+    if (key === 'q' || key === 'question') {
+      if (currentFaqItem && currentFaqItem.q && currentFaqItem.a) {
+        faqList.push(currentFaqItem as { q: string; a: string });
+      }
+      currentFaqItem = { q: cleanValue(val) };
+      continue;
+    } else if (key === 'a' || key === 'answer') {
+      if (currentFaqItem) {
+        currentFaqItem.a = cleanValue(val);
+      }
+      continue;
+    }
 
     if (key === 'faq') {
       faqList = [];

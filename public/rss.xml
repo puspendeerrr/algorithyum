@@ -5,8 +5,24 @@
     <link>https://algorithyum.in/blog</link>
     <description>Enterprise Software Engineering, Security &amp; AI Insights</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 18 Jul 2026 05:23:04 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 06 Aug 2026 08:04:01 GMT</lastBuildDate>
     <atom:link href="https://algorithyum.in/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Anti-Gravity Technology: Science, Research &amp; Future</title>
+      <link>https://algorithyum.in/blog/anti-gravity-technology</link>
+      <guid>https://algorithyum.in/blog/anti-gravity-technology</guid>
+      <pubDate>Mon, 20 Jul 2026 00:00:00 GMT</pubDate>
+      <description>Explore anti-gravity technology: what the science says, current NASA and ESA research, the Alcubierre warp drive, exotic matter, and real-world applications.</description>
+      <category>Emerging Technology</category>
+    </item>
+    <item>
+      <title>Best AI Tools for Students in 2026 (Free &amp; Paid)</title>
+      <link>https://algorithyum.in/blog/best-ai-tools-for-students-2026</link>
+      <guid>https://algorithyum.in/blog/best-ai-tools-for-students-2026</guid>
+      <pubDate>Fri, 31 Jul 2026 00:00:00 GMT</pubDate>
+      <description>Explore the best AI tools for students in 2026 — free AI apps for note-taking, research, coding, and study planning, plus tips for academic integrity.</description>
+      <category>Artificial Intelligence</category>
+    </item>
     <item>
       <title>Decoupling Architecture in Multi-Cloud Environments</title>
       <link>https://algorithyum.in/blog/cloud-computing</link>
@@ -14,6 +30,22 @@
       <pubDate>Fri, 15 May 2026 00:00:00 GMT</pubDate>
       <description>Master multi-region application deployments, serverless database replication patterns, and high-availability DNS routing configurations.</description>
       <category>Cloud Architecture</category>
+    </item>
+    <item>
+      <title>Custom Software Development vs Off-the-Shelf Software: Which is Better for Your Business?</title>
+      <link>https://algorithyum.in/blog/custom-software-vs-off-the-shelf-software-guide</link>
+      <guid>https://algorithyum.in/blog/custom-software-vs-off-the-shelf-software-guide</guid>
+      <pubDate>Thu, 06 Aug 2026 00:00:00 GMT</pubDate>
+      <description>A comprehensive 2026 enterprise guide comparing Custom Software Development vs Off-the-Shelf (COTS) software. Includes feature comparison tables, 5-year Total Cost of Ownership (TCO) analysis, pros and cons, decision frameworks, and real business case studies.</description>
+      <category>Enterprise Software Strategy</category>
+    </item>
+    <item>
+      <title>How Artificial Intelligence is Transforming Businesses in 2026: Complete Enterprise Guide</title>
+      <link>https://algorithyum.in/blog/how-ai-is-transforming-businesses-2026-enterprise-guide</link>
+      <guid>https://algorithyum.in/blog/how-ai-is-transforming-businesses-2026-enterprise-guide</guid>
+      <pubDate>Thu, 06 Aug 2026 00:00:00 GMT</pubDate>
+      <description>An authoritative 2026 enterprise guide exploring how Artificial Intelligence, Generative AI, cognitive agents, and machine learning are re-architecting business automation, ROI, and competitive advantage across healthcare, finance, manufacturing, and retail.</description>
+      <category>Enterprise AI Solutions</category>
     </item>
     <item>
       <title>Designing Resilient Kubernetes Scaling Protocols</title>
