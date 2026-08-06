@@ -18,7 +18,7 @@ export const healthcare: IndustryPageData = {
       id: 'overview',
       type: 'overview',
       title: 'Technology Built for Clinical Environments',
-      content: 'Healthcare organizations face a unique challenge: balancing operational efficiency with strict data privacy obligations. We design and build clinical software systems — patient portals, scheduling platforms, electronic health record integrations, and billing modules — with HIPAA compliance, PHI encryption, and audit-trail requirements built into every layer.',
+      content: 'Healthcare organizations face a unique challenge: balancing operational efficiency with strict data privacy obligations. We design and build clinical software systems — patient portals, scheduling platforms, electronic health record integrations, and billing modules — with HIPAA compliance, PHI encryption, and audit-trail requirements built into every layer. Our healthcare engagements begin with a compliance architecture review, mapping where protected health information flows through your system and identifying every access point that requires encryption, access logging, and role-based permission controls. We integrate with major EHR vendors using HL7 FHIR R4 API standards, allowing clinical staff to retrieve and update patient records from your portal without duplicate data entry across systems. Automated appointment reminders, digital intake forms, and patient-facing test result portals reduce administrative burden on clinical staff while improving patient engagement scores.',
     },
     {
       id: 'business-problems',
@@ -95,7 +95,7 @@ export const finance: IndustryPageData = {
       id: 'overview',
       type: 'overview',
       title: 'Software Where Data Integrity Is Non-Negotiable',
-      content: 'In financial software, a single data inconsistency can cascade into regulatory violations, financial losses, and customer trust failures. We build fintech systems on PostgreSQL\'s ACID guarantees, with strongly-typed API gateways, immutable audit logs, and PCI-DSS aligned security configurations. Every calculation, every transaction, every balance update is tested against failure scenarios.',
+      content: 'In financial software, a single data inconsistency can cascade into regulatory violations, financial losses, and customer trust failures. We build fintech systems on PostgreSQL\'s ACID guarantees, with strongly-typed API gateways, immutable audit logs, and PCI-DSS aligned security configurations. Every calculation, every transaction, every balance update is tested against failure scenarios. Our financial platform architecture separates payment data concerns from application logic using proven tokenization patterns — raw card numbers never touch your application servers. We implement double-entry accounting engines that validate every ledger transaction with debit/credit balance checks, ensuring your financial records remain internally consistent regardless of system failures. Multi-currency conversion logic is handled through dedicated service layers with snapshot exchange rate records attached to each transaction, providing a complete historical audit trail for regulatory reporting.',
     },
     {
       id: 'business-problems',
@@ -172,7 +172,7 @@ export const retail: IndustryPageData = {
       id: 'overview',
       type: 'overview',
       title: 'E-Commerce Infrastructure That Converts',
-      content: 'Retail platforms live and die by page speed, inventory accuracy, and checkout conversion rates. We engineer e-commerce systems on Next.js for perfect Lighthouse scores, Kubernetes for auto-scaling during sale events, and event-driven inventory sync pipelines that eliminate overselling across online and physical channels.',
+      content: 'Retail platforms live and die by page speed, inventory accuracy, and checkout conversion rates. We engineer e-commerce systems on Next.js for perfect Lighthouse scores, Kubernetes for auto-scaling during sale events, and event-driven inventory sync pipelines that eliminate overselling across online and physical channels. Server-side rendering via Next.js ensures product pages are fully indexed by search engines, while ISR keeps catalog content fresh without rebuild delays. We implement structured data markup (Schema.org Product, Offer, Review) on every product page to maximize rich snippet visibility in Google Shopping results. Checkout flows are designed using progressive disclosure principles — minimizing form fields visible at each step to reduce abandonment — and payment is handled through PCI-DSS certified processors so card data never touches your servers.',
     },
     {
       id: 'business-problems',
@@ -249,7 +249,7 @@ export const education: IndustryPageData = {
       id: 'overview',
       type: 'overview',
       title: 'Digital Infrastructure for Modern Education',
-      content: 'Education institutions require software that handles thousands of concurrent users during exam periods, delivers large media assets reliably across variable network conditions, and maintains strict data privacy for student records. We build LMS platforms, student portals, and administrative systems with these constraints at their core.',
+      content: 'Education institutions require software that handles thousands of concurrent users during exam periods, delivers large media assets reliably across variable network conditions, and maintains strict data privacy for student records. We build LMS platforms, student portals, and administrative systems with these constraints at their core. Adaptive bitrate video delivery ensures lectures stream reliably over slow connections without manual quality switching. We implement role-based access architectures that separate student, instructor, and administrator views with appropriate data visibility boundaries. Analytics dashboards surface engagement metrics — video watch completion, assignment submission rates, quiz performance distributions — that faculty and administrators need to identify at-risk students and improve course design before semester end.',
     },
     {
       id: 'business-problems',
@@ -326,7 +326,7 @@ export const logistics: IndustryPageData = {
       id: 'overview',
       type: 'overview',
       title: 'Visibility Across Every Stage of Your Supply Chain',
-      content: 'Logistics operations depend on real-time data accuracy. A delayed GPS update, an out-of-sync inventory count, or a manual routing decision can cascade into missed delivery windows and customer dissatisfaction. We build logistics platforms that process high-frequency telemetry streams, synchronize inventory across distributed depots, and automate routing optimization calculations.',
+      content: 'Logistics operations depend on real-time data accuracy. A delayed GPS update, an out-of-sync inventory count, or a manual routing decision can cascade into missed delivery windows and customer dissatisfaction. We build logistics platforms that process high-frequency telemetry streams, synchronize inventory across distributed depots, and automate routing optimization calculations. We architect tracking databases with unified status normalization layers that translate inconsistent carrier API formats into a single canonical shipment status model, giving operations teams a single source of truth regardless of which carrier handles each shipment leg. Route optimization engines use graph-based algorithms to calculate the lowest-cost delivery sequences, factoring in vehicle capacity constraints, time window requirements, and real-time traffic data — measurably reducing empty-mile costs and improving on-time delivery performance.',
     },
     {
       id: 'business-problems',
@@ -403,7 +403,7 @@ export const manufacturing: IndustryPageData = {
       id: 'overview',
       type: 'overview',
       title: 'Industry 4.0 Software for Factory Floors',
-      content: 'Manufacturing operations generate enormous volumes of machine telemetry data — vibration readings, temperature cycles, pressure sensors — that contain early warning signals for equipment failures. We build the software infrastructure to collect, process, and surface these signals in real time, enabling predictive maintenance, quality control automation, and production schedule optimization.',
+      content: 'Manufacturing operations generate enormous volumes of machine telemetry data — vibration readings, temperature cycles, pressure sensors — that contain early warning signals for equipment failures. We build the software infrastructure to collect, process, and surface these signals in real time, enabling predictive maintenance, quality control automation, and production schedule optimization. OPC-UA and Modbus gateways translate legacy PLC outputs into structured JSON data streams that feed modern time-series databases (InfluxDB, TimescaleDB) optimized for high-frequency append workloads. ML anomaly detection models trained on historical sensor patterns flag deviations that precede equipment failures — alerting maintenance engineers before a critical component causes unplanned production downtime. Real-time Grafana dashboards give floor supervisors and plant managers continuous visibility into equipment health KPIs, production throughput rates, and quality control measurement distributions across all production lines.',
     },
     {
       id: 'business-problems',

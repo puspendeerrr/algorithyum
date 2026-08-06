@@ -92,6 +92,16 @@ export const customSoftwareSpec: GuidePageData = {
       content: 'This guide is prepared by our systems engineering architects based on methodologies used across enterprise software engagements. Consult your technical lead before finalizing database schema decisions for production systems.',
     },
     {
+      id: 'related-content',
+      type: 'related-content',
+      title: 'Related Architecture Guides & Services',
+      items: [
+        { title: 'Custom Software Engineering Services', url: '/services/software-development', category: 'Services' },
+        { title: 'Cloud Infrastructure & Microservices', url: '/services/cloud', category: 'Services' },
+        { title: 'PostgreSQL vs MongoDB Database Comparison', url: '/mongodb-vs-postgresql', category: 'Comparisons' },
+      ],
+    },
+    {
       id: 'faq',
       type: 'faq',
       title: 'Frequently Asked Questions',
@@ -104,7 +114,7 @@ export const customSoftwareSpec: GuidePageData = {
       id: 'cta',
       type: 'cta',
       headline: 'Need Help Specifying Your System?',
-      desc: 'Arrange a technical discovery session with our engineering leads. We will scope your requirements and produce a specification document ready for development.',
+      desc: 'Contact our engineering team to discuss your technical requirements or consult with a lead solution architect today.',
       buttonLabel: 'Book a Discovery Session',
       buttonAction: 'consultation',
     },
@@ -202,6 +212,16 @@ if (!validated.success) {
 }`,
     },
     {
+      id: 'related-content',
+      type: 'related-content',
+      title: 'Related Engineering Insights & Solutions',
+      items: [
+        { title: 'AI & Cognitive Agent Services', url: '/services/ai', category: 'Services' },
+        { title: 'LLM Agent Architectures Blog', url: '/blog/llm-agents', category: 'Blog' },
+        { title: 'Production-Ready RAG Systems Guide', url: '/blog/production-ready-rag-systems-architecture-guide', category: 'Blog' },
+      ],
+    },
+    {
       id: 'faq',
       type: 'faq',
       title: 'Frequently Asked Questions',
@@ -214,7 +234,7 @@ if (!validated.success) {
       id: 'cta',
       type: 'cta',
       headline: 'Deploy AI Agents Safely',
-      desc: 'Our AI engineering team can audit your agent architecture and implement the production hardening controls described in this guide.',
+      desc: 'Contact our engineering team to discuss your AI agent architecture or consult with a lead AI engineer today.',
       buttonLabel: 'Book an AI Architecture Review',
       buttonAction: 'consultation',
     },

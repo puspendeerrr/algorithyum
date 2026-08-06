@@ -131,6 +131,7 @@ function extractBlockContent(blocks: any[]): string {
     if (block.content) parts.push(block.content);
     if (block.headline) parts.push(block.headline);
     if (block.desc) parts.push(block.desc);
+    if (block.buttonLabel) parts.push(block.buttonLabel);
     if (block.items) {
       block.items.forEach((item: any) => {
         if (typeof item === 'string') parts.push(item);

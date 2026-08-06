@@ -77,7 +77,7 @@ export const softwareDevelopment: ServicePageData = {
       id: 'cta',
       type: 'cta',
       headline: 'Ready to Build Your System?',
-      desc: 'Arrange a technical discovery session with our engineering leads. We will scope your requirements and provide a realistic delivery estimate.',
+      desc: 'Contact our engineering team to discuss your custom software requirements or consult with a lead solution architect today.',
       buttonLabel: 'Book a Discovery Session',
       buttonAction: 'consultation',
     },

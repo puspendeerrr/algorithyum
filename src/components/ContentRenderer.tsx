@@ -213,7 +213,7 @@ export const ContentRenderer: React.FC<ContentRendererProps> = ({
                   currentPageTags || [],
                   currentPageCategory || '',
                   currentPageRelatedTo || [],
-                  block.contentType,
+                  block.contentType ?? '',
                   3
                 );
 

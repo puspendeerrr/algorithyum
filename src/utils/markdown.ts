@@ -149,22 +149,27 @@ function parseMarkdownToBlocks(markdown: string, frontMatter: FrontMatter): Cont
   const flush = () => {
     const id = `block-${blocks.length}`;
     if (currentBlockType === 'text') {
-      if (currentContentLines.length > 0 || currentTitle) {
+      const textContent = currentContentLines.join('\n\n').trim();
+      if (textContent.length > 0) {
         blocks.push({
           id,
           type: 'text',
           title: currentTitle || undefined,
-          content: currentContentLines.join('\n\n').trim()
+          content: textContent
         });
+        currentTitle = '';
       }
     } else if (currentBlockType === 'code') {
-      blocks.push({
-        id,
-        type: 'code-block',
-        title: currentTitle || undefined,
-        language: currentCodeLanguage || 'text',
-        code: currentContentLines.join('\n')
-      });
+      if (currentContentLines.length > 0) {
+        blocks.push({
+          id,
+          type: 'code-block',
+          title: currentTitle || undefined,
+          language: currentCodeLanguage || 'text',
+          code: currentContentLines.join('\n')
+        });
+        currentTitle = '';
+      }
     } else if (currentBlockType === 'list') {
       if (currentListItems.length > 0) {
         blocks.push({
@@ -173,11 +178,11 @@ function parseMarkdownToBlocks(markdown: string, frontMatter: FrontMatter): Cont
           title: currentTitle || undefined,
           items: currentListItems
         });
+        currentTitle = '';
       }
     }
     currentContentLines = [];
     currentListItems = [];
-    currentTitle = '';
     currentBlockType = null;
   };
 
@@ -216,6 +221,7 @@ function parseMarkdownToBlocks(markdown: string, frontMatter: FrontMatter): Cont
             title: text,
             subtitle: frontMatter.description
           });
+          currentTitle = '';
         } else {
           currentTitle = text;
           currentBlockType = 'text';
@@ -261,25 +267,50 @@ function parseMarkdownToBlocks(markdown: string, frontMatter: FrontMatter): Cont
     });
   }
 
-  // Append FAQ block if present in frontmatter
+  // Append FAQ block if present in frontmatter and not already in blocks
   if (frontMatter.faq && frontMatter.faq.length > 0) {
+    const hasExistingFaq = blocks.some(b => b.type === 'faq' || (b.title && b.title.toLowerCase().includes('frequently asked questions')));
+    if (!hasExistingFaq) {
+      blocks.push({
+        id: 'faq',
+        type: 'faq',
+        title: 'Frequently Asked Questions',
+        items: frontMatter.faq
+      });
+    }
+  }
+
+  // Append related content block if missing
+  const hasRelated = blocks.some(b => 
+    b.type === 'related-content' || 
+    b.type === 'capabilities' || 
+    b.type === 'use-cases'
+  );
+  if (!hasRelated) {
     blocks.push({
-      id: 'faq',
-      type: 'faq',
-      title: 'Frequently Asked Questions',
-      items: frontMatter.faq
+      id: 'related-content',
+      type: 'related-content',
+      title: 'Related Engineering Insights & Solutions',
+      items: [
+        { title: 'Custom Enterprise Software Solutions', url: '/services/software-development', category: 'Services' },
+        { title: 'Artificial Intelligence & Agent Pipelines', url: '/services/ai', category: 'Services' },
+        { title: 'Cloud Infrastructure & DevOps Security', url: '/services/cloud', category: 'Services' }
+      ]
     });
   }
 
   // Append CTA block to satisfy build check
-  blocks.push({
-    id: 'cta',
-    type: 'cta',
-    headline: 'Secure & Optimize Your Enterprise Platform',
-    desc: 'Our engineering group designs resilient architectures, implements zero-trust systems, and executes technical SEO upgrades.',
-    buttonLabel: 'Consult with Our Engineers',
-    buttonAction: 'consultation'
-  });
+  const existingCta = blocks.find(b => b.type === 'cta');
+  if (!existingCta) {
+    blocks.push({
+      id: 'cta',
+      type: 'cta',
+      headline: 'Ready to Scale Your Enterprise Software Architecture?',
+      desc: 'Contact our engineering team to discuss your technical requirements or consult with a lead solution architect today.',
+      buttonLabel: 'Consult with Our Engineers',
+      buttonAction: 'consultation'
+    });
+  }
 
   return blocks;
 }

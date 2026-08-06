@@ -286,8 +286,8 @@ export interface CtaBlock extends BaseBlock {
 
 export interface RelatedContentBlock extends BaseBlock {
   type: 'related-content';
-  contentType: 'services' | 'technologies' | 'blog' | 'guides' | 'comparisons' | 'industries' | 'case-studies' | 'resources';
-  items?: { id: string; title: string; desc?: string; url: string }[];
+  contentType?: 'services' | 'technologies' | 'blog' | 'guides' | 'comparisons' | 'industries' | 'case-studies' | 'resources';
+  items?: { id?: string; title: string; desc?: string; url: string; category?: string }[];
 }
 
 export interface ChallengesBlock extends BaseBlock {
