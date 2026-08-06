@@ -107,7 +107,7 @@ function App() {
             />
             <Route 
               path="/blog/:slug" 
-              element={<BlogPage />} 
+              element={<BlogPage onOpenConsultation={() => navigate('/contact')} />} 
             />
             
             {/* Dynamic Guides Engine */}

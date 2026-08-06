@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ChevronDown, ArrowRight, Calendar } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { 
   FeatureCards, 
   Timeline, 
@@ -14,6 +14,50 @@ import {
 } from './RichComponents';
 import type { ContentBlock, FAQItem } from '../data/types';
 import { getRelatedContent } from '../engine/linking';
+
+export function parseInlineMarkdown(text: string): React.ReactNode[] {
+  if (!text) return [];
+  const regex = /\[([^\]]+)\]\(([^)]+)\)|(\*\*[^*]+\*\*)/g;
+  const result: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = regex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      result.push(text.substring(lastIndex, match.index));
+    }
+
+    if (match[1] && match[2]) {
+      const label = match[1];
+      const url = match[2];
+      const isInternal = url.startsWith('/');
+      if (isInternal) {
+        result.push(
+          <Link key={match.index} to={url} style={{ color: 'var(--accent-light)', fontWeight: 600, textDecoration: 'underline' }}>
+            {label}
+          </Link>
+        );
+      } else {
+        result.push(
+          <a key={match.index} href={url} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent-light)', fontWeight: 600, textDecoration: 'underline' }}>
+            {label}
+          </a>
+        );
+      }
+    } else if (match[3]) {
+      const boldText = match[3].slice(2, -2);
+      result.push(<strong key={match.index} style={{ color: 'var(--text-primary)' }}>{boldText}</strong>);
+    }
+
+    lastIndex = regex.lastIndex;
+  }
+
+  if (lastIndex < text.length) {
+    result.push(text.substring(lastIndex));
+  }
+
+  return result;
+}
 
 interface ContentRendererProps {
   blocks: ContentBlock[];
@@ -51,7 +95,7 @@ export const ContentRenderer: React.FC<ContentRendererProps> = ({
                 {(block.primaryCta || block.secondaryCta) && (
                   <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', marginTop: '2.5rem' }}>
                     {block.primaryCta && (
-                      <button onClick={onOpenConsultation} className="btn btn-primary">
+                      <button onClick={onOpenConsultation || (() => navigate('/contact'))} className="btn btn-primary">
                         {block.primaryCta.label}
                       </button>
                     )}
@@ -69,10 +113,10 @@ export const ContentRenderer: React.FC<ContentRendererProps> = ({
           case 'text':
             return (
               <section key={block.id} style={{ textAlign: 'left' }}>
-                {block.title && <h2 id={block.id}>{block.title}</h2>}
+                {block.title && <h2 id={block.id}>{parseInlineMarkdown(block.title)}</h2>}
                 {block.content.split('\n\n').map((para, i) => (
                   <p key={i} style={{ fontSize: '1.05rem', color: 'var(--text-secondary)', lineHeight: '1.75', marginBottom: '1.25rem' }}>
-                    {para.trim()}
+                    {parseInlineMarkdown(para.trim())}
                   </p>
                 ))}
               </section>
@@ -143,18 +187,20 @@ export const ContentRenderer: React.FC<ContentRendererProps> = ({
                 <div className="btn-secondary" style={{ padding: '3rem', border: '1px solid var(--border-color)', borderRadius: 'var(--border-radius-md)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem', textAlign: 'center', backdropFilter: 'blur(8px)' }}>
                   <h2 style={{ fontSize: '1.8rem', fontWeight: 800 }}>{block.headline}</h2>
                   <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', fontSize: '0.95rem', lineHeight: '1.6' }}>{block.desc}</p>
-                  {block.buttonAction === 'consultation' && (
-                    <button onClick={onOpenConsultation} className="btn btn-primary">
-                      {block.buttonLabel}
-                      <Calendar size={18} aria-hidden="true" />
-                    </button>
-                  )}
-                  {block.buttonAction !== 'consultation' && (
-                    <button onClick={(e) => handleLinkClick(e, block.buttonUrl || '/contact')} className="btn btn-primary">
-                      {block.buttonLabel}
-                      <ArrowRight size={18} aria-hidden="true" />
-                    </button>
-                  )}
+                  <button 
+                    onClick={(e) => {
+                      e.preventDefault();
+                      if (onOpenConsultation) {
+                        onOpenConsultation();
+                      } else {
+                        navigate('/contact');
+                      }
+                    }} 
+                    className="btn btn-primary"
+                  >
+                    {block.buttonLabel || 'Consult with Our Engineers'}
+                    <Calendar size={18} aria-hidden="true" />
+                  </button>
                 </div>
               </section>
             );

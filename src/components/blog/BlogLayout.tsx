@@ -11,14 +11,15 @@ export const BlogLayout: React.FC<BlogLayoutProps> = ({ children, sidebar }) => 
       <style>{`
         .blog-grid {
           display: grid;
-          grid-template-columns: 1fr 300px;
+          grid-template-columns: 1fr 320px;
           gap: 4rem;
           align-items: flex-start;
+          width: 100%;
         }
         .blog-main-content {
           min-width: 0;
           width: 100%;
-          max-width: 800px;
+          max-width: 1100px;
         }
         @media (max-width: 992px) {
           .blog-grid {
@@ -26,7 +27,7 @@ export const BlogLayout: React.FC<BlogLayoutProps> = ({ children, sidebar }) => 
             gap: 2.5rem !important;
           }
           .blog-main-content {
-            max-width: 800px !important;
+            max-width: 100% !important;
             margin: 0 auto !important;
           }
           .blog-sidebar {

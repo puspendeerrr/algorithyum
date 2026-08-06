@@ -130,7 +130,7 @@ export const DynamicPageTemplate: React.FC<DynamicPageTemplateProps> = ({ pageTy
       <ScrollProgress />
       
       <div className={styles.page}>
-        <div className="container" style={{ maxWidth: '1200px' }}>
+        <div className="container">
           
           {/* Breadcrumb Hierarchy Links */}
           <nav aria-label="Breadcrumb" className={styles.breadcrumbs}>

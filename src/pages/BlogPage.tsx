@@ -13,7 +13,11 @@ import { BlogBreadcrumbs } from '../components/blog/BlogBreadcrumbs';
 import { FAQSection } from '../components/blog/FAQSection';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
-export const BlogPage: React.FC = () => {
+interface BlogPageProps {
+  onOpenConsultation?: () => void;
+}
+
+export const BlogPage: React.FC<BlogPageProps> = ({ onOpenConsultation }) => {
   const { slug } = useParams<{ slug: string }>();
 
   const post = slug ? getBlogBySlug(slug) : undefined;
@@ -147,7 +151,7 @@ export const BlogPage: React.FC = () => {
             <ShareButtons title={post.title} />
 
             {/* Dynamic Blog Content */}
-            <BlogContent blocks={post.blocks} />
+            <BlogContent blocks={post.blocks} onOpenConsultation={onOpenConsultation} />
 
             {/* Collapsible FAQs */}
             <FAQSection items={faqItems} />

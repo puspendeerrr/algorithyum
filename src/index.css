@@ -28,7 +28,7 @@
   --border-radius-sm: 8px;
   --border-radius-md: 16px;
   --border-radius-lg: 24px;
-  --max-width: 1200px;
+  --max-width: 1440px;
   
   /* Timing and Easing */
   --transition-fast: 0.2s ease;
@@ -205,17 +205,25 @@ p, li, span, a, label, td, th {
   }
 }
 
-/* Ultra-wide containment */
+/* Wide & Ultra-wide expansive layout containment */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1560px;
+    padding: 0 3rem;
+  }
+}
+
 @media (min-width: 1920px) {
   .container {
-    max-width: 1200px;
+    max-width: 1800px;
+    padding: 0 4rem;
   }
 }
 
 @media (min-width: 2560px) {
   .container {
-    max-width: 1200px;
-    padding: 0 3rem;
+    max-width: 2200px;
+    padding: 0 5rem;
   }
 }
 
