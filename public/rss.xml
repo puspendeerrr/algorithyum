@@ -5,7 +5,7 @@
     <link>https://algorithyum.in/blog</link>
     <description>Enterprise Software Engineering, Security &amp; AI Insights</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 06 Aug 2026 10:07:57 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 10 Aug 2026 11:32:41 GMT</lastBuildDate>
     <atom:link href="https://algorithyum.in/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Anti-Gravity Technology: Science, Research &amp; Future</title>
@@ -40,6 +40,14 @@
       <category>Enterprise Software Strategy</category>
     </item>
     <item>
+      <title>Full Stack Web Development Roadmap 2026: From Zero to Job-Ready Developer</title>
+      <link>https://algorithyum.in/blog/full-stack-web-development-roadmap-2026</link>
+      <guid>https://algorithyum.in/blog/full-stack-web-development-roadmap-2026</guid>
+      <pubDate>Thu, 06 Aug 2026 00:00:00 GMT</pubDate>
+      <description>The complete 2026 full stack web development roadmap. Learn exactly what to study, in what order — from HTML/CSS fundamentals through React, Node.js, databases, cloud deployment, DevOps, and AI integration — to become a job-ready full stack engineer with real project experience.</description>
+      <category>Web Development</category>
+    </item>
+    <item>
       <title>How Artificial Intelligence is Transforming Businesses in 2026: Complete Enterprise Guide</title>
       <link>https://algorithyum.in/blog/how-ai-is-transforming-businesses-2026-enterprise-guide</link>
       <guid>https://algorithyum.in/blog/how-ai-is-transforming-businesses-2026-enterprise-guide</guid>
@@ -61,6 +69,22 @@
       <guid>https://algorithyum.in/blog/llm-agents</guid>
       <pubDate>Thu, 18 Jun 2026 00:00:00 GMT</pubDate>
       <description>Uncover strategies to structure LangChain agents, reduce hallucination rates, and run semantic database queries safely in enterprise production environments.</description>
+      <category>AI Engineering</category>
+    </item>
+    <item>
+      <title>How to Build a REST API with Node.js and Express in 2026: Complete Developer Guide</title>
+      <link>https://algorithyum.in/blog/nodejs-rest-api-guide-2026</link>
+      <guid>https://algorithyum.in/blog/nodejs-rest-api-guide-2026</guid>
+      <pubDate>Thu, 06 Aug 2026 00:00:00 GMT</pubDate>
+      <description>A comprehensive, production-grade guide to building scalable REST APIs with Node.js and Express. Covers project structure, authentication with JWT, database integration (PostgreSQL &amp; MongoDB), input validation, error handling, rate limiting, Docker deployment, and API testing in 2026.</description>
+      <category>Backend Development</category>
+    </item>
+    <item>
+      <title>Prompt Engineering Guide 2026: Master ChatGPT, Claude &amp; LLMs for Maximum Output Quality</title>
+      <link>https://algorithyum.in/blog/prompt-engineering-guide-2026</link>
+      <guid>https://algorithyum.in/blog/prompt-engineering-guide-2026</guid>
+      <pubDate>Thu, 06 Aug 2026 00:00:00 GMT</pubDate>
+      <description>The definitive 2026 prompt engineering guide for developers, marketers, and enterprise teams. Learn advanced prompting techniques — Chain-of-Thought, few-shot learning, role prompting, RAG integration, prompt chaining, and evaluation frameworks to extract peak performance from ChatGPT, Claude, Gemini, and Llama.</description>
       <category>AI Engineering</category>
     </item>
     <item>
