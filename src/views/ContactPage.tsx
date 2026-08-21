@@ -140,8 +140,12 @@ export const ContactPage: React.FC = () => {
         throw new Error('EmailJS environment configurations are missing.');
       }
 
-      // Send Admin Notification Email
-      await emailjs.send(serviceId, adminTemplateId, templateParams, publicKey);
+      await emailjs.send(
+        serviceId,
+        process.env.NEXT_PUBLIC_EMAILJS_ADMIN_TEMPLATE_ID || adminTemplateId,
+        templateParams,
+        publicKey
+      );
       
       setSubmitStatus('success');
       setFormData({
