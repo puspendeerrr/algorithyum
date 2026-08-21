@@ -230,7 +230,7 @@ But the distance between where Newton's mechanics stood in 1700 and where we nee
 
 For teams building the computational, simulation, and analytical infrastructure that will characterize next-generation physics research, the tools matter as much as the theories. High-performance computing for gravitational wave simulation, AI systems for pattern recognition in experimental data, and advanced sensor technologies for detecting minute gravitational anomalies are all areas where engineering excellence directly serves scientific progress.
 
-Algorithyum works with organizations at the frontier of science and technology — building the software infrastructure, AI systems, and data platforms that enable researchers to work at the edge of the known. Explore our work in [AI development](/services/ai), [software development](/services/software-development), and [data engineering](/services/data-engineering), or read more on the [Algorithyum blog](/blog).
+Algorithyum works with organizations at the frontier of science and technology — building the software infrastructure, AI systems, and data platforms that enable researchers to work at the edge of the known. Explore our work in [AI development](/services/ai-integration), [software development](/services/software-development), and [software redesign](/services/software-redesign), or read more on the [Algorithyum blog](/blog).
 
 ---
 
@@ -238,7 +238,7 @@ Algorithyum works with organizations at the frontier of science and technology �
 
 If your organization is building computational infrastructure for advanced physics research, aerospace systems, or deep-technology applications, Algorithyum's engineering team designs and implements the software platforms that make that work possible.
 
-[Contact Algorithyum](/contact) to discuss your architecture requirements, or explore our [AI development](/services/ai), [cloud infrastructure](/services/cloud), [DevOps](/services/devops), and [software development](/services/software-development) capabilities.
+[Contact Algorithyum](/contact) to discuss your architecture requirements, or explore our [AI development](/services/ai-integration), [software modernization](/services/software-redesign), and [software development](/services/software-development) capabilities.
 
 ---
 

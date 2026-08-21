@@ -229,8 +229,8 @@ function parseMarkdownToBlocks(markdown, frontMatter) {
       title: 'Related Engineering Insights & Solutions',
       items: [
         { title: 'Custom Enterprise Software Solutions', url: '/services/software-development', category: 'Services' },
-        { title: 'Artificial Intelligence & Agent Pipelines', url: '/services/ai', category: 'Services' },
-        { title: 'Cloud Infrastructure & DevOps Security', url: '/services/cloud', category: 'Services' }
+        { title: 'Artificial Intelligence & Agent Pipelines', url: '/services/ai-integration', category: 'Services' },
+        { title: 'Software Redesign & Modernization', url: '/services/software-redesign', category: 'Services' }
       ]
     });
   }

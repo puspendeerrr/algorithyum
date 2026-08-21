@@ -184,17 +184,17 @@ export const Navbar: React.FC<NavbarProps> = ({
                         <div className={styles.megaColumn}>
                           <h4 className={styles.megaColumnTitle}>Frontend & Mobile</h4>
                           <ul className={styles.megaLinkList}>
-                            <li><a href="/react" onClick={(e) => { e.preventDefault(); handleNavClick('/react'); }} className={styles.megaLink}>React</a></li>
-                            <li><a href="/nextjs" onClick={(e) => { e.preventDefault(); handleNavClick('/nextjs'); }} className={styles.megaLink}>Next.js</a></li>
-                            <li><a href="/flutter" onClick={(e) => { e.preventDefault(); handleNavClick('/flutter'); }} className={styles.megaLink}>Flutter</a></li>
-                            <li><a href="/react-native" onClick={(e) => { e.preventDefault(); handleNavClick('/react-native'); }} className={styles.megaLink}>React Native</a></li>
-                            <li><a href="/typescript" onClick={(e) => { e.preventDefault(); handleNavClick('/typescript'); }} className={styles.megaLink}>TypeScript</a></li>
+                            <li><a href="/technologies/react" onClick={(e) => { e.preventDefault(); handleNavClick('/technologies/react'); }} className={styles.megaLink}>React</a></li>
+                            <li><a href="/technologies/nextjs" onClick={(e) => { e.preventDefault(); handleNavClick('/technologies/nextjs'); }} className={styles.megaLink}>Next.js</a></li>
+                            <li><a href="/technologies/flutter" onClick={(e) => { e.preventDefault(); handleNavClick('/technologies/flutter'); }} className={styles.megaLink}>Flutter</a></li>
+                            <li><a href="/technologies/react-native" onClick={(e) => { e.preventDefault(); handleNavClick('/technologies/react-native'); }} className={styles.megaLink}>React Native</a></li>
+                            <li><a href="/technologies/typescript" onClick={(e) => { e.preventDefault(); handleNavClick('/technologies/typescript'); }} className={styles.megaLink}>TypeScript</a></li>
                           </ul>
                         </div>
                         <div className={styles.megaColumn}>
                           <h4 className={styles.megaColumnTitle}>Backend & APIs</h4>
                           <ul className={styles.megaLinkList}>
-                            <li><a href="/nodejs" onClick={(e) => { e.preventDefault(); handleNavClick('/nodejs'); }} className={styles.megaLink}>Node.js</a></li>
+                            <li><a href="/technologies/nodejs" onClick={(e) => { e.preventDefault(); handleNavClick('/technologies/nodejs'); }} className={styles.megaLink}>Node.js</a></li>
                             <li><a href="/services/software-development" onClick={(e) => { e.preventDefault(); handleNavClick('/services/software-development'); }} className={styles.megaLink}>Go (Golang)</a></li>
                             <li><a href="/services/ai-integration" onClick={(e) => { e.preventDefault(); handleNavClick('/services/ai-integration'); }} className={styles.megaLink}>Python</a></li>
                           </ul>
@@ -202,12 +202,12 @@ export const Navbar: React.FC<NavbarProps> = ({
                         <div className={styles.megaColumn}>
                           <h4 className={styles.megaColumnTitle}>AI & Databases</h4>
                           <ul className={styles.megaLinkList}>
-                            <li><a href="/postgresql" onClick={(e) => { e.preventDefault(); handleNavClick('/postgresql'); }} className={styles.megaLink}>PostgreSQL</a></li>
-                            <li><a href="/mongodb" onClick={(e) => { e.preventDefault(); handleNavClick('/mongodb'); }} className={styles.megaLink}>MongoDB</a></li>
-                            <li><a href="/redis" onClick={(e) => { e.preventDefault(); handleNavClick('/redis'); }} className={styles.megaLink}>Redis</a></li>
-                            <li><a href="/firebase" onClick={(e) => { e.preventDefault(); handleNavClick('/firebase'); }} className={styles.megaLink}>Firebase</a></li>
-                            <li><a href="/langchain" onClick={(e) => { e.preventDefault(); handleNavClick('/langchain'); }} className={styles.megaLink}>LangChain</a></li>
-                            <li><a href="/openai" onClick={(e) => { e.preventDefault(); handleNavClick('/openai'); }} className={styles.megaLink}>OpenAI</a></li>
+                            <li><a href="/technologies/postgresql" onClick={(e) => { e.preventDefault(); handleNavClick('/technologies/postgresql'); }} className={styles.megaLink}>PostgreSQL</a></li>
+                            <li><a href="/technologies/mongodb" onClick={(e) => { e.preventDefault(); handleNavClick('/technologies/mongodb'); }} className={styles.megaLink}>MongoDB</a></li>
+                            <li><a href="/technologies/redis" onClick={(e) => { e.preventDefault(); handleNavClick('/technologies/redis'); }} className={styles.megaLink}>Redis</a></li>
+                            <li><a href="/technologies/firebase" onClick={(e) => { e.preventDefault(); handleNavClick('/technologies/firebase'); }} className={styles.megaLink}>Firebase</a></li>
+                            <li><a href="/technologies/langchain" onClick={(e) => { e.preventDefault(); handleNavClick('/technologies/langchain'); }} className={styles.megaLink}>LangChain</a></li>
+                            <li><a href="/technologies/openai" onClick={(e) => { e.preventDefault(); handleNavClick('/technologies/openai'); }} className={styles.megaLink}>OpenAI</a></li>
                           </ul>
                         </div>
                       </div>

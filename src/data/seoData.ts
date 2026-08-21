@@ -224,5 +224,50 @@ export const seoMap: Record<string, SEOData> = {
       'url': 'https://algorithyum.in/sitemap',
       'description': 'Website sitemap index.'
     }
+  },
+  '/editorial-policy': {
+    title: 'Editorial Policy | Algorithyum',
+    description: 'Learn about Algorithyum\'s technical peer review process, EEAT benchmarks, and AI ethics policy.',
+    ogImage: 'https://algorithyum.in/logo.svg',
+    ogImageWidth: '1200',
+    ogImageHeight: '630',
+    twitterImage: 'https://algorithyum.in/logo.svg',
+    schema: {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      'name': 'Editorial Policy',
+      'url': 'https://algorithyum.in/editorial-policy',
+      'description': 'Algorithyum editorial and technical verification policy.'
+    }
+  },
+  '/accessibility': {
+    title: 'Accessibility Statement | Algorithyum',
+    description: 'Algorithyum is committed to digital accessibility and WCAG 2.1 AA compliance across all digital assets.',
+    ogImage: 'https://algorithyum.in/logo.svg',
+    ogImageWidth: '1200',
+    ogImageHeight: '630',
+    twitterImage: 'https://algorithyum.in/logo.svg',
+    schema: {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      'name': 'Accessibility Statement',
+      'url': 'https://algorithyum.in/accessibility',
+      'description': 'Algorithyum accessibility statement.'
+    }
+  },
+  '/security-policy': {
+    title: 'Security Policy & Compliance | Algorithyum',
+    description: 'Overview of Algorithyum\'s Zero Trust architecture, AES-256 encryption, and vulnerability disclosure policies.',
+    ogImage: 'https://algorithyum.in/logo.svg',
+    ogImageWidth: '1200',
+    ogImageHeight: '630',
+    twitterImage: 'https://algorithyum.in/logo.svg',
+    schema: {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      'name': 'Security Policy',
+      'url': 'https://algorithyum.in/security-policy',
+      'description': 'Algorithyum security policy and compliance.'
+    }
   }
 };

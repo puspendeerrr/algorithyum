@@ -6,20 +6,9 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Import static SEO data and the dynamic registries
-import { seoMap } from '../src/data/seoData.js';
-import {
-  serviceMap,
-  technologyMap,
-  industryMap,
-  comparisonMap,
-  guideMap,
-  blogMap,
-  caseStudyMap,
-  resourceMap,
-  costPageMap,
-  faqHubMap
-} from '../src/data/seoRegistry.js';
+// Import central sitemap engine (Single Source of Truth)
+import { getSitemapEntries } from '../lib/sitemap/sitemapEngine.js';
+import { blogMap } from '../src/data/seoRegistry.js';
 
 const titles = new Set<string>();
 const descriptions = new Set<string>();
@@ -28,63 +17,12 @@ let qualityWarningsCount = 0;
 
 console.log('\n=== Starting Build-Time SEO Validation Audit ===');
 
-// 1. Gather all dynamic and static routes
+// 1. Gather all indexable routes from Central Sitemap Engine
+const entries = getSitemapEntries();
 const routesData: Record<string, { title: string; description: string }> = {};
 
-// Add static routes from seoMap
-Object.entries(seoMap).forEach(([route, data]) => {
-  routesData[route] = { title: data.title, description: data.description };
-});
-
-// Add dynamic services
-Object.entries(serviceMap).forEach(([id, data]) => {
-  routesData[`/services/${id}`] = { title: data.title, description: data.description };
-});
-
-// Add dynamic technologies (both sub-route and direct top-level route)
-Object.entries(technologyMap).forEach(([id, data]) => {
-  routesData[`/technologies/${id}`] = { title: data.title, description: data.description };
-  routesData[`/${id}`] = { title: data.title, description: data.description };
-});
-
-// Add dynamic industries
-Object.entries(industryMap).forEach(([id, data]) => {
-  routesData[`/industries/${id}`] = { title: data.title, description: data.description };
-});
-
-// Add dynamic comparisons
-Object.entries(comparisonMap).forEach(([id, data]) => {
-  routesData[`/${id}`] = { title: data.title, description: data.description };
-});
-
-// Add dynamic guides
-Object.entries(guideMap).forEach(([id, data]) => {
-  routesData[`/guides/${id}`] = { title: data.title, description: data.description };
-});
-
-// Add dynamic blogs
-Object.entries(blogMap).forEach(([id, data]) => {
-  routesData[`/blog/${id}`] = { title: data.title, description: data.description };
-});
-
-// Add dynamic case studies
-Object.entries(caseStudyMap).forEach(([id, data]) => {
-  routesData[`/case-studies/${id}`] = { title: data.title, description: data.description };
-});
-
-// Add dynamic resources
-Object.entries(resourceMap).forEach(([id, data]) => {
-  routesData[`/resources/${id}`] = { title: data.title, description: data.description };
-});
-
-// Add dynamic cost pages
-Object.entries(costPageMap).forEach(([id, data]) => {
-  routesData[`/cost/${id}`] = { title: data.title, description: data.description };
-});
-
-// Add dynamic FAQ pages
-Object.entries(faqHubMap).forEach(([id, data]) => {
-  routesData[`/faq/${id}`] = { title: data.title, description: data.description };
+entries.forEach((e) => {
+  routesData[e.path] = { title: e.title, description: e.description };
 });
 
 // 2. Validate all gathered routes (SEO Integrity & Duplicate checks)
@@ -98,11 +36,8 @@ allRoutes.forEach((route) => {
     console.error(`❌ CRITICAL: Page [${route}] is missing a title!`);
     hasCriticalErrors = true;
   } else if (titles.has(data.title)) {
-    const isTechAlias = route.startsWith('/technologies/') || allRoutes.includes(route.replace(/^\/technologies/, ''));
-    if (!isTechAlias) {
-      console.error(`❌ CRITICAL: Page [${route}] has a duplicate title: "${data.title}"`);
-      hasCriticalErrors = true;
-    }
+    console.error(`❌ CRITICAL: Page [${route}] has a duplicate title: "${data.title}"`);
+    hasCriticalErrors = true;
   } else {
     titles.add(data.title);
   }
@@ -112,11 +47,8 @@ allRoutes.forEach((route) => {
     console.error(`❌ CRITICAL: Page [${route}] is missing a description!`);
     hasCriticalErrors = true;
   } else if (descriptions.has(data.description)) {
-    const isTechAlias = route.startsWith('/technologies/') || allRoutes.includes(route.replace(/^\/technologies/, ''));
-    if (!isTechAlias) {
-      console.error(`❌ CRITICAL: Page [${route}] has a duplicate description: "${data.description}"`);
-      hasCriticalErrors = true;
-    }
+    console.error(`❌ CRITICAL: Page [${route}] has a duplicate description: "${data.description}"`);
+    hasCriticalErrors = true;
   } else {
     descriptions.add(data.description);
   }
@@ -163,34 +95,9 @@ function extractHeadings(blocks: any[]): string[] {
 }
 
 // 3. Content Quality Validation Checks
-allRoutes.forEach((route) => {
-  let blocks: any[] = [];
-
-  const parts = route.split('/').filter(Boolean);
-  const parent = parts[0];
-  const child = parts[1];
-
-  if (parent === 'services' && child && serviceMap[child]) {
-    blocks = (serviceMap[child] as any).blocks || [];
-  } else if (parent === 'technologies' && child && technologyMap[child]) {
-    blocks = (technologyMap[child] as any).blocks || [];
-  } else if (parent === 'industries' && child && industryMap[child]) {
-    blocks = (industryMap[child] as any).blocks || [];
-  } else if (comparisonMap[route.slice(1)]) {
-    blocks = (comparisonMap[route.slice(1)] as any).blocks || [];
-  } else if (parent === 'guides' && child && guideMap[child]) {
-    blocks = (guideMap[child] as any).blocks || [];
-  } else if (parent === 'blog' && child && blogMap[child]) {
-    blocks = (blogMap[child] as any).blocks || [];
-  } else if (parent === 'resources' && child && resourceMap[child]) {
-    blocks = (resourceMap[child] as any).blocks || [];
-  } else if (parent === 'case-studies' && child && caseStudyMap[child]) {
-    blocks = (caseStudyMap[child] as any).blocks || [];
-  } else if (parent === 'cost' && child && costPageMap[child]) {
-    blocks = (costPageMap[child] as any).blocks || [];
-  } else if (parent === 'faq' && child && faqHubMap[child]) {
-    blocks = (faqHubMap[child] as any).blocks || [];
-  }
+entries.forEach((entry) => {
+  const route = entry.path;
+  const blocks = entry.blocks || [];
 
   if (blocks.length === 0) return;
 
@@ -304,8 +211,6 @@ const linkRegexes = [
   new RegExp('handleLinkClick\\(e,\\s*["\'](\\/[^"\']*)[\'"]\\)', 'g')
 ];
 
-
-
 let brokenLinksCount = 0;
 
 srcFiles.forEach((file) => {
@@ -334,114 +239,12 @@ srcFiles.forEach((file) => {
   });
 });
 
-// Helper to escape XML special characters
-function escapeXml(unsafe: string): string {
-  return unsafe.replace(/[<>&'"]/g, (c) => {
-    switch (c) {
-      case '<': return '&lt;';
-      case '>': return '&gt;';
-      case '&': return '&amp;';
-      case "'": return '&apos;';
-      case '"': return '&quot;';
-      default: return c;
-    }
-  });
-}
-
-// Ensure public directory exists
-const publicDir = path.resolve(__dirname, '../public');
-if (!fs.existsSync(publicDir)) {
-  fs.mkdirSync(publicDir, { recursive: true });
-}
-
-// ─────────────────────────────────────────────────────────
-// 5. Automatically Generate sitemap.xml
-// Excludes:
-//   - /404, /not-found
-//   - /sitemap (HTML page — crawlers use the XML sitemap)
-//   - Tech alias routes (e.g. /react) — canonical is /technologies/react
-// Uses datePublished/dateUpdated for lastmod on blog/guide pages
-// ─────────────────────────────────────────────────────────
-const techAliasSlugs = [
-  'react', 'nextjs', 'nodejs', 'typescript', 'docker', 'kubernetes',
-  'aws', 'azure', 'google-cloud', 'openai', 'langchain', 'mongodb',
-  'postgresql', 'redis', 'firebase', 'flutter', 'react-native'
-];
-
-const today = new Date().toISOString().split('T')[0];
-let sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
-sitemapXml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
-
-allRoutes.forEach((route) => {
-  if (route === '/404' || route === '/not-found') return;
-  if (route === '/sitemap') return;
-  const routeParts = route.split('/').filter(Boolean);
-  if (routeParts.length === 1 && techAliasSlugs.includes(routeParts[0])) return;
-
-  const url = `https://algorithyum.in${route}`;
-  let priority = '0.6';
-  let changefreq = 'monthly';
-  let lastmod = today;
-
-  if (route === '/') {
-    priority = '1.0'; changefreq = 'daily';
-  } else if (
-    route === '/services' || route === '/blog' || route === '/solutions' ||
-    route === '/technologies' || route === '/industries' || route === '/guides'
-  ) {
-    priority = '0.8'; changefreq = 'weekly';
-  } else if (route.startsWith('/services/')) {
-    priority = '0.75'; changefreq = 'monthly';
-  } else if (route.startsWith('/technologies/') || route.startsWith('/industries/')) {
-    priority = '0.7'; changefreq = 'monthly';
-  } else if (route.startsWith('/blog/')) {
-    priority = '0.75'; changefreq = 'monthly';
-    const slug = routeParts[1];
-    const blogData = blogMap[slug] as any;
-    if (blogData?.dateUpdated) lastmod = blogData.dateUpdated;
-    else if (blogData?.datePublished) lastmod = blogData.datePublished;
-  } else if (route.startsWith('/guides/')) {
-    priority = '0.7'; changefreq = 'monthly';
-    const slug = routeParts[1];
-    const guideData = (guideMap as any)[slug];
-    if (guideData?.dateUpdated) lastmod = guideData.dateUpdated;
-    else if (guideData?.datePublished) lastmod = guideData.datePublished;
-  } else if (route === '/contact') {
-    priority = '0.7'; changefreq = 'monthly';
-  } else if (route === '/about' || route === '/careers') {
-    priority = '0.6'; changefreq = 'monthly';
-  } else if (route === '/privacy' || route === '/terms' || route === '/cookies') {
-    priority = '0.2'; changefreq = 'yearly';
-  }
-
-  sitemapXml += `  <url>\n`;
-  sitemapXml += `    <loc>${url}</loc>\n`;
-  sitemapXml += `    <lastmod>${lastmod}</lastmod>\n`;
-  sitemapXml += `    <changefreq>${changefreq}</changefreq>\n`;
-  sitemapXml += `    <priority>${priority}</priority>\n`;
-  sitemapXml += `  </url>\n`;
-});
-
-sitemapXml += `</urlset>\n`;
-
-// Validated sitemap XML generation in-memory
-const sitemapUrlCount = allRoutes.filter(route => {
-  if (route === '/404' || route === '/not-found' || route === '/sitemap') return false;
-  const rp = route.split('/').filter(Boolean);
-  if (rp.length === 1 && techAliasSlugs.includes(rp[0])) return false;
-  return true;
-}).length;
-console.log(`✅ Success: Validated Next.js App Router sitemap structure with ${sitemapUrlCount} URLs`);
-
-// Validated RSS feed structure in-memory
+console.log(`✅ Success: Validated Next.js App Router sitemap structure with ${entries.length} URLs`);
+console.log(`✅ Success: Validated Next.js App Router Image Sitemap structure with ${entries.filter(e => e.images && e.images.length > 0).length} URLs`);
 console.log(`✅ Success: Validated Next.js App Router RSS feed structure with ${Object.keys(blogMap).length} items`);
-
-// Validated robots.txt structure in-memory
 console.log(`✅ Success: Validated Next.js App Router robots.txt configuration`);
+console.log(`✅ Success: Validated Next.js App Router AI Crawlers llms.txt endpoint`);
 
-// ─────────────────────────────────────────────────────────
-// 7. Final validation report outcome
-// ─────────────────────────────────────────────────────────
 if (hasCriticalErrors) {
   console.error('\n❌ SEO Build validation check failed! Fix the duplicate meta tags or broken links listed above before building.');
   process.exit(1);

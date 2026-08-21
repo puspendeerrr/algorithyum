@@ -97,7 +97,7 @@ export const customSoftwareSpec: GuidePageData = {
       title: 'Related Architecture Guides & Services',
       items: [
         { title: 'Custom Software Engineering Services', url: '/services/software-development', category: 'Services' },
-        { title: 'Cloud Infrastructure & Microservices', url: '/services/cloud', category: 'Services' },
+        { title: 'Cloud Infrastructure & Microservices', url: '/services/software-redesign', category: 'Services' },
         { title: 'PostgreSQL vs MongoDB Database Comparison', url: '/mongodb-vs-postgresql', category: 'Comparisons' },
       ],
     },
@@ -216,7 +216,7 @@ if (!validated.success) {
       type: 'related-content',
       title: 'Related Engineering Insights & Solutions',
       items: [
-        { title: 'AI & Cognitive Agent Services', url: '/services/ai', category: 'Services' },
+        { title: 'AI & Cognitive Agent Services', url: '/services/ai-integration', category: 'Services' },
         { title: 'LLM Agent Architectures Blog', url: '/blog/llm-agents', category: 'Blog' },
         { title: 'Production-Ready RAG Systems Guide', url: '/blog/production-ready-rag-systems-architecture-guide', category: 'Blog' },
       ],

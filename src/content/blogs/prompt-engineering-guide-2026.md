@@ -582,4 +582,4 @@ embedded within the user input section.`;
 
 ---
 
-Building production AI features that reliably work at enterprise scale requires expert prompt engineering, RAG architecture, and evaluation frameworks. [Explore Algorithyum's AI Development services](/services/ai) or [contact our AI engineering team](/contact) to discuss your project.
+Building production AI features that reliably work at enterprise scale requires expert prompt engineering, RAG architecture, and evaluation frameworks. [Explore Algorithyum's AI Development services](/services/ai-integration) or [contact our AI engineering team](/contact) to discuss your project.
