@@ -1,19 +1,21 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sun, Moon, Menu, X, ArrowRight } from 'lucide-react';
 import styles from './Navbar.module.css';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useAppNavigation } from '@/lib/utils/useNavigation';
 
 interface NavbarProps {
-  onOpenConsultation: () => void;
+  onOpenConsultation?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   onOpenConsultation,
 }) => {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const currentPath = location.pathname;
+  const { navigate, pathname: currentPath } = useAppNavigation();
+  const handleConsultation = onOpenConsultation || (() => navigate('/contact'));
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
@@ -247,7 +249,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
 
             <button
-              onClick={onOpenConsultation}
+              onClick={handleConsultation}
               className="btn btn-primary"
               style={{ padding: '0.5rem 1.25rem', fontSize: '0.85rem' }}
               aria-label="Request a technical strategy consultation"
@@ -297,7 +299,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <button
                 onClick={() => {
                   setIsMobileMenuOpen(false);
-                  onOpenConsultation();
+                  handleConsultation();
                 }}
                 className="btn btn-primary"
                 style={{ width: '100%' }}

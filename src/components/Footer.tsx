@@ -1,16 +1,19 @@
+'use client';
+
 import React, { useState } from 'react';
 import { Send, Check } from 'lucide-react';
 import styles from './Footer.module.css';
-import { useNavigate } from 'react-router-dom';
+import { useAppNavigation } from '@/lib/utils/useNavigation';
 
 interface FooterProps {
-  onOpenConsultation: () => void;
+  onOpenConsultation?: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({
   onOpenConsultation,
 }) => {
-  const navigate = useNavigate();
+  const { navigate } = useAppNavigation();
+  const handleConsultation = onOpenConsultation || (() => navigate('/contact'));
   const [email, setEmail] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
 
@@ -120,7 +123,7 @@ export const Footer: React.FC<FooterProps> = ({
                 <a href="/sitemap" onClick={(e) => handleNavClick(e, '/sitemap')}>HTML Sitemap</a>
               </li>
               <li>
-                <button onClick={onOpenConsultation} style={{ background: 'transparent', border: 'none', padding: 0, color: 'inherit', cursor: 'pointer', textAlign: 'left', display: 'block' }}>
+                <button onClick={handleConsultation} style={{ background: 'transparent', border: 'none', padding: 0, color: 'inherit', cursor: 'pointer', textAlign: 'left', display: 'block' }}>
                   Consultation
                 </button>
               </li>

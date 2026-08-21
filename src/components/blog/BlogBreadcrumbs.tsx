@@ -1,11 +1,15 @@
+'use client';
+
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useAppNavigation } from '@/lib/utils/useNavigation';
 
 interface BlogBreadcrumbsProps {
   title: string;
 }
 
 export const BlogBreadcrumbs: React.FC<BlogBreadcrumbsProps> = ({ title }) => {
+  const { navigate } = useAppNavigation();
+
   return (
     <>
       <style>{`
@@ -22,6 +26,7 @@ export const BlogBreadcrumbs: React.FC<BlogBreadcrumbsProps> = ({ title }) => {
           color: var(--text-secondary);
           text-decoration: none;
           transition: color 0.2s ease;
+          cursor: pointer;
         }
         .breadcrumbs-link:hover {
           color: var(--accent-light);
@@ -41,9 +46,9 @@ export const BlogBreadcrumbs: React.FC<BlogBreadcrumbsProps> = ({ title }) => {
         }
       `}</style>
       <nav aria-label="Breadcrumb" className="breadcrumbs-nav">
-        <Link to="/" className="breadcrumbs-link">Home</Link>
+        <span onClick={() => navigate('/')} className="breadcrumbs-link" role="button" tabIndex={0}>Home</span>
         <span aria-hidden="true">/</span>
-        <Link to="/blog" className="breadcrumbs-link">Blog</Link>
+        <span onClick={() => navigate('/blog')} className="breadcrumbs-link" role="button" tabIndex={0}>Blog</span>
         <span aria-hidden="true">/</span>
         <span aria-current="page" className="breadcrumbs-current">
           {title.split('|')[0].trim()}

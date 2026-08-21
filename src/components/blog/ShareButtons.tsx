@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import { Link, Check } from 'lucide-react';
 
 interface ShareButtonsProps {
@@ -7,12 +9,21 @@ interface ShareButtonsProps {
 
 export const ShareButtons: React.FC<ShareButtonsProps> = ({ title }) => {
   const [copied, setCopied] = useState(false);
-  
+  const [currentUrl, setCurrentUrl] = useState('');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setCurrentUrl(window.location.href);
+    }
+  }, []);
+
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(window.location.href).then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    });
+    if (typeof window !== 'undefined' && navigator.clipboard) {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      });
+    }
   };
 
   return (
@@ -51,7 +62,7 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({ title }) => {
       <div className="share-container">
         <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', fontWeight: 600 }}>Share:</span>
         <a 
-          href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(window.location.href)}`}
+          href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(currentUrl)}`}
           target="_blank"
           rel="noopener noreferrer"
           className="share-btn"
@@ -60,7 +71,7 @@ export const ShareButtons: React.FC<ShareButtonsProps> = ({ title }) => {
           <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
         </a>
         <a 
-          href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`}
+          href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}`}
           target="_blank"
           rel="noopener noreferrer"
           className="share-btn"

@@ -1,10 +1,12 @@
+'use client';
+
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Code, Cpu, Cloud, Shield, Database, BarChart3, 
   Palette, Briefcase, Zap, ArrowRight, Layers
 } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useAppNavigation } from '@/lib/utils/useNavigation';
 import styles from './Services.module.css';
 
 interface ServicePillar {
@@ -21,7 +23,7 @@ interface ServicesProps {
 }
 
 export const Services: React.FC<ServicesProps> = ({ hideHeader = false }) => {
-  const navigate = useNavigate();
+  const { navigate } = useAppNavigation();
   const [activeCategory, setActiveCategory] = useState<string>('all');
 
   const pillars: ServicePillar[] = [

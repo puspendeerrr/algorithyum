@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { CheckCircle2, AlertTriangle, Info, Lightbulb, Copy, Printer, Share2, Check, Award, Sparkles, ArrowRight, Server } from 'lucide-react';
 

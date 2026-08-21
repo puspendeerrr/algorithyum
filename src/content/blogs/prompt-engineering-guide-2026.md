@@ -9,7 +9,7 @@ tags: ["Prompt Engineering", "ChatGPT", "Claude", "Gemini", "LLM", "AI Developme
 image: "/images/blog/prompt-engineering-guide-2026.png"
 canonical: "https://algorithyum.in/blog/prompt-engineering-guide-2026"
 readingTime: "26 min read"
-faq:
+faq: 
   - q: "What is prompt engineering and why does it matter in 2026?"
     a: "Prompt engineering is the discipline of crafting, structuring, and optimizing the input instructions given to large language models (LLMs) to reliably produce high-quality, accurate, and contextually appropriate outputs. It matters enormously in 2026 because the gap between a poorly-constructed prompt and an expertly-engineered one can mean the difference between a generic, hallucination-prone response and a precise, structured, domain-accurate output — without changing the underlying model at all."
   - q: "What are the most powerful prompt engineering techniques available in 2026?"
@@ -157,7 +157,7 @@ A: Let me reason through this:
    - Speed = 60 km/h
    - Time = 2 hours
    - Distance = Speed × Time = 60 × 2 = 120 km
-   Answer: 120 km   
+   Answer: 120 km and that is not reasonable 
 
 Q: A factory produces 240 units per day. After a 25% efficiency upgrade, 
 how many units will it produce in a 5-day work week?

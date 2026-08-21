@@ -1,0 +1,15 @@
+/* TEAM */
+  Architect & Founder: Algorithyum Engineering Group
+  Contact: contact@algorithyum.in
+  Site: https://algorithyum.in
+  Twitter: @algorithyum
+  Location: San Francisco, CA & Global Remote
+
+/* THANKS */
+  Open Source Community: React, Next.js, TypeScript, Node.js, Lucide Icons, Framer Motion
+
+/* SITE */
+  Last update: 2026-08-21
+  Standards: HTML5, CSS3, JSON-LD, Schema.org, OpenGraph, WCAG 2.1 AA
+  Components: Next.js App Router, React 19, TypeScript
+  Software: Custom Enterprise Platform

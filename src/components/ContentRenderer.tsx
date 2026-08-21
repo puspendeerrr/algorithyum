@@ -1,6 +1,8 @@
+'use client';
+
 import React, { useState } from 'react';
 import { ChevronDown, ArrowRight, Calendar } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useAppNavigation } from '@/lib/utils/useNavigation';
 import { 
   FeatureCards, 
   Timeline, 
@@ -33,9 +35,9 @@ export function parseInlineMarkdown(text: string): React.ReactNode[] {
       const isInternal = url.startsWith('/');
       if (isInternal) {
         result.push(
-          <Link key={match.index} to={url} style={{ color: 'var(--accent-light)', fontWeight: 600, textDecoration: 'underline' }}>
+          <a key={match.index} href={url} style={{ color: 'var(--accent-light)', fontWeight: 600, textDecoration: 'underline' }}>
             {label}
-          </Link>
+          </a>
         );
       } else {
         result.push(
@@ -76,7 +78,7 @@ export const ContentRenderer: React.FC<ContentRendererProps> = ({
   currentPageCategory,
   currentPageRelatedTo
 }) => {
-  const navigate = useNavigate();
+  const { navigate } = useAppNavigation();
 
   const handleLinkClick = (e: React.MouseEvent, path: string) => {
     e.preventDefault();
@@ -223,9 +225,9 @@ export const ContentRenderer: React.FC<ContentRendererProps> = ({
               <section key={block.id} style={{ textAlign: 'left' }}>
                 {block.title && <h2 id={block.id}>{block.title}</h2>}
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem' }}>
-                  {items.map((item) => (
+                  {items.map((item, idx) => (
                     <a
-                      key={item.id}
+                      key={item.id || item.url || `related-link-${idx}`}
                       href={item.url}
                       onClick={(e) => handleLinkClick(e, item.url)}
                       className="glass-panel"
@@ -257,7 +259,6 @@ export const ContentRenderer: React.FC<ContentRendererProps> = ({
           case 'business-problems':
           case 'solutions':
           case 'best-practices': {
-            // All these block types have items: string[]
             const stringItems = (block as any).items as string[];
             return (
               <section key={block.id}>
@@ -330,14 +331,13 @@ export const ContentRenderer: React.FC<ContentRendererProps> = ({
                       <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: '1.5', flexGrow: 1, margin: 0 }}>{res.desc}</p>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '0.5rem' }}>
                         {res.size && <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Size: {res.size}</span>}
-                        <a 
-                          href={res.url || '#'} 
-                          onClick={res.url ? undefined : (e) => { e.preventDefault(); if (onOpenConsultation) onOpenConsultation(); }}
+                        <button 
+                          onClick={(e) => { e.preventDefault(); if (onOpenConsultation) { onOpenConsultation(); } else { navigate('/contact'); } }}
                           className="btn btn-primary" 
                           style={{ padding: '0.4rem 1rem', fontSize: '0.8rem', borderRadius: '4px' }}
                         >
                           Download
-                        </a>
+                        </button>
                       </div>
                     </div>
                   ))}
@@ -432,7 +432,6 @@ export const ContentRenderer: React.FC<ContentRendererProps> = ({
   );
 };
 
-// Internal FAQ Component with State
 const FaqBlockComponent: React.FC<{ items: FAQItem[] }> = ({ items }) => {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
 

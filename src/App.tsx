@@ -7,25 +7,25 @@ import { ConsultationModal } from './components/Modals';
 import { PageLoader } from './components/PageLoader';
 
 // Multi-page code-split lazy imports
-const Home = lazy(() => import('./pages/Home').then(m => ({ default: m.Home })));
-const About = lazy(() => import('./pages/About').then(m => ({ default: m.About })));
-const ServicesOverview = lazy(() => import('./pages/ServicesOverview').then(m => ({ default: m.ServicesOverview })));
-const ServiceDetail = lazy(() => import('./pages/ServiceDetail').then(m => ({ default: m.ServiceDetail })));
-const Solutions = lazy(() => import('./pages/Solutions').then(m => ({ default: m.Solutions })));
-const IndustriesPage = lazy(() => import('./pages/IndustriesPage').then(m => ({ default: m.IndustriesPage })));
-const TechnologiesPage = lazy(() => import('./pages/TechnologiesPage').then(m => ({ default: m.TechnologiesPage })));
-const BlogListing = lazy(() => import('./pages/BlogListing').then(m => ({ default: m.BlogListing })));
-const BlogPage = lazy(() => import('./pages/BlogPage').then(m => ({ default: m.BlogPage })));
-const CareersPage = lazy(() => import('./pages/CareersPage').then(m => ({ default: m.CareersPage })));
-const ContactPage = lazy(() => import('./pages/ContactPage').then(m => ({ default: m.ContactPage })));
-const LegalPage = lazy(() => import('./pages/LegalPage').then(m => ({ default: m.LegalPage })));
-const SitemapPage = lazy(() => import('./pages/SitemapPage').then(m => ({ default: m.SitemapPage })));
-const NotFound = lazy(() => import('./pages/NotFound').then(m => ({ default: m.NotFound })));
+const Home = lazy(() => import('./views/Home').then(m => ({ default: m.Home })));
+const About = lazy(() => import('./views/About').then(m => ({ default: m.About })));
+const ServicesOverview = lazy(() => import('./views/ServicesOverview').then(m => ({ default: m.ServicesOverview })));
+const ServiceDetail = lazy(() => import('./views/ServiceDetail').then(m => ({ default: m.ServiceDetail })));
+const Solutions = lazy(() => import('./views/Solutions').then(m => ({ default: m.Solutions })));
+const IndustriesPage = lazy(() => import('./views/IndustriesPage').then(m => ({ default: m.IndustriesPage })));
+const TechnologiesPage = lazy(() => import('./views/TechnologiesPage').then(m => ({ default: m.TechnologiesPage })));
+const BlogListing = lazy(() => import('./views/BlogListing').then(m => ({ default: m.BlogListing })));
+const BlogPage = lazy(() => import('./views/BlogPage').then(m => ({ default: m.BlogPage })));
+const CareersPage = lazy(() => import('./views/CareersPage').then(m => ({ default: m.CareersPage })));
+const ContactPage = lazy(() => import('./views/ContactPage').then(m => ({ default: m.ContactPage })));
+const LegalPage = lazy(() => import('./views/LegalPage').then(m => ({ default: m.LegalPage })));
+const SitemapPage = lazy(() => import('./views/SitemapPage').then(m => ({ default: m.SitemapPage })));
+const NotFound = lazy(() => import('./views/NotFound').then(m => ({ default: m.NotFound })));
 const TechnologyTemplate = lazy(() => import('./components/TechnologyTemplate').then(m => ({ default: m.TechnologyTemplate })));
 const IndustryTemplate = lazy(() => import('./components/IndustryTemplate').then(m => ({ default: m.IndustryTemplate })));
 const ComparisonTemplate = lazy(() => import('./components/ComparisonTemplate').then(m => ({ default: m.ComparisonTemplate })));
 const GuideTemplate = lazy(() => import('./components/GuideTemplate').then(m => ({ default: m.GuideTemplate })));
-const GuidesArchive = lazy(() => import('./pages/GuidesArchive').then(m => ({ default: m.GuidesArchive })));
+const GuidesArchive = lazy(() => import('./views/GuidesArchive').then(m => ({ default: m.GuidesArchive })));
 const DynamicPageTemplate = lazy(() => import('./components/DynamicPageTemplate').then(m => ({ default: m.DynamicPageTemplate })));
 
 function App() {

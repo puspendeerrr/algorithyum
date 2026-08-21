@@ -1,78 +1,40 @@
+'use client';
+
 import React, { useEffect } from 'react';
-import { useParams, useNavigate, Link, useLocation } from 'react-router-dom';
 import { allContentMaps } from '../data/seoRegistry';
 import { ShareWidget, AutoTOC, ScrollProgress } from './RichComponents';
 import { ContentRenderer } from './ContentRenderer';
 import styles from './templates.module.css';
+import { useAppNavigation } from '@/lib/utils/useNavigation';
 
 const parentMap: Record<string, { label: string; path: string } | null> = {
   service: { label: 'Services', path: '/services' },
   technology: { label: 'Technologies', path: '/technologies' },
   industry: { label: 'Industries', path: '/industries' },
-  comparison: null,    // No comparisons archive page — show Home > Page directly
+  comparison: null,
   guide: { label: 'Guides', path: '/guides' },
   blog: { label: 'Blog', path: '/blog' },
-  'case-study': null,  // No case studies archive page
-  resource: null,      // No resources archive page
-  cost: null,          // No cost guides archive page
-  faq: null            // No FAQ hub archive page
+  'case-study': null,
+  resource: null,
+  cost: null,
+  faq: null
 };
 
-
-interface DynamicPageTemplateProps {
+export interface DynamicPageTemplateProps {
   pageType?: 'service' | 'technology' | 'industry' | 'comparison' | 'guide' | 'blog' | 'case-study' | 'resource' | 'cost' | 'faq';
+  slug?: string;
 }
 
-/**
- * Reusable, dynamic layout engine for all structured data-driven pages.
- * Resolves active slug from router parameters, loads page blocks, and renders layout.
- */
-export const DynamicPageTemplate: React.FC<DynamicPageTemplateProps> = ({ pageType }) => {
-  const { 
-    serviceId, 
-    techId, 
-    industryId, 
-    compId, 
-    guideId, 
-    articleId, 
-    resourceId, 
-    caseStudyId, 
-    costId, 
-    faqId 
-  } = useParams<{ 
-    serviceId?: string; 
-    techId?: string; 
-    industryId?: string; 
-    compId?: string; 
-    guideId?: string; 
-    articleId?: string;
-    resourceId?: string;
-    caseStudyId?: string;
-    costId?: string;
-    faqId?: string;
-  }>();
+export const DynamicPageTemplate: React.FC<DynamicPageTemplateProps> = ({ pageType, slug: initialSlug }) => {
+  const { navigate, pathname } = useAppNavigation();
 
-  const navigate = useNavigate();
-  const location = useLocation();
+  // Resolve slug from initialSlug or pathname fallback
+  const slug = initialSlug || pathname.split('/').pop() || '';
 
-  // Resolve slug from router variables or from pathname fallback
-  const slug = serviceId || 
-               techId || 
-               industryId || 
-               compId || 
-               guideId || 
-               articleId || 
-               resourceId || 
-               caseStudyId || 
-               costId || 
-               faqId || 
-               location.pathname.split('/').pop() || 
-               '';
-
-  // Automatically detect the page type from URL structure if not explicitly provided as a prop
+  // Automatically detect the page type from URL structure if not explicitly provided
   let resolvedPageType = pageType;
   if (!resolvedPageType) {
-    const parts = location.pathname.split('/').filter(Boolean);
+    const parts = pathname.split('/').filter(Boolean);
     if (parts.length === 1) {
       if (allContentMaps.comparisons[slug]) resolvedPageType = 'comparison';
       else if (allContentMaps.technologies[slug]) resolvedPageType = 'technology';
@@ -134,11 +96,11 @@ export const DynamicPageTemplate: React.FC<DynamicPageTemplateProps> = ({ pageTy
           
           {/* Breadcrumb Hierarchy Links */}
           <nav aria-label="Breadcrumb" className={styles.breadcrumbs}>
-            <Link to="/">Home</Link>
+            <span onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>Home</span>
             {parentBreadcrumb && (
               <>
                 <span aria-hidden="true">/</span>
-                <Link to={parentBreadcrumb.path}>{parentBreadcrumb.label}</Link>
+                <span onClick={() => navigate(parentBreadcrumb.path)} style={{ cursor: 'pointer' }}>{parentBreadcrumb.label}</span>
               </>
             )}
             <span aria-hidden="true">/</span>

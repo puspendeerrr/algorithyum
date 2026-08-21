@@ -1,10 +1,12 @@
+'use client';
+
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Heart, Coins, ShoppingBag, Factory, GraduationCap, 
   Landmark, Truck, Home, Car, Film, ArrowRight 
 } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useAppNavigation } from '@/lib/utils/useNavigation';
 import styles from './Industries.module.css';
 
 interface IndustryItem {
@@ -23,7 +25,7 @@ interface IndustriesProps {
 }
 
 export const Industries: React.FC<IndustriesProps> = ({ hideHeader = false }) => {
-  const navigate = useNavigate();
+  const { navigate } = useAppNavigation();
   const [selectedId, setSelectedId] = useState<string>('finance');
 
   const industries: IndustryItem[] = [

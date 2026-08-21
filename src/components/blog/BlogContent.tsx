@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { ContentRenderer } from '../ContentRenderer';
 import type { ContentBlock } from '../../data/types';

@@ -1,15 +1,17 @@
+'use client';
+
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Calendar, Sparkles } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useAppNavigation } from '@/lib/utils/useNavigation';
 import styles from './Hero.module.css';
 
 interface HeroProps {
-  onOpenConsultation: () => void;
+  onOpenConsultation?: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
-  const navigate = useNavigate();
+  const { navigate } = useAppNavigation();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   useEffect(() => {

@@ -1,14 +1,17 @@
+'use client';
+
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { getRelatedBlogs } from '../../utils/blog';
 import type { BlogPageData } from '../../data/types';
 import { ArrowRight, BookOpen } from 'lucide-react';
+import { useAppNavigation } from '@/lib/utils/useNavigation';
 
 interface RelatedPostsProps {
   currentBlog: BlogPageData;
 }
 
 export const RelatedPosts: React.FC<RelatedPostsProps> = ({ currentBlog }) => {
+  const { navigate } = useAppNavigation();
   const related = getRelatedBlogs(currentBlog, 3);
 
   if (related.length === 0) return null;
@@ -46,6 +49,7 @@ export const RelatedPosts: React.FC<RelatedPostsProps> = ({ currentBlog }) => {
           position: relative;
           background: rgba(255, 255, 255, 0.015);
           backdrop-filter: blur(12px);
+          cursor: pointer;
         }
         .related-card::before {
           content: '';
@@ -119,10 +123,12 @@ export const RelatedPosts: React.FC<RelatedPostsProps> = ({ currentBlog }) => {
         <h3 className="related-title text-gradient">Related Insights</h3>
         <div className="related-grid">
           {related.map(blog => (
-            <Link 
+            <div 
               key={blog.slug} 
-              to={`/blog/${blog.slug}`}
+              onClick={() => navigate(`/blog/${blog.slug}`)}
               className="related-card"
+              role="button"
+              tabIndex={0}
             >
               <div className="related-card-meta">
                 <BookOpen size={12} />
@@ -134,7 +140,7 @@ export const RelatedPosts: React.FC<RelatedPostsProps> = ({ currentBlog }) => {
                 <span>Read Publication</span>
                 <ArrowRight size={14} />
               </div>
-            </Link>
+            </div>
           ))}
         </div>
       </section>

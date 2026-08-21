@@ -4,15 +4,19 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "npx vite-node scripts/seo-checks.ts && tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "dev": "node scripts/build-blog-registry.cjs && next dev",
+    "build": "node scripts/build-blog-registry.cjs && next build",
+    "start": "next start",
+    "dev:vite": "node scripts/build-blog-registry.cjs && vite",
+    "build:vite": "node scripts/build-blog-registry.cjs && npx vite-node scripts/seo-checks.ts && tsc -b && vite build",
+    "preview:vite": "vite preview",
+    "lint": "eslint ."
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "framer-motion": "^12.42.2",
     "lucide-react": "^1.24.0",
+    "next": "^16.3.1",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "react-router-dom": "^7.18.1"
