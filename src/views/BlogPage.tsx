@@ -55,10 +55,15 @@ export const BlogPage: React.FC<BlogPageProps> = ({ slugProp, onOpenConsultation
     <>
       <style>{`
         .blog-page-container {
-          padding-top: 120px;
+          padding-top: 140px;
           min-height: 100vh;
           padding-bottom: 6rem;
           background: var(--bg-primary);
+        }
+        @media (max-width: 768px) {
+          .blog-page-container {
+            padding-top: 100px;
+          }
         }
         .adj-nav-section {
           margin-top: 3rem;

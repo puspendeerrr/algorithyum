@@ -458,3 +458,66 @@ select.form-input {
     display: none;
   }
 }
+
+/* --- Markdown Table Styles --- */
+.table-responsive-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.75rem 0;
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--border-color);
+  background: var(--glass-bg);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.markdown-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.95rem;
+  min-width: 500px;
+}
+
+.markdown-table th {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary);
+  font-weight: 700;
+  font-family: var(--font-heading);
+  padding: 0.85rem 1.25rem;
+  border-bottom: 2px solid var(--border-color);
+  letter-spacing: 0.02em;
+}
+
+.markdown-table td {
+  padding: 0.85rem 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.markdown-table tr:last-child td {
+  border-bottom: none;
+}
+
+.markdown-table tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.markdown-table tr:hover td {
+  background: rgba(0, 82, 255, 0.05);
+}
+
+:root.light-theme .markdown-table th {
+  background: rgba(0, 82, 255, 0.06);
+}
+
+:root.light-theme .markdown-table tr:nth-child(even) td {
+  background: rgba(0, 0, 0, 0.015);
+}
+
+/* Scroll margin for heading links */
+[id] {
+  scroll-margin-top: 100px;
+}
+

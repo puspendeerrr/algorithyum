@@ -92,7 +92,7 @@ function parseMarkdownToBlocks(markdown, frontMatter) {
   const flush = () => {
     const id = `block-${blocks.length}`;
     if (currentBlockType === 'text') {
-      const textContent = currentContentLines.join('\n\n').trim();
+      const textContent = currentContentLines.join('\n').trim();
       if (textContent.length > 0) {
         blocks.push({
           id,
@@ -185,10 +185,12 @@ function parseMarkdownToBlocks(markdown, frontMatter) {
         flush();
         currentBlockType = 'text';
       }
-      currentContentLines.push(trimmed);
+      currentContentLines.push(line.trimEnd());
     } else {
       if (currentBlockType === 'list') {
         flush();
+      } else if (currentBlockType === 'text') {
+        currentContentLines.push('');
       }
     }
   }

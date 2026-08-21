@@ -3,6 +3,8 @@
 import React, { useState } from 'react';
 import { ChevronDown, ArrowRight, Calendar } from 'lucide-react';
 import { useAppNavigation } from '@/lib/utils/useNavigation';
+import ReactMarkdown, { type Components } from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { 
   FeatureCards, 
   Timeline, 
@@ -85,6 +87,96 @@ export const ContentRenderer: React.FC<ContentRendererProps> = ({
     navigate(path);
   };
 
+  const markdownComponents: Components = {
+    table: ({ children }) => (
+      <div className="table-responsive-wrapper">
+        <table className="markdown-table">
+          {children}
+        </table>
+      </div>
+    ),
+    p: ({ children }) => (
+      <p style={{ fontSize: '1.05rem', color: 'var(--text-secondary)', lineHeight: '1.75', marginBottom: '1.25rem' }}>
+        {children}
+      </p>
+    ),
+    a: ({ href, children }) => {
+      if (!href) return <span>{children}</span>;
+      const isInternal = href.startsWith('/');
+      if (isInternal) {
+        return (
+          <a
+            href={href}
+            onClick={(e) => {
+              e.preventDefault();
+              navigate(href);
+            }}
+            style={{ color: 'var(--accent-light)', fontWeight: 600, textDecoration: 'underline', cursor: 'pointer' }}
+          >
+            {children}
+          </a>
+        );
+      }
+      return (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ color: 'var(--accent-light)', fontWeight: 600, textDecoration: 'underline' }}
+        >
+          {children}
+        </a>
+      );
+    },
+    strong: ({ children }) => (
+      <strong style={{ color: 'var(--text-primary)', fontWeight: 700 }}>{children}</strong>
+    ),
+    ul: ({ children }) => (
+      <ul style={{ paddingLeft: '1.5rem', marginBottom: '1.25rem', color: 'var(--text-secondary)' }}>
+        {children}
+      </ul>
+    ),
+    ol: ({ children }) => (
+      <ol style={{ paddingLeft: '1.5rem', marginBottom: '1.25rem', color: 'var(--text-secondary)' }}>
+        {children}
+      </ol>
+    ),
+    li: ({ children }) => (
+      <li style={{ marginBottom: '0.5rem', lineHeight: '1.6' }}>{children}</li>
+    ),
+    blockquote: ({ children }) => (
+      <blockquote style={{
+        borderLeft: '4px solid var(--accent)',
+        padding: '1rem 1.25rem',
+        margin: '1.5rem 0',
+        background: 'rgba(0, 82, 255, 0.04)',
+        borderRadius: '0 var(--border-radius-sm) var(--border-radius-sm) 0',
+        color: 'var(--text-primary)',
+        fontSize: '1rem',
+        lineHeight: '1.6'
+      }}>
+        {children}
+      </blockquote>
+    ),
+    code: ({ className, children }) => {
+      const isInline = !className;
+      if (isInline) {
+        return (
+          <code style={{
+            background: 'rgba(255, 255, 255, 0.08)',
+            padding: '0.2rem 0.4rem',
+            borderRadius: '4px',
+            fontSize: '0.9em',
+            color: 'var(--accent-light)'
+          }}>
+            {children}
+          </code>
+        );
+      }
+      return <code className={className}>{children}</code>;
+    }
+  };
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem', width: '100%' }}>
       {blocks.map((block) => {
@@ -116,11 +208,9 @@ export const ContentRenderer: React.FC<ContentRendererProps> = ({
             return (
               <section key={block.id} style={{ textAlign: 'left' }}>
                 {block.title && <h2 id={block.id}>{parseInlineMarkdown(block.title)}</h2>}
-                {block.content.split('\n\n').map((para, i) => (
-                  <p key={i} style={{ fontSize: '1.05rem', color: 'var(--text-secondary)', lineHeight: '1.75', marginBottom: '1.25rem' }}>
-                    {parseInlineMarkdown(para.trim())}
-                  </p>
-                ))}
+                <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
+                  {block.content}
+                </ReactMarkdown>
               </section>
             );
 
