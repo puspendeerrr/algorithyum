@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { guideMap } from '@/src/data/guides';
-import { DynamicPageTemplate } from '@/src/components/DynamicPageTemplate';
+import { guideMap } from '@/data/guides';
+import { DynamicPageTemplate } from '@/components/DynamicPageTemplate';
 import { generateEntityMetadata } from '@/lib/metadata/generateEntityMetadata';
 import { getTechArticleSchema } from '@/lib/schema/techArticle';
 import { getBreadcrumbSchema } from '@/lib/schema/breadcrumb';

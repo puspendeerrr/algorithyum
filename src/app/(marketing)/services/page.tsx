@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { ServicesOverview } from '@/src/views/ServicesOverview';
+import { ServicesOverview } from '@/views/ServicesOverview';
 import { generatePageMetadata } from '@/lib/metadata/generatePageMetadata';
 import { getWebPageSchema } from '@/lib/schema/website';
 

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { TechnologiesPage as TechnologiesComponent } from '@/src/views/TechnologiesPage';
+import { TechnologiesPage as TechnologiesComponent } from '@/views/TechnologiesPage';
 import { generatePageMetadata } from '@/lib/metadata/generatePageMetadata';
 import { getWebPageSchema } from '@/lib/schema/website';
 

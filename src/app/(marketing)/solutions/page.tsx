@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Solutions } from '@/src/views/Solutions';
+import { Solutions } from '@/views/Solutions';
 import { generatePageMetadata } from '@/lib/metadata/generatePageMetadata';
 import { getWebPageSchema } from '@/lib/schema/website';
 

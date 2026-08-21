@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { SitemapPage as SitemapComponent } from '@/src/views/SitemapPage';
+import { SitemapPage as SitemapComponent } from '@/views/SitemapPage';
 import { generatePageMetadata } from '@/lib/metadata/generatePageMetadata';
 import { getWebPageSchema } from '@/lib/schema/website';
 

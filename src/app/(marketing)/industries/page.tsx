@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { IndustriesPage as IndustriesComponent } from '@/src/views/IndustriesPage';
+import { IndustriesPage as IndustriesComponent } from '@/views/IndustriesPage';
 import { generatePageMetadata } from '@/lib/metadata/generatePageMetadata';
 import { getWebPageSchema } from '@/lib/schema/website';
 

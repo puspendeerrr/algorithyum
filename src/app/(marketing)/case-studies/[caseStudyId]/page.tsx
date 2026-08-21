@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { caseStudyMap } from '@/src/data/case-studies';
-import { DynamicPageTemplate } from '@/src/components/DynamicPageTemplate';
+import { caseStudyMap } from '@/data/case-studies';
+import { DynamicPageTemplate } from '@/components/DynamicPageTemplate';
 import { generateEntityMetadata } from '@/lib/metadata/generateEntityMetadata';
 import { getArticleSchema } from '@/lib/schema/article';
 import { getBreadcrumbSchema } from '@/lib/schema/breadcrumb';

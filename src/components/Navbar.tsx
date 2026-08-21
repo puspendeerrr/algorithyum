@@ -34,6 +34,18 @@ export const Navbar: React.FC<NavbarProps> = ({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Lock / Unlock Body Scroll on Mobile Menu Open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.classList.add('menu-open');
+    } else {
+      document.body.classList.remove('menu-open');
+    }
+    return () => {
+      document.body.classList.remove('menu-open');
+    };
+  }, [isMobileMenuOpen]);
+
   // Theme Syncing
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') as 'dark' | 'light' | null;

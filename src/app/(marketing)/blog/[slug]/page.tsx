@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { blogMap } from '@/src/data/blogs';
-import { BlogPage as BlogPageComponent } from '@/src/views/BlogPage';
+import { blogMap } from '@/data/blogs';
+import { BlogPage as BlogPageComponent } from '@/views/BlogPage';
 import { generateEntityMetadata } from '@/lib/metadata/generateEntityMetadata';
 import { getArticleSchema } from '@/lib/schema/article';
 import { getBreadcrumbSchema } from '@/lib/schema/breadcrumb';

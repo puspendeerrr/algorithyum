@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { ContactPage as ContactComponent } from '@/src/views/ContactPage';
+import { ContactPage as ContactComponent } from '@/views/ContactPage';
 import { generatePageMetadata } from '@/lib/metadata/generatePageMetadata';
 import { getWebPageSchema } from '@/lib/schema/website';
 

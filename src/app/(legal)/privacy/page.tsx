@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { LegalPage } from '@/src/views/LegalPage';
+import { LegalPage } from '@/views/LegalPage';
 import { generatePageMetadata } from '@/lib/metadata/generatePageMetadata';
 import { getWebPageSchema } from '@/lib/schema/website';
 

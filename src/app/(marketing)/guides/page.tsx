@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { GuidesArchive } from '@/src/views/GuidesArchive';
+import { GuidesArchive } from '@/views/GuidesArchive';
 import { generatePageMetadata } from '@/lib/metadata/generatePageMetadata';
 import { getWebPageSchema } from '@/lib/schema/website';
 

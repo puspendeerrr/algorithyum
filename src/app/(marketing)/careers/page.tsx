@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { CareersPage as CareersComponent } from '@/src/views/CareersPage';
+import { CareersPage as CareersComponent } from '@/views/CareersPage';
 import { generatePageMetadata } from '@/lib/metadata/generatePageMetadata';
 import { getWebPageSchema } from '@/lib/schema/website';
 

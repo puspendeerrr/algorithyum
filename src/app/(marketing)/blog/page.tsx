@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { BlogListing } from '@/src/views/BlogListing';
+import { BlogListing } from '@/views/BlogListing';
 import { generatePageMetadata } from '@/lib/metadata/generatePageMetadata';
 
 export async function generateMetadata(): Promise<Metadata> {

@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { technologyMap } from '@/src/data/technologies';
-import { comparisonMap } from '@/src/data/comparisons';
-import { DynamicPageTemplate } from '@/src/components/DynamicPageTemplate';
+import { technologyMap } from '@/data/technologies';
+import { comparisonMap } from '@/data/comparisons';
+import { DynamicPageTemplate } from '@/components/DynamicPageTemplate';
 import { generateEntityMetadata } from '@/lib/metadata/generateEntityMetadata';
 import { getBreadcrumbSchema } from '@/lib/schema/breadcrumb';
 import { getWebPageSchema } from '@/lib/schema/website';

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { faqHubMap } from '@/src/data/faq-hub';
-import { DynamicPageTemplate } from '@/src/components/DynamicPageTemplate';
+import { faqHubMap } from '@/data/faq-hub';
+import { DynamicPageTemplate } from '@/components/DynamicPageTemplate';
 import { generateEntityMetadata } from '@/lib/metadata/generateEntityMetadata';
 import { getBreadcrumbSchema } from '@/lib/schema/breadcrumb';
 import { extractFaqSchemaFromBlocks } from '@/lib/schema/faq';
