@@ -134,10 +134,10 @@ export const ContactPage: React.FC = () => {
     console.log('Complete templateParams object sent to EmailJS:', templateParams);
 
     try {
-      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || '';
-      const customerTemplateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'template_djfthkb';
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || (process.env as any).VITE_EMAILJS_SERVICE_ID || '';
+      const customerTemplateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || (process.env as any).VITE_EMAILJS_TEMPLATE_ID || 'template_djfthkb';
       const adminTemplateId = 'template_af14tdf';
-      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '';
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || (process.env as any).VITE_EMAILJS_PUBLIC_KEY || '';
 
       if (!serviceId || !customerTemplateId || !publicKey) {
         throw new Error('EmailJS environment configurations are missing.');
