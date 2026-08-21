@@ -133,23 +133,15 @@ export const ContactPage: React.FC = () => {
 
     try {
       const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '';
-      const customerTemplateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'template_djfthkb';
       const adminTemplateId = process.env.NEXT_PUBLIC_EMAILJS_ADMIN_TEMPLATE_ID || 'template_af14tdf';
       const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '';
 
-      if (!serviceId || !publicKey) {
+      if (!serviceId || !adminTemplateId || !publicKey) {
         throw new Error('EmailJS environment configurations are missing.');
       }
 
-      // 1. Send Admin Notification Email First
+      // Send Admin Notification Email
       await emailjs.send(serviceId, adminTemplateId, templateParams, publicKey);
-
-      // 2. Send Customer Auto Reply Email Safely (Failure does not block Admin success)
-      try {
-        await emailjs.send(serviceId, customerTemplateId, templateParams, publicKey);
-      } catch (autoReplyErr: any) {
-        console.warn('Auto reply email warning:', autoReplyErr?.text || autoReplyErr?.message || autoReplyErr);
-      }
       
       setSubmitStatus('success');
       setFormData({
