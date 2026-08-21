@@ -102,9 +102,8 @@ export const ContactPage: React.FC = () => {
       console.warn('Warning: Recipient email is empty!');
     }
 
-    // Prepare template params mapping with multiple target fallbacks
+    // Prepare template params mapping matching all EmailJS template variables
     const templateParams = {
-      // Clean prefix-free variables expected by template
       name: formData.name.trim(),
       email: recipientEmail,
       company: formData.company.trim() || 'Not Specified',
@@ -113,15 +112,15 @@ export const ContactPage: React.FC = () => {
       budget: formData.budget,
       subject: formData.subject.trim(),
       message: formData.message.trim(),
-      time: new Date().toLocaleString(),
+      website: 'https://algorithyum.in',
+      timestamp: new Date().toLocaleString(),
 
-      // Legacy/Fallback variables with prefixes
+      // Aliases & Fallbacks
       user_name: formData.name.trim(),
       user_company: formData.company.trim() || 'Not Specified',
       user_email: recipientEmail,
-      to_email: 'info@algorithyum.in', // Direct the email to the company inbox
-      to: 'info@algorithyum.in',       // Direct the email to the company inbox
-      reply_to: recipientEmail,        // Allow admin to click reply to email customer
+      to_email: 'info@algorithyum.in',
+      reply_to: recipientEmail,
       user_phone: formData.phone.trim() || 'Not Provided',
       user_service: formData.service,
       user_budget: formData.budget,
@@ -130,24 +129,27 @@ export const ContactPage: React.FC = () => {
       submission_time: new Date().toLocaleString()
     };
 
-    // Print the complete templateParams object to the console before calling EmailJS
-    console.log('Complete templateParams object sent to EmailJS:', templateParams);
+    console.log('Complete templateParams object sent to EmailJS (ContactPage):', templateParams);
 
     try {
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || (process.env as any).VITE_EMAILJS_SERVICE_ID || '';
-      const customerTemplateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || (process.env as any).VITE_EMAILJS_TEMPLATE_ID || 'template_djfthkb';
-      const adminTemplateId = 'template_af14tdf';
-      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || (process.env as any).VITE_EMAILJS_PUBLIC_KEY || '';
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '';
+      const customerTemplateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'template_djfthkb';
+      const adminTemplateId = process.env.NEXT_PUBLIC_EMAILJS_ADMIN_TEMPLATE_ID || 'template_af14tdf';
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '';
 
-      if (!serviceId || !customerTemplateId || !publicKey) {
+      if (!serviceId || !publicKey) {
         throw new Error('EmailJS environment configurations are missing.');
       }
 
-      // Send the Admin Notification email first
+      // 1. Send Admin Notification Email First
       await emailjs.send(serviceId, adminTemplateId, templateParams, publicKey);
 
-      // After admin succeeds, send the Customer Auto Reply email
-      await emailjs.send(serviceId, customerTemplateId, templateParams, publicKey);
+      // 2. Send Customer Auto Reply Email Safely (Failure does not block Admin success)
+      try {
+        await emailjs.send(serviceId, customerTemplateId, templateParams, publicKey);
+      } catch (autoReplyErr: any) {
+        console.warn('Auto reply email warning:', autoReplyErr?.text || autoReplyErr?.message || autoReplyErr);
+      }
       
       setSubmitStatus('success');
       setFormData({

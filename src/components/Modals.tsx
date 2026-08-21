@@ -63,7 +63,6 @@ export const ConsultationModal: React.FC<ModalBaseProps> = ({ isOpen, onClose })
     }
 
     const templateParams = {
-      // Clean prefix-free variables expected by template
       name: formData.name.trim(),
       email: recipientEmail,
       company: 'Not Specified',
@@ -72,14 +71,15 @@ export const ConsultationModal: React.FC<ModalBaseProps> = ({ isOpen, onClose })
       budget: `Timeline: ${formData.timeline}`,
       subject: 'Consultation Booking Request',
       message: formData.detail.trim(),
-      time: new Date().toLocaleString(),
+      website: 'https://algorithyum.in',
+      timestamp: new Date().toLocaleString(),
 
-      // Legacy/Fallback variables with prefixes
+      // Aliases & Fallbacks
       user_name: formData.name.trim(),
       user_company: 'Not Specified',
       user_email: recipientEmail,
-      to_email: recipientEmail,
-      to: recipientEmail,
+      to_email: 'info@algorithyum.in',
+      reply_to: recipientEmail,
       user_phone: 'Not Provided',
       user_service: formData.service,
       user_budget: `Timeline: ${formData.timeline}`,
@@ -88,19 +88,28 @@ export const ConsultationModal: React.FC<ModalBaseProps> = ({ isOpen, onClose })
       submission_time: new Date().toLocaleString()
     };
 
-    // Print the complete templateParams object to the console before calling EmailJS
     console.log('Complete templateParams object sent to EmailJS (Modal):', templateParams);
 
     try {
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || (process.env as any).VITE_EMAILJS_SERVICE_ID || '';
-      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || (process.env as any).VITE_EMAILJS_TEMPLATE_ID || '';
-      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || (process.env as any).VITE_EMAILJS_PUBLIC_KEY || '';
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '';
+      const customerTemplateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'template_djfthkb';
+      const adminTemplateId = process.env.NEXT_PUBLIC_EMAILJS_ADMIN_TEMPLATE_ID || 'template_af14tdf';
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '';
 
-      if (!serviceId || !templateId || !publicKey) {
+      if (!serviceId || !publicKey) {
         throw new Error('EmailJS environment configurations are missing.');
       }
 
-      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      // 1. Send Admin Notification Email First
+      await emailjs.send(serviceId, adminTemplateId, templateParams, publicKey);
+
+      // 2. Send Customer Auto Reply Email Safely (Failure does not block Admin success)
+      try {
+        await emailjs.send(serviceId, customerTemplateId, templateParams, publicKey);
+      } catch (autoReplyErr: any) {
+        console.warn('Auto reply email warning:', autoReplyErr?.text || autoReplyErr?.message || autoReplyErr);
+      }
+
       setIsSuccess(true);
       setValidationErrors({});
     } catch (err: any) {
