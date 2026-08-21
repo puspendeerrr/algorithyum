@@ -18,45 +18,45 @@ export const Process: React.FC = () => {
   const steps: Step[] = [
     {
       num: '01',
-      title: 'Discover',
-      desc: 'We conduct deep-dive technical alignment meetings, map out business logic, audit existing software infrastructure, and scope operational boundaries.',
-      deliverables: ['Detailed Project Briefing', 'Infrastructure Security Audit', 'Technical Scope Document', 'Product Requirements Document']
+      title: 'Understand',
+      desc: 'We start by understanding your business, your goals, and what you need the software to do. We ask the right questions so we can build the right thing.',
+      deliverables: ['Project requirements document', 'Feature list', 'Timeline estimate', 'Budget estimate']
     },
     {
       num: '02',
-      title: 'Strategy',
-      desc: 'We establish scalable microservices designs, database schemas, API specs, multi-region cloud mappings, and release cycle dates.',
-      deliverables: ['System Architecture Design', 'Technology Stack selection', 'Milestones Roadmap', 'Threat Assessment Matrix']
+      title: 'Plan',
+      desc: 'We create a clear plan — what to build, which technologies to use, how long each part will take, and what the milestones look like.',
+      deliverables: ['Technical plan', 'Technology stack selection', 'Project milestones', 'Development roadmap']
     },
     {
       num: '03',
       title: 'Design',
-      desc: 'Our design pod creates immersive Figma design systems, wireframe diagrams, and high-fidelity interactive user experiences.',
-      deliverables: ['Figma Global Design System', 'Responsive UI Mockups', 'Interactive User Prototypes', 'UX User Journey Mapping']
+      desc: 'We design the user interface — how your software will look and feel. We create mockups so you can see it before we start building.',
+      deliverables: ['UI mockups', 'User flow diagrams', 'Mobile-responsive layouts', 'Design approval']
     },
     {
       num: '04',
-      title: 'Develop',
-      desc: 'Our engineering teams write clean, TypeScript-based frontends, fast backend services (Python, Go, Node.js), and database configurations.',
-      deliverables: ['Clean Git Repository access', 'API contracts & configurations', 'Modular Frontend layouts', 'Database sync scripts']
+      title: 'Build',
+      desc: 'Our developers write clean, well-tested code. We build your software in stages and share progress with you regularly.',
+      deliverables: ['Working software builds', 'Regular progress demos', 'Clean, documented code', 'API integrations']
     },
     {
       num: '05',
       title: 'Test',
-      desc: 'We execute comprehensive unit testing, automated E2E simulations, manual accessibility checks, and container vulnerability scans.',
-      deliverables: ['Automated Test Reports', 'Penetration audit findings', 'WCAG accessibility checklist', 'Security scanner certificates']
+      desc: 'We thoroughly test everything — functionality, performance, security, and usability. We fix bugs before launch, not after.',
+      deliverables: ['Quality assurance testing', 'Bug fixes', 'Performance testing', 'User acceptance testing']
     },
     {
       num: '06',
-      title: 'Deploy',
-      desc: 'We publish components safely using container registries, automated GitOps CI/CD pipelines, and multi-region Kubernetes configurations.',
-      deliverables: ['Production deployment setup', 'CI/CD pipeline configurations', 'Cloud health alert systems', 'DNS & Certificate configurations']
+      title: 'Launch',
+      desc: 'We help you launch your software — setting up hosting, deploying to app stores, or going live on the web. We make sure everything works smoothly.',
+      deliverables: ['Production deployment', 'App store submission', 'Go-live support', 'Launch checklist']
     },
     {
       num: '07',
-      title: 'Scale',
-      desc: 'We set up server cache rings, balance high traffic flows, optimize queries, and run annual audits for ongoing feature expansion.',
-      deliverables: ['Load test simulation metrics', 'Cache optimization logs', 'Annual scale plan advisory', '24/7 SLA monitoring setup']
+      title: 'Support',
+      desc: 'After launch, we don\'t disappear. We offer ongoing support, fix issues quickly, and help you add new features as your business grows.',
+      deliverables: ['Bug fixes & updates', 'Performance monitoring', 'Feature additions', 'Ongoing maintenance']
     }
   ];
 
@@ -76,10 +76,10 @@ export const Process: React.FC = () => {
         
         {/* Section Header */}
         <div className="section-header">
-          <span className="section-subtitle">Our Lifecycle</span>
-          <h2 className="section-title">The Engineering Blueprint</h2>
+          <span className="section-subtitle">Our Process</span>
+          <h2 className="section-title">How We Work</h2>
           <p className="section-desc">
-            We follow a rigid, milestone-driven lifecycle that mitigates project risk, maximizes performance, and guarantees on-time delivery.
+            We follow a clear, step-by-step process so you always know what&apos;s happening and what to expect next.
           </p>
         </div>
 
@@ -125,7 +125,7 @@ export const Process: React.FC = () => {
             className={styles.detailCard}
           >
             <div className={styles.detailLeft}>
-              <span className={styles.detailNumber}>Phase {currentStep.num}</span>
+              <span className={styles.detailNumber}>Step {currentStep.num}</span>
               <h3 className={styles.detailTitle}>{currentStep.title}</h3>
               <p className={styles.detailDesc}>{currentStep.desc}</p>
             </div>
@@ -133,7 +133,7 @@ export const Process: React.FC = () => {
             <div className={styles.detailRight}>
               <h4 style={{ fontSize: '1.1rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-primary)' }}>
                 <ChevronRight size={18} style={{ color: 'var(--accent-light)' }} />
-                Key Phase Deliverables
+                What You Get
               </h4>
               <ul className={styles.checkList}>
                 {currentStep.deliverables.map((item, idx) => (

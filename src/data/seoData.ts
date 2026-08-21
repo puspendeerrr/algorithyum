@@ -10,8 +10,8 @@ export interface SEOData {
 
 export const seoMap: Record<string, SEOData> = {
   '/': {
-    title: 'Algorithyum | Enterprise Software Engineering, Generative AI & Cloud Solutions',
-    description: 'Algorithyum builds custom software, AI agent pipelines, cloud systems, cybersecurity topologies, performance marketing, and digital transformation strategy for enterprises globally.',
+    title: 'Algorithyum | Custom Software, ERP, Mobile Apps & AI Solutions',
+    description: 'Algorithyum is a custom software development company. We build custom software, ERP systems, websites, mobile apps, games, AI solutions and help businesses grow with SEO.',
     ogImage: 'https://algorithyum.in/logo.svg',
     ogImageWidth: '1200',
     ogImageHeight: '630',
@@ -21,7 +21,7 @@ export const seoMap: Record<string, SEOData> = {
       '@type': 'Organization',
       'name': 'Algorithyum',
       'url': 'https://algorithyum.in',
-      'description': 'A professional technology solutions company delivering software, artificial intelligence, cloud, cybersecurity, and digital growth services.',
+      'description': 'Software development company specializing in custom software development, ERP system development, web development, mobile app development, AI integration, and SEO services.',
       'logo': 'https://algorithyum.in/logo.svg',
       'sameAs': [
         'https://x.com',
@@ -31,8 +31,8 @@ export const seoMap: Record<string, SEOData> = {
     }
   },
   '/about': {
-    title: 'About Us | Engineering Standards & Principles | Algorithyum',
-    description: 'Read about Algorithyum\'s engineering methodology, codebase integrity, and virtual operational framework. We focus on qualitative layouts and factual scopes.',
+    title: 'About Us | Software Development & ERP Company | Algorithyum',
+    description: 'Learn about Algorithyum — a dedicated software development company building custom software, ERP software, mobile apps, AI integrations, and providing SEO services.',
     ogImage: 'https://algorithyum.in/logo.svg',
     ogImageWidth: '1200',
     ogImageHeight: '630',
@@ -42,12 +42,12 @@ export const seoMap: Record<string, SEOData> = {
       '@type': 'WebPage',
       'name': 'About Algorithyum',
       'url': 'https://algorithyum.in/about',
-      'description': 'Our developer alignment values, secure codebase principles, and remote operational details.'
+      'description': 'About Algorithyum — software development team, core values, and honest approach.'
     }
   },
   '/services': {
-    title: 'Our Technical Capabilities & Services Directory | Algorithyum',
-    description: 'Browse our 14 engineering pillars and service capacities, spanning software development, artificial intelligence, cloud, cybersecurity, automation, and search engineering.',
+    title: 'Our Services | Software, ERP, Mobile Apps, AI & SEO | Algorithyum',
+    description: 'Explore our services: Custom Software Development, ERP System Development, Software Redesign, Web Development, Android, iOS, Cross Platform Apps, Game Development, AI Integration, AI Automation, and SEO Services.',
     ogImage: 'https://algorithyum.in/logo.svg',
     ogImageWidth: '1200',
     ogImageHeight: '630',
@@ -55,14 +55,14 @@ export const seoMap: Record<string, SEOData> = {
     schema: {
       '@context': 'https://schema.org',
       '@type': 'WebPage',
-      'name': 'Services Directory',
+      'name': 'Our Services',
       'url': 'https://algorithyum.in/services',
-      'description': 'Corporate technology directory listing software development, AI, DevOps, cybersecurity, automation, and search engineering services.'
+      'description': 'Custom software, ERP development, web apps, mobile app development, game development, AI chatbot integration, and SEO services.'
     }
   },
   '/solutions': {
-    title: 'Solutions Blueprint & Integration Frameworks | Algorithyum',
-    description: 'Discover how we structure multi-layer integrations, legacy data migrations, unified dashboard portals, and real-time operational monitors.',
+    title: 'Solutions | Business Software, ERP & App Solutions | Algorithyum',
+    description: 'Discover software solutions for business challenges — custom ERP systems, inventory management software, CRM software, mobile apps, AI automation, and technical SEO.',
     ogImage: 'https://algorithyum.in/logo.svg',
     ogImageWidth: '1200',
     ogImageHeight: '630',
@@ -70,14 +70,14 @@ export const seoMap: Record<string, SEOData> = {
     schema: {
       '@context': 'https://schema.org',
       '@type': 'WebPage',
-      'name': 'Solutions Directory',
+      'name': 'Our Solutions',
       'url': 'https://algorithyum.in/solutions',
-      'description': 'Technical descriptions concerning database integrations, legacy migrations, dashboard portals, and metrics monitors.'
+      'description': 'Software development solutions: Custom ERP software, mobile app development, legacy modernization, AI automation, and SEO.'
     }
   },
   '/industries': {
-    title: 'Industries We Serve & Sector Specifications | Algorithyum',
-    description: 'Explore our technology integrations tailored for healthcare patient registries, fintech accounting transactions, supply chain logistics tracing, and industrial IoT monitoring.',
+    title: 'Industries We Serve | ERP & Software Solutions | Algorithyum',
+    description: 'We build custom software and ERP systems for manufacturing, retail, healthcare, education, logistics, finance, and real estate.',
     ogImage: 'https://algorithyum.in/logo.svg',
     ogImageWidth: '1200',
     ogImageHeight: '630',
@@ -85,14 +85,14 @@ export const seoMap: Record<string, SEOData> = {
     schema: {
       '@context': 'https://schema.org',
       '@type': 'WebPage',
-      'name': 'Industries Directory',
+      'name': 'Industries We Serve',
       'url': 'https://algorithyum.in/industries',
-      'description': 'Review software compliance, API constraints, and database setups for medical, banking, logistics, retail, education, and manufacturing sectors.'
+      'description': 'Custom software and ERP solutions built for manufacturing, healthcare, retail, education, and logistics.'
     }
   },
   '/technologies': {
-    title: 'Our Complete Technology Stack & Developer Tooling | Algorithyum',
-    description: 'Inspect our engineering stacks, including React, Next.js, Node.js, Go, Python, PostgreSQL, Redis, Docker, Kubernetes, AWS, Azure, and Google Cloud systems.',
+    title: 'Technologies We Use | Modern Tech Stack | Algorithyum',
+    description: 'Our software technology stack: React, Next.js, Node.js, TypeScript, MongoDB, PostgreSQL, Redis, OpenAI, LangChain, Flutter, and React Native.',
     ogImage: 'https://algorithyum.in/logo.svg',
     ogImageWidth: '1200',
     ogImageHeight: '630',
@@ -100,14 +100,14 @@ export const seoMap: Record<string, SEOData> = {
     schema: {
       '@context': 'https://schema.org',
       '@type': 'WebPage',
-      'name': 'Technologies Directory',
+      'name': 'Technologies We Use',
       'url': 'https://algorithyum.in/technologies',
-      'description': 'Developer toolsets spanning cloud providers, database servers, frontend libraries, and container managers.'
+      'description': 'Our tech stack: React, Next.js, Node.js, TypeScript, PostgreSQL, MongoDB, OpenAI, Flutter, React Native.'
     }
   },
   '/blog': {
-    title: 'Technical Insights, Engineering Audits & Reports | Algorithyum',
-    description: 'Read technical writeups on Zero-Trust security, LLM agent configurations, Kubernetes autoscaling limits, and performance styling setups.',
+    title: 'Blog | Software Development, ERP & AI Insights | Algorithyum',
+    description: 'Read technical articles and practical guides on custom software development, ERP systems, mobile app development, OpenAI integration, and SEO strategies.',
     ogImage: 'https://algorithyum.in/logo.svg',
     ogImageWidth: '1200',
     ogImageHeight: '630',
@@ -117,12 +117,12 @@ export const seoMap: Record<string, SEOData> = {
       '@type': 'Blog',
       'name': 'Algorithyum Blog',
       'url': 'https://algorithyum.in/blog',
-      'description': 'Quarterly engineering audits and architecture reviews.'
+      'description': 'Articles on custom software development, ERP software, mobile apps, AI, and SEO.'
     }
   },
   '/guides': {
-    title: 'Engineering Guides, Handbooks & Tutorials | Algorithyum',
-    description: 'Browse our comprehensive guides and developer handbooks on specifying custom software systems, prompt orchestration, and Kubernetes scaling structures.',
+    title: 'Guides | Software, ERP & App Development Tutorials | Algorithyum',
+    description: 'Detailed guides on building custom ERP software, inventory systems, CRM development, mobile app launches, AI automation, and technical SEO.',
     ogImage: 'https://algorithyum.in/logo.svg',
     ogImageWidth: '1200',
     ogImageHeight: '630',
@@ -130,14 +130,14 @@ export const seoMap: Record<string, SEOData> = {
     schema: {
       '@context': 'https://schema.org',
       '@type': 'WebPage',
-      'name': 'Guides Directory',
+      'name': 'Guides & Resources',
       'url': 'https://algorithyum.in/guides',
-      'description': 'Developer guides and architecture specification handbooks.'
+      'description': 'Guides on custom software development, ERP systems, mobile apps, and SEO.'
     }
   },
   '/careers': {
-    title: 'Careers | Joint Our Architectural Teams | Algorithyum',
-    description: 'Explore senior engineering roles, remote team guidelines, open-source contribution opportunities, and our factual project management models.',
+    title: 'Careers | Software Engineering & Tech Roles | Algorithyum',
+    description: 'Explore career opportunities at Algorithyum for software developers, mobile app engineers, and tech specialists.',
     ogImage: 'https://algorithyum.in/logo.svg',
     ogImageWidth: '1200',
     ogImageHeight: '630',
@@ -147,12 +147,12 @@ export const seoMap: Record<string, SEOData> = {
       '@type': 'WebPage',
       'name': 'Careers at Algorithyum',
       'url': 'https://algorithyum.in/careers',
-      'description': 'Engineering roles and workspace principles.'
+      'description': 'Careers at Algorithyum.'
     }
   },
   '/contact': {
-    title: 'Contact Our Offices & Strategy Advisers | Algorithyum',
-    description: 'Book strategy briefings, submit project blueprints, or connect with our directors. We provide virtual consultations and clear operational scopes.',
+    title: 'Contact Us | Custom Software & ERP Development | Algorithyum',
+    description: 'Need custom software, ERP software, mobile app, AI, or SEO services? Email us at info@algorithyum.in for a prompt project response.',
     ogImage: 'https://algorithyum.in/logo.svg',
     ogImageWidth: '1200',
     ogImageHeight: '630',
@@ -162,12 +162,12 @@ export const seoMap: Record<string, SEOData> = {
       '@type': 'WebPage',
       'name': 'Contact Algorithyum',
       'url': 'https://algorithyum.in/contact',
-      'description': 'Direct paths to coordinate virtual briefings or transmit design scopes.'
+      'description': 'Contact Algorithyum for custom software, ERP, mobile app, AI, or SEO projects.'
     }
   },
   '/privacy': {
-    title: 'Privacy Policy | Data Practices & PHI Handling | Algorithyum',
-    description: 'Review our policies concerning database query logging, encryption practices, GDPR rights, and strict user data privacy compliance.',
+    title: 'Privacy Policy | Algorithyum',
+    description: 'Read our privacy policy regarding client data and website privacy.',
     ogImage: 'https://algorithyum.in/logo.svg',
     ogImageWidth: '1200',
     ogImageHeight: '630',
@@ -177,12 +177,12 @@ export const seoMap: Record<string, SEOData> = {
       '@type': 'WebPage',
       'name': 'Privacy Policy',
       'url': 'https://algorithyum.in/privacy',
-      'description': 'Encryption boundaries and compliance details.'
+      'description': 'Algorithyum privacy policy.'
     }
   },
   '/terms': {
-    title: 'Terms of Service | Consulting & Project Boundaries | Algorithyum',
-    description: 'Read the legal and operational agreements regulating project discovery briefs, delivery milestones, software warranties, and support scopes.',
+    title: 'Terms of Service | Algorithyum',
+    description: 'Read the terms of service governing software development projects and site usage.',
     ogImage: 'https://algorithyum.in/logo.svg',
     ogImageWidth: '1200',
     ogImageHeight: '630',
@@ -192,12 +192,12 @@ export const seoMap: Record<string, SEOData> = {
       '@type': 'WebPage',
       'name': 'Terms of Service',
       'url': 'https://algorithyum.in/terms',
-      'description': 'Project delivery scope terms and system usage rules.'
+      'description': 'Algorithyum terms of service.'
     }
   },
   '/cookies': {
-    title: 'Cookie Preferences & Consent Policy | Algorithyum',
-    description: 'Control tracking settings and learn about how we use lightweight local storage tokens to persist dashboard session parameters.',
+    title: 'Cookie Policy | Algorithyum',
+    description: 'Cookie policy and consent information for Algorithyum website.',
     ogImage: 'https://algorithyum.in/logo.svg',
     ogImageWidth: '1200',
     ogImageHeight: '630',
@@ -207,12 +207,12 @@ export const seoMap: Record<string, SEOData> = {
       '@type': 'WebPage',
       'name': 'Cookie Policy',
       'url': 'https://algorithyum.in/cookies',
-      'description': 'Details on local storage variables used across browser clients.'
+      'description': 'Algorithyum cookie policy.'
     }
   },
   '/sitemap': {
-    title: 'HTML Sitemap | Navigation Directory Index | Algorithyum',
-    description: 'Browse the complete index of indexed URLs, core pages, capability pillars, technology directories, and comparisons.',
+    title: 'Sitemap | Algorithyum Navigation Index',
+    description: 'Complete page directory of Algorithyum software services, technologies, solutions, and guides.',
     ogImage: 'https://algorithyum.in/logo.svg',
     ogImageWidth: '1200',
     ogImageHeight: '630',
@@ -220,9 +220,9 @@ export const seoMap: Record<string, SEOData> = {
     schema: {
       '@context': 'https://schema.org',
       '@type': 'WebPage',
-      'name': 'HTML Sitemap Directory',
+      'name': 'Sitemap',
       'url': 'https://algorithyum.in/sitemap',
-      'description': 'Complete path directory indexing.'
+      'description': 'Website sitemap index.'
     }
   }
 };

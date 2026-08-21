@@ -145,8 +145,8 @@ export const ConsultationModal: React.FC<ModalBaseProps> = ({ isOpen, onClose })
             {!isSuccess ? (
               <>
                 <div>
-                  <h3 className={styles.title} id="consultation-modal-title">Book Strategy Consultation</h3>
-                  <p className={styles.subtitle}>Align with our senior software architects to review operational scopes and technology recommendations.</p>
+                  <h3 className={styles.title} id="consultation-modal-title">Get Free Consultation</h3>
+                  <p className={styles.subtitle}>Tell us about your project requirements and we will reply within 24 business hours.</p>
                 </div>
 
                 {errorMessage && (
@@ -158,7 +158,7 @@ export const ConsultationModal: React.FC<ModalBaseProps> = ({ isOpen, onClose })
 
                 <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }} noValidate>
                   <div className="form-group">
-                    <label className="form-label" htmlFor="modal-name">Corporate Name *</label>
+                    <label className="form-label" htmlFor="modal-name">Your Name *</label>
                     <input
                       type="text"
                       id="modal-name"
@@ -168,14 +168,14 @@ export const ConsultationModal: React.FC<ModalBaseProps> = ({ isOpen, onClose })
                       aria-invalid={!!validationErrors.name}
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      placeholder="Alexis Carter"
+                      placeholder="Alex Smith"
                     />
                     {validationErrors.name && (
                       <span style={{ fontSize: '0.75rem', color: '#ef4444', marginTop: '0.25rem', display: 'block' }}>{validationErrors.name}</span>
                     )}
                   </div>
                   <div className="form-group">
-                    <label className="form-label" htmlFor="modal-email">Corporate Email *</label>
+                    <label className="form-label" htmlFor="modal-email">Your Email *</label>
                     <input
                       type="email"
                       id="modal-email"
@@ -185,7 +185,7 @@ export const ConsultationModal: React.FC<ModalBaseProps> = ({ isOpen, onClose })
                       aria-invalid={!!validationErrors.email}
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder="alexis@company.com"
+                      placeholder="alex@company.com"
                     />
                     {validationErrors.email && (
                       <span style={{ fontSize: '0.75rem', color: '#ef4444', marginTop: '0.25rem', display: 'block' }}>{validationErrors.email}</span>
@@ -193,7 +193,7 @@ export const ConsultationModal: React.FC<ModalBaseProps> = ({ isOpen, onClose })
                   </div>
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                     <div className="form-group">
-                      <label className="form-label" htmlFor="modal-service">Core Tech Focus *</label>
+                      <label className="form-label" htmlFor="modal-service">Service Needed *</label>
                       <select
                         id="modal-service"
                         className="form-input"
@@ -202,10 +202,11 @@ export const ConsultationModal: React.FC<ModalBaseProps> = ({ isOpen, onClose })
                         onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                       >
                         <option value="custom-dev">Custom Software</option>
-                        <option value="ai">Artificial Intelligence</option>
-                        <option value="cloud">Cloud Migration</option>
-                        <option value="sec">Cybersecurity</option>
-                        <option value="analytics">Data Science</option>
+                        <option value="erp">ERP System</option>
+                        <option value="web">Web Development</option>
+                        <option value="mobile">Mobile App</option>
+                        <option value="ai">AI Integration</option>
+                        <option value="seo">SEO Services</option>
                       </select>
                     </div>
                     <div className="form-group">

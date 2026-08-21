@@ -12,65 +12,65 @@ interface Differentiator {
 }
 
 export const WhyChooseUs: React.FC = () => {
-  const [activeId, setActiveId] = useState<string>('innovation');
+  const [activeId, setActiveId] = useState<string>('quality');
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   const data: Differentiator[] = [
     {
-      id: 'innovation',
-      title: 'Innovation First',
-      desc: 'We integrate generative AI tools, cognitive agents, and performance-tuned backend services to ensure software projects remain modern and scalable.',
-      focus: 'AI-First Design',
-      focusLabel: 'Cognitive agent tools'
+      id: 'quality',
+      title: 'Clean, Quality Code',
+      desc: 'We write clean, well-organized code that is easy to read, test, and maintain. No shortcuts, no messy workarounds.',
+      focus: 'Code Quality',
+      focusLabel: 'Clean & maintainable'
     },
     {
-      id: 'security',
-      title: 'Enterprise Security Focus',
-      desc: 'We secure databases and codebases using identity verification policies, encryption, and compliance alignments for SOC2 and GDPR audits.',
-      focus: 'Zero-Trust Setup',
-      focusLabel: 'SOC2 / GDPR auditing'
+      id: 'communication',
+      title: 'Fast Communication',
+      desc: 'We respond quickly, give regular updates, and keep you in the loop at every stage of your project. No ghosting, no surprises.',
+      focus: 'Quick Response',
+      focusLabel: 'Regular project updates'
     },
     {
-      id: 'scale',
-      title: 'Scalable Architecture',
-      desc: 'We design decoupled microservices, database clusters, and auto-scaling cloud topologies that load balance traffic spikes.',
-      focus: 'Auto-Scaling Pods',
-      focusLabel: 'Kubernetes orchestration'
+      id: 'pricing',
+      title: 'Transparent Pricing',
+      desc: 'We give you a clear quote upfront with no hidden costs. You know exactly what you\'re paying for before the project starts.',
+      focus: 'Honest Pricing',
+      focusLabel: 'No hidden costs'
     },
     {
-      id: 'global',
-      title: 'Global Engineering Sync',
-      desc: 'Our distributed pods synchronize daily workflows to maintain uniform documentation and code standardization.',
-      focus: 'Distributed Pods',
-      focusLabel: 'Collaborative task boards'
+      id: 'business',
+      title: 'Business-Focused Solutions',
+      desc: 'We don\'t just write code — we understand your business goals and build solutions that actually help you grow and save time.',
+      focus: 'Business Results',
+      focusLabel: 'Built for your goals'
     },
     {
-      id: 'engineers',
-      title: 'Experienced Developers',
-      desc: 'Our teams consist of senior software developers, system architects, and DevOps specialists with extensive technical experience.',
-      focus: 'Senior Engineers',
-      focusLabel: 'Technical Architects'
+      id: 'modern',
+      title: 'Modern Technologies',
+      desc: 'We use proven, modern technologies like React, Next.js, Node.js, Flutter, and OpenAI — tools that are reliable and well-supported.',
+      focus: 'Modern Stack',
+      focusLabel: 'Proven technologies'
     },
     {
-      id: 'agile',
-      title: 'Agile Development',
-      desc: 'We coordinate tasks on open backlog boards, distribute weekly sprint releases, and maintain close communication with client teams.',
-      focus: 'Sprint Visibility',
-      focusLabel: 'Continuous Feedback'
+      id: 'delivery',
+      title: 'Reliable Delivery',
+      desc: 'We set realistic deadlines and stick to them. We break projects into milestones so you can see real progress every week.',
+      focus: 'On-Time Delivery',
+      focusLabel: 'Milestone-based progress'
     },
     {
       id: 'support',
-      title: 'Dedicated Engineering Support',
-      desc: 'We offer support contracts and monitoring configurations to keep track of software performance and resolve server faults.',
-      focus: 'SLA Support Plans',
-      focusLabel: 'Incident monitoring'
+      title: 'Long-Term Support',
+      desc: 'We don\'t disappear after launch. We offer ongoing support, bug fixes, and feature updates to keep your software running smoothly.',
+      focus: 'Ongoing Support',
+      focusLabel: 'Post-launch maintenance'
     },
     {
-      id: 'partner',
-      title: 'Technology Strategic Advisory',
-      desc: 'We provide annual codebase assessments, scale roadmap advisories, and system audits to assist long-term product planning.',
-      focus: 'Technical Audits',
-      focusLabel: 'Growth path analysis'
+      id: 'honest',
+      title: 'Honest & Straightforward',
+      desc: 'We tell you what\'s realistic and what\'s not. If something won\'t work, we\'ll say so. No overselling, no empty promises.',
+      focus: 'Honest Advice',
+      focusLabel: 'Realistic expectations'
     }
   ];
 
@@ -144,10 +144,10 @@ export const WhyChooseUs: React.FC = () => {
         
         {/* Section Header */}
         <div className="section-header">
-          <span className="section-subtitle">Our Methodologies</span>
-          <h2 className="section-title">Reliable Enterprise Integrations</h2>
+          <span className="section-subtitle">Why Work With Us</span>
+          <h2 className="section-title">Why Businesses Choose Algorithyum</h2>
           <p className="section-desc">
-            We build software using clear standards, secure network topologies, and transparent sprint cycles.
+            We build software the right way — with clean code, honest communication, and a focus on your business goals.
           </p>
         </div>
 
@@ -158,21 +158,21 @@ export const WhyChooseUs: React.FC = () => {
               <div className={styles.dbHeader}>
                 <div className={styles.dbTitle}>
                   <ShieldCheck size={18} style={{ color: 'var(--accent-light)' }} />
-                  <span>ALGORITHYUM SYSTEM METRIC</span>
+                  <span>ALGORITHYUM PROJECT OVERVIEW</span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
                   <div className={styles.dot} />
-                  <span style={{ fontSize: '0.7rem', fontWeight: 600, color: 'var(--text-muted)' }}>MONITORING</span>
+                  <span style={{ fontSize: '0.7rem', fontWeight: 600, color: 'var(--text-muted)' }}>ACTIVE</span>
                 </div>
               </div>
 
               <div className={styles.dbGrid}>
                 <div className={styles.dbCard}>
-                  <span className={styles.dbLabel}>Engineering Focus</span>
+                  <span className={styles.dbLabel}>Current Focus</span>
                   <span className={styles.dbValue} style={{ fontSize: '1.2rem', lineHeight: '1.4' }}>{currentItem.focus}</span>
                 </div>
                 <div className={styles.dbCard}>
-                  <span className={styles.dbLabel}>Application Spec</span>
+                  <span className={styles.dbLabel}>What This Means</span>
                   <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-primary)' }}>
                     {currentItem.focusLabel}
                   </span>
@@ -181,7 +181,7 @@ export const WhyChooseUs: React.FC = () => {
 
               <div>
                 <span className={styles.dbLabel} style={{ marginBottom: '0.5rem', display: 'block' }}>
-                  System Telemetry Simulation
+                  Project Progress
                 </span>
                 <div className={styles.waveCanvas}>
                   <canvas ref={canvasRef} />
@@ -190,16 +190,16 @@ export const WhyChooseUs: React.FC = () => {
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', fontSize: '0.85rem', textAlign: 'left', borderTop: '1px solid var(--border-color)', paddingTop: '1rem' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <span style={{ color: 'var(--text-muted)' }}>Target Config</span>
-                  <span style={{ fontWeight: 600 }}>alg-monitored-node</span>
+                  <span style={{ color: 'var(--text-muted)' }}>Status</span>
+                  <span style={{ fontWeight: 600 }}>On Track</span>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <span style={{ color: 'var(--text-muted)' }}>Security Layer</span>
-                  <span style={{ fontWeight: 600, color: '#10b981' }}>SECURE TRANSMISSION</span>
+                  <span style={{ color: 'var(--text-muted)' }}>Code Quality</span>
+                  <span style={{ fontWeight: 600, color: '#10b981' }}>CLEAN & TESTED</span>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <span style={{ color: 'var(--text-muted)' }}>Telemetry Sync</span>
-                  <span style={{ fontWeight: 600, color: 'var(--accent-light)' }}>Active script loop</span>
+                  <span style={{ color: 'var(--text-muted)' }}>Communication</span>
+                  <span style={{ fontWeight: 600, color: 'var(--accent-light)' }}>Regular updates</span>
                 </div>
               </div>
             </div>
@@ -233,7 +233,7 @@ export const WhyChooseUs: React.FC = () => {
                           <p>{item.desc}</p>
                           <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', marginTop: '0.75rem', fontSize: '0.85rem', fontWeight: 600, color: 'var(--accent-light)' }}>
                             <CheckCircle2 size={14} />
-                            <span>Practice: {currentItem.focus}</span>
+                            <span>{currentItem.focus}</span>
                           </div>
                         </div>
                       </motion.div>

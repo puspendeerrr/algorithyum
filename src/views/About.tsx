@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { ArrowRight, Code, ShieldAlert, Cpu, Heart } from 'lucide-react';
+import { ArrowRight, Code, Heart, Cpu, MessageCircle } from 'lucide-react';
 import { useAppNavigation } from '@/lib/utils/useNavigation';
 
 interface AboutProps {
@@ -25,76 +25,79 @@ export const About: React.FC<AboutProps> = ({ onOpenConsultation }) => {
             About Algorithyum
           </h1>
           <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-            A professional technology solutions company focused on custom codebase engineering, cloud architectures, and digital growth.
+            A software development company that builds custom software, websites, mobile apps, games, AI solutions, and helps businesses grow with SEO.
           </p>
         </header>
 
-        {/* Corporate Focus */}
+        {/* Who We Are */}
         <section style={{ marginBottom: '4rem', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           <h2 style={{ fontSize: '2rem', fontWeight: 800, borderBottom: '1px solid var(--border-color)', paddingBottom: '0.75rem' }}>
-            Our Mission &amp; Approach
+            What We Do
           </h2>
           <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: '1.7' }}>
-            Algorithyum provides engineering systems that resolve specific operational bottlenecks. We help organizations design digital products, scale backend infrastructures, audit security loopholes, deploy cognitive automations, and manage performance-focused SEO campaigns.
+            Algorithyum is a software development company. We help businesses build the software they need — whether that&apos;s a custom business application, a mobile app, a website, a game, or an AI-powered tool. We also offer SEO services to help businesses get found online.
           </p>
           <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: '1.7' }}>
-            We reject the typical startup marketing hype and focus strictly on qualitative code guidelines, rigorous unit testing, and transparent client sprints. We communicate realistic project scopes, budget guidelines, and delivery milestones.
+            We believe in doing honest work. We don&apos;t oversell, we don&apos;t use fancy buzzwords, and we don&apos;t make promises we can&apos;t keep. We focus on writing clean code, communicating clearly, and delivering software that actually works.
           </p>
         </section>
 
-        {/* Core Principles */}
+        {/* What We Value */}
         <section style={{ marginBottom: '4rem' }}>
           <h2 style={{ fontSize: '2rem', fontWeight: 800, borderBottom: '1px solid var(--border-color)', paddingBottom: '0.75rem', marginBottom: '2rem' }}>
-            Engineering Standards
+            What We Value
           </h2>
           
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
             <div className="glass-panel" style={{ padding: '2rem', borderRadius: 'var(--border-radius-sm)', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               <div style={{ color: 'var(--accent-light)' }} aria-hidden="true"><Code size={24} /></div>
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 700 }}>Code Integrity</h3>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700 }}>Clean, Quality Code</h3>
               <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-                We write modular, type-safe code using TypeScript, robust documentation headers, and comprehensive unit tests to ensure long-term codebase health.
+                We write well-organized, tested code that&apos;s easy to read, maintain, and update. No shortcuts, no messy hacks.
               </p>
             </div>
 
             <div className="glass-panel" style={{ padding: '2rem', borderRadius: 'var(--border-radius-sm)', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              <div style={{ color: 'var(--accent-light)' }} aria-hidden="true"><ShieldAlert size={24} /></div>
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 700 }}>Security-First Topologies</h3>
+              <div style={{ color: 'var(--accent-light)' }} aria-hidden="true"><MessageCircle size={24} /></div>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700 }}>Clear Communication</h3>
               <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-                We build zero-trust API networks, encrypt data repositories, and configure strict container policies to protect your operational assets.
+                We keep you updated at every step. You&apos;ll always know what we&apos;re working on, what&apos;s next, and if there are any issues.
               </p>
             </div>
 
             <div className="glass-panel" style={{ padding: '2rem', borderRadius: 'var(--border-radius-sm)', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               <div style={{ color: 'var(--accent-light)' }} aria-hidden="true"><Cpu size={24} /></div>
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 700 }}>Intelligent Optimization</h3>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700 }}>Modern Technologies</h3>
               <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-                We integrate machine learning models, structured database indexing, and programmatic templates to automate high-frequency routines.
+                We use proven, modern tools like React, Next.js, Node.js, Flutter, and OpenAI — technologies that are reliable and well-supported.
               </p>
             </div>
 
             <div className="glass-panel" style={{ padding: '2rem', borderRadius: 'var(--border-radius-sm)', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               <div style={{ color: 'var(--accent-light)' }} aria-hidden="true"><Heart size={24} /></div>
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 700 }}>Factual Honesty</h3>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700 }}>Honesty & Transparency</h3>
               <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-                We only display systems capabilities and operational details that we support. We do not display fabricated certifications or case summaries.
+                We tell you what&apos;s realistic and what&apos;s not. We give honest estimates, transparent pricing, and no hidden surprises.
               </p>
             </div>
           </div>
         </section>
 
-        {/* Honest Operational Setup */}
+        {/* How We Work */}
         <section style={{ marginBottom: '4rem', padding: '2.5rem', border: '1px solid var(--border-color)', borderRadius: 'var(--border-radius-md)', background: 'rgba(255, 255, 255, 0.01)', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          <h2 style={{ fontSize: '1.6rem', fontWeight: 800, color: 'var(--text-primary)', borderBottom: '1px solid var(--border-color)', paddingBottom: '0.75rem', marginBottom: '0.5rem' }}>Operational Details &amp; Offices</h2>
+          <h2 style={{ fontSize: '1.6rem', fontWeight: 800, color: 'var(--text-primary)', borderBottom: '1px solid var(--border-color)', paddingBottom: '0.75rem', marginBottom: '0.5rem' }}>How We Work</h2>
           <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-            Algorithyum operates as a remote-first engineering consulting team. We do not manage physical public branch offices or walk-in consultation buildings. All technical briefings, milestone reviews, and database architecture sessions are coordinated virtually using secure collaboration tools.
+            Algorithyum is a remote-first team. We work with clients through video calls, email, and project management tools. This allows us to focus on doing great work without the overhead of physical offices.
+          </p>
+          <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
+            We break every project into clear milestones, share progress regularly, and make sure you&apos;re always in the loop. If you have questions, we respond quickly — usually within 24 business hours.
           </p>
         </section>
 
         {/* CTA */}
         <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginTop: '2rem' }}>
-          <button onClick={handleConsultation} className="btn btn-primary" aria-label="Schedule Virtual Briefing consultation">
-            Schedule Virtual Briefing
+          <button onClick={handleConsultation} className="btn btn-primary" aria-label="Get in touch with us">
+            Get in Touch
             <ArrowRight size={16} aria-hidden="true" />
           </button>
         </div>

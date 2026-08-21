@@ -3,8 +3,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  Code, Cpu, Cloud, Shield, Database, BarChart3, 
-  Palette, Briefcase, Zap, ArrowRight, Layers
+  Code, Cpu, Smartphone, Gamepad2, Bot,
+  BarChart3, ArrowRight, Globe, RefreshCw, Layers
 } from 'lucide-react';
 import { useAppNavigation } from '@/lib/utils/useNavigation';
 import styles from './Services.module.css';
@@ -28,98 +28,106 @@ export const Services: React.FC<ServicesProps> = ({ hideHeader = false }) => {
 
   const pillars: ServicePillar[] = [
     {
-      id: 'software-engineering',
-      title: 'Software Engineering',
+      id: 'custom-software',
+      title: 'Custom Software Development',
       icon: <Code size={24} />,
       routePath: '/services/software-development',
-      description: 'We engineer secure, custom frontends, backends, databases, and cross-platform apps.',
-      items: ['Custom Software Development', 'Enterprise Software', 'SaaS Development', 'CRM & ERP Development', 'API Development', 'Web Development', 'Mobile App Development', 'UI/UX Design']
+      description: 'Custom software built around your specific business needs — from internal tools to full SaaS products.',
+      items: ['Business Software', 'SaaS Products', 'Custom Applications', 'API Development']
     },
     {
-      id: 'ai',
-      title: 'Artificial Intelligence',
-      icon: <Cpu size={24} />,
-      routePath: '/services/ai',
-      description: 'Deploy generative AI engines, semantic searches, and autonomous cognitive workflow agents.',
-      items: ['Generative AI', 'AI Agents', 'AI Chatbots', 'Machine Learning', 'Deep Learning', 'Computer Vision', 'NLP', 'AI Automation']
-    },
-    {
-      id: 'cloud',
-      title: 'Cloud Computing',
-      icon: <Cloud size={24} />,
-      routePath: '/services/cloud',
-      description: 'Architect multi-cloud systems with cost optimizations and automatic server failovers.',
-      items: ['AWS setups', 'Microsoft Azure systems', 'Google Cloud Platform', 'Cloud Migration planning', 'Serverless computing']
-    },
-    {
-      id: 'devops',
-      title: 'DevOps & CI/CD',
+      id: 'erp-system',
+      title: 'ERP System Development',
       icon: <Layers size={24} />,
-      routePath: '/services/devops',
-      description: 'Automate container pipelines, Docker registries, and Infrastructure as Code workflows.',
-      items: ['DevOps automation', 'Kubernetes clusters', 'Docker orchestration', 'CI/CD pipeline templates', 'GitOps deployment rules']
+      routePath: '/services/erp',
+      description: 'Custom ERP software, inventory systems, CRM, HRMS, and business management tools.',
+      items: ['Manufacturing ERP', 'Inventory & Warehouse', 'CRM & HRMS', 'Billing & POS']
     },
     {
-      id: 'cybersecurity',
-      title: 'Cybersecurity',
-      icon: <Shield size={24} />,
-      routePath: '/services/cybersecurity',
-      description: 'Protect network perimeters and prepare codebases for formal security audits.',
-      items: ['Security Audits', 'Penetration Testing', 'Vulnerability Assessment', 'Cloud Security', 'Security Consulting', 'DevSecOps']
+      id: 'software-redesign',
+      title: 'Software Redesign & Modernization',
+      icon: <RefreshCw size={24} />,
+      routePath: '/services/software-redesign',
+      description: 'We update old, slow software — making it faster, more modern, and easier to maintain.',
+      items: ['Legacy Software Updates', 'Code Refactoring', 'UI/UX Redesign', 'Database Migration']
     },
     {
-      id: 'data-engineering',
-      title: 'Data Engineering',
-      icon: <Database size={24} />,
-      routePath: '/services/ai',
-      description: 'Aggregate and clean business datasets using secure warehousing pipelines.',
-      items: ['Data Analytics', 'Business Intelligence', 'Data Warehousing', 'ETL Pipelines', 'Big Data configurations']
+      id: 'web-development',
+      title: 'Web Development',
+      icon: <Globe size={24} />,
+      routePath: '/services/web-development',
+      description: 'Fast, modern websites and web applications that look great and work on all devices.',
+      items: ['Business Websites', 'Web Applications', 'E-commerce', 'Performance Optimization']
     },
     {
-      id: 'digital-marketing',
-      title: 'Digital Marketing & SEO',
+      id: 'android-app',
+      title: 'Android App Development',
+      icon: <Smartphone size={24} />,
+      routePath: '/services/android-app-development',
+      description: 'Native and cross-platform Android apps that are fast, reliable, and ready for the Play Store.',
+      items: ['Native Android Apps', 'Material Design UI', 'Offline Support', 'Play Store Publishing']
+    },
+    {
+      id: 'ios-app',
+      title: 'iOS App Development',
+      icon: <Smartphone size={24} />,
+      routePath: '/services/ios-app-development',
+      description: 'iOS apps for iPhone and iPad — smooth, secure, and ready for the App Store.',
+      items: ['Native iOS Apps', 'Apple Design Guidelines', 'Push Notifications', 'App Store Publishing']
+    },
+    {
+      id: 'cross-platform',
+      title: 'Cross Platform App Development',
+      icon: <Smartphone size={24} />,
+      routePath: '/services/cross-platform-app-development',
+      description: 'One app that works on both Android and iOS — built with Flutter or React Native.',
+      items: ['Flutter Apps', 'React Native Apps', 'Shared Backend', 'Both App Stores']
+    },
+    {
+      id: 'game-dev',
+      title: 'Game Development',
+      icon: <Gamepad2 size={24} />,
+      routePath: '/services/game-development',
+      description: 'Mobile games and casual games for Android and iOS — fun, engaging, and ready for the stores.',
+      items: ['Mobile Games', '2D Games', 'Casual Games', 'Multiplayer Features']
+    },
+    {
+      id: 'ai-integration',
+      title: 'AI Integration',
+      icon: <Cpu size={24} />,
+      routePath: '/services/ai-integration',
+      description: 'We add AI features to your existing software — chatbots, smart search, content generation, and more.',
+      items: ['AI Chatbots', 'Content Generation', 'Smart Search', 'Data Analysis']
+    },
+    {
+      id: 'ai-automation',
+      title: 'AI Automation',
+      icon: <Bot size={24} />,
+      routePath: '/services/ai-automation',
+      description: 'AI-powered tools that automate repetitive tasks so your team can focus on important work.',
+      items: ['Workflow Automation', 'Email & Ticket Sorting', 'Document Processing', 'Business Process Automation']
+    },
+    {
+      id: 'seo',
+      title: 'SEO Services',
       icon: <BarChart3 size={24} />,
       routePath: '/services/seo',
-      description: 'Optimize search presence and organic conversion pathways using crawlable site blueprints.',
-      items: ['Search Engine Optimization (SEO)', 'Technical SEO audits', 'Local & Enterprise SEO', 'Programmatic SEO grids', 'PPC Google & Meta Ads', 'Conversion Optimization (CRO)']
-    },
-    {
-      id: 'branding',
-      title: 'Branding & Design',
-      icon: <Palette size={24} />,
-      routePath: '/services/software-development',
-      description: 'Craft unified Figma mockups, brand assets, and digital products.',
-      items: ['Brand Identity', 'Logo Design', 'Graphic Design', 'Motion Graphics', 'Product UI Design']
-    },
-    {
-      id: 'consulting',
-      title: 'Consulting & Strategy',
-      icon: <Briefcase size={24} />,
-      routePath: '/services/it-consulting',
-      description: 'Consult on technology stacks, product roadmaps, and digital transformation schedules.',
-      items: ['IT Consulting', 'Digital Transformation', 'Technology Strategy', 'Product Strategy', 'Startup Consulting', 'CTO as a Service']
-    },
-    {
-      id: 'automation',
-      title: 'Workflow Automation',
-      icon: <Zap size={24} />,
-      routePath: '/services/automation',
-      description: 'Build script triggers and bot tasks to automate manual business processes.',
-      items: ['Workflow Automation', 'Business Process Automation', 'CRM Automation', 'AI Workflow Automation']
+      description: 'We help your website rank higher on Google so more people find your business online.',
+      items: ['Technical SEO', 'On-Page SEO', 'Local SEO', 'SEO Audits & Strategy']
     }
   ];
 
   const categories = [
-    { id: 'all', label: 'All Solutions' },
-    { id: 'eng', label: 'Engineering & DevOps' },
-    { id: 'ai-data', label: 'AI, Automation & Data' },
-    { id: 'marketing-consult', label: 'Growth, Marketing & Advisory' }
+    { id: 'all', label: 'All Services' },
+    { id: 'software-apps', label: 'Software & ERP' },
+    { id: 'ai-automation', label: 'AI & Automation' },
+    { id: 'growth', label: 'Growth' }
   ];
 
   const getCategoryGroup = (pillarId: string): string => {
-    if (['software-engineering', 'cloud', 'devops', 'cybersecurity'].includes(pillarId)) return 'eng';
-    if (['ai', 'data-engineering', 'automation'].includes(pillarId)) return 'ai-data';
-    return 'marketing-consult';
+    if (['custom-software', 'erp-system', 'software-redesign', 'web-development', 'android-app', 'ios-app', 'cross-platform', 'game-dev'].includes(pillarId)) return 'software-apps';
+    if (['ai-integration', 'ai-automation'].includes(pillarId)) return 'ai-automation';
+    return 'growth';
   };
 
   const filteredPillars = activeCategory === 'all'
@@ -133,10 +141,10 @@ export const Services: React.FC<ServicesProps> = ({ hideHeader = false }) => {
         {/* Section Header */}
         {!hideHeader && (
           <div className="section-header">
-            <span className="section-subtitle">Pillars of Delivery</span>
-            <h2 className="section-title">Technology &amp; Business Solutions</h2>
+            <span className="section-subtitle">What We Do</span>
+            <h2 className="section-title">Our Services</h2>
             <p className="section-desc">
-              We provide structured engineering, cognitive systems, secure hosting, and digital growth services tailored to your objectives.
+              We build custom software, ERP systems, websites, mobile apps, games, AI-powered solutions and help businesses grow with SEO.
             </p>
           </div>
         )}
@@ -195,9 +203,9 @@ export const Services: React.FC<ServicesProps> = ({ hideHeader = false }) => {
                 <button 
                   onClick={() => navigate(pillar.routePath)}
                   className={styles.learnMoreBtn}
-                  aria-label={`Explore our ${pillar.title} engineering services`}
+                  aria-label={`Learn more about our ${pillar.title} services`}
                 >
-                  Explore {pillar.title} Capabilities
+                  Learn More
                   <ArrowRight size={16} aria-hidden="true" />
                 </button>
               </motion.div>

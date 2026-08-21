@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Calendar } from 'lucide-react';
+import { ArrowRight, Mail } from 'lucide-react';
 import styles from './CTA.module.css';
 
 interface CTAProps {
@@ -24,20 +24,20 @@ export const CTA: React.FC<CTAProps> = ({ onOpenConsultation, onOpenContact }) =
           <div className={styles.glow} />
           
           <div className={styles.content}>
-            <h2 className={`${styles.title} text-gradient`}>Let's Build the Future Together</h2>
+            <h2 className={`${styles.title} text-gradient`}>Ready to Start Your Project?</h2>
             <p className={styles.desc}>
-              Partner with Algorithyum to architect high-performance software, build reliable AI features, and secure your cloud infrastructure. Talk with our senior engineers today.
+              Whether you need custom software, a mobile app, a website, AI features, a game, or help with SEO — we&apos;re here to help. Let&apos;s talk about your project.
             </p>
 
             <div className={styles.actions}>
               <button onClick={onOpenContact} className="btn btn-primary">
-                Get Started
+                Get Free Consultation
                 <ArrowRight size={18} />
               </button>
-              <button onClick={onOpenConsultation} className="btn btn-secondary">
-                <Calendar size={18} />
-                Schedule Consultation
-              </button>
+              <a href="mailto:info@algorithyum.in" className="btn btn-secondary">
+                <Mail size={18} />
+                Email Us
+              </a>
             </div>
           </div>
         </motion.div>

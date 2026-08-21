@@ -11,7 +11,7 @@ export interface FAQ {
 export interface ServicePageData {
   title: string;
   subtitle: string;
-  category: 'engineering' | 'intelligent' | 'growth' | 'infrastructure' | 'design' | 'consulting';
+  category: 'engineering' | 'intelligent' | 'growth';
   capabilities: Capability[];
   technologies: string[];
   faqs: FAQ[];
@@ -19,241 +19,176 @@ export interface ServicePageData {
 
 export const serviceMap: Record<string, ServicePageData> = {
   'software-development': {
-    title: 'Software Development',
-    subtitle: 'Construct bespoke database frameworks, ERP systems, and cloud platforms engineered for stability and growth.',
+    title: 'Custom Software Development',
+    subtitle: 'We build custom software tailored to your business needs — from custom workflow tools to full SaaS applications.',
     category: 'engineering',
     capabilities: [
-      { title: 'Custom Software Systems', desc: 'Bespoke backend and frontend architectures tailored to solve business bottlenecks.' },
-      { title: 'Enterprise Software', desc: 'High-availability CRM registries, inventory directories, and transactional billing portals.' },
-      { title: 'SaaS Platforms', desc: 'Secure, multi-tenant software models with isolated storage spaces and API token routes.' },
-      { title: 'CRM & ERP Development', desc: 'Connecting client files, operational schedules, and corporate databases under uniform dashboards.' }
+      { title: 'Custom Business Software', desc: 'Software built specifically for your operational workflows, order processing, and team management.' },
+      { title: 'SaaS Product Development', desc: 'Multi-tenant web software built so you can offer subscription-based products to your clients.' },
+      { title: 'Business Management Software', desc: 'Centralized tools to organize operations, staff roles, and daily company tasks.' },
+      { title: 'API & Database Systems', desc: 'Secure backend architectures and APIs to connect your tools and third-party services.' }
     ],
-    technologies: ['React', 'Node.js', 'Go', '.NET', 'PostgreSQL', 'TypeScript'],
+    technologies: ['React', 'Next.js', 'Node.js', 'TypeScript', 'PostgreSQL', 'MongoDB'],
     faqs: [
-      { q: 'What is custom software development?', a: 'Custom software development involves building tailormade systems designed to meet your specific operational needs and integrate cleanly with your existing database structures.' },
-      { q: 'Do you help modernize legacy codebases?', a: 'Yes. We run legacy audits, refactor monolithic code into decoupled microservices, and migrate databases to modern structures without disrupting current operations.' },
-      { q: 'What frameworks do you use for mobile applications?', a: 'We construct cross-platform applications using Flutter and React Native to minimize development costs, while maintaining native Swift and Kotlin support for specialized hardware integrations.' }
+      { q: 'What is custom software development?', a: 'Custom software development means creating software designed specifically for your company instead of relying on generic off-the-shelf templates.' },
+      { q: 'How long does custom software development take?', a: 'Depending on complexity, project timelines range from 4 to 12 weeks for initial versions.' },
+      { q: 'Do you provide ongoing support after launch?', a: 'Yes. We offer maintenance, bug fixing, and continuous feature development.' }
     ]
   },
-  'ai': {
-    title: 'Artificial Intelligence',
-    subtitle: 'Deploy generative AI pipelines and autonomous cognitive workflow agents built on proven mathematical models.',
-    category: 'intelligent',
-    capabilities: [
-      { title: 'Generative AI Tools', desc: 'Configuring private large language models locked to local corporate files.' },
-      { title: 'AI Workflow Agents', desc: 'Autonomous program threads that run database queries, select APIs, and route updates.' },
-      { title: 'Machine Learning Pipelines', desc: 'Training classification and regression scripts on cleaned historical data.' },
-      { title: 'Natural Language Processing (NLP)', desc: 'Developing automated sentiment analyzers and script text categorization tools.' }
-    ],
-    technologies: ['Python', 'PyTorch', 'TensorFlow', 'LangChain', 'OpenAI APIs', 'Vector Databases'],
-    faqs: [
-      { q: 'What are AI Agents?', a: 'AI Agents are autonomous software nodes capable of processing inputs, referencing databases, selecting tools, and triggering downstream APIs to complete business tasks without manual intervention.' },
-      { q: 'How do you prevent model hallucinations?', a: 'We restrict the model\'s environment using strict Retrieval-Augmented Generation (RAG) models, feeding the LLM only validated documents and using custom guards to audit outputs.' },
-      { q: 'Do you support model fine-tuning?', a: 'Yes. When pre-trained models are insufficient, we configure fine-tuning pipelines on secure, isolated clusters using your proprietary dataset.' }
-    ]
-  },
-  'seo': {
-    title: 'SEO Services',
-    subtitle: 'Build sustainable visibility and capture high-intent organic visitors using robust search engineering structures.',
-    category: 'growth',
-    capabilities: [
-      { title: 'Technical SEO Audits', desc: 'Code optimization, speed tune-ups, responsive tag configs, and crawler routing schemas.' },
-      { title: 'Enterprise Search Scaling', desc: 'Mapping search patterns for global catalogs housing thousands of product directories.' },
-      { title: 'Programmatic SEO Grids', desc: 'Creating script-driven template pages that safely index highly specific search terms.' },
-      { title: 'Local Search Visibility', desc: 'Aligning maps metadata, business listings, and region-specific index nodes.' }
-    ],
-    technologies: ['HTML5 Semantics', 'Next.js', 'Google Search Console', 'Schema.org JSON-LD', 'PageSpeed Insights', 'Google Analytics'],
-    faqs: [
-      { q: 'What is Technical SEO?', a: 'Technical SEO focuses on server-side configurations, page load speeds, semantic HTML structures, and responsive layouts to help search spiders crawl and index your pages efficiently.' },
-      { q: 'How do you scale SEO for large websites?', a: 'We implement programmatic frameworks that dynamically build semantic, SEO-optimized page nodes, utilizing structured JSON-LD schemas to communicate entity connections to search crawlers.' },
-      { q: 'Do you support conversion rate optimization (CRO)?', a: 'Yes. Attracting organic traffic is only half the process. We evaluate user scroll depths, click heatmaps, and form funnel completions to optimize layouts, components, and calls to action.' }
-    ]
-  },
-  'digital-marketing': {
-    title: 'Digital Marketing',
-    subtitle: 'Optimize search presence and organic conversion pathways using crawlable site blueprints.',
-    category: 'growth',
-    capabilities: [
-      { title: 'PPC Campaign Optimization', desc: 'Structuring pay-per-click accounts (Google Ads, Meta Ads) to target qualified leads and lower customer acquisition costs.' },
-      { title: 'Technical & Local Search', desc: 'Optimizing site index speed, localized directories, maps visibility, and corporate schema alignments.' },
-      { title: 'Content & Email Strategy', desc: 'Writing technical, value-focused product guides and constructing automated newsletter pipelines that retain clients.' },
-      { title: 'Conversion Rate Optimization (CRO)', desc: 'Auditing page funnels, running interface tests, and adjusting form designs to convert visitors into business leads.' }
-    ],
-    technologies: ['Google Ads Coordinate', 'Meta Ads Manager', 'Google Tag Manager', 'Hotjar user telemetry', 'A/B Testing engines', 'Mailchimp automation'],
-    faqs: [
-      { q: 'What is performance marketing?', a: 'Performance marketing focuses on digital campaigns where budgets are optimized directly against measurable actions, such as form submissions, product sign-ups, or demo downloads.' },
-      { q: 'How do you coordinate performance PPC ad accounts?', a: 'We structure campaigns based on search-intent indexing, tracking landing page conversion rates and adjusting bids dynamically to prioritize search queries that yield real sales leads.' },
-      { q: 'Do you focus on conversion rate optimization (CRO)?', a: 'Yes. We run usability diagnostics and button configuration checks to eliminate customer friction points, optimizing forms to maximize registration rates.' }
-    ]
-  },
-  'cloud': {
-    title: 'Cloud Computing',
-    subtitle: 'Design, optimize, and migrate to scalable, redundant cloud environments with guaranteed system security.',
-    category: 'infrastructure',
-    capabilities: [
-      { title: 'Multi-Cloud Architecture', desc: 'Designing hybrid AWS, Azure, and Google Cloud environments that support global scale and automatic failover.' },
-      { title: 'Cloud Infrastructure Audits', desc: 'Auditing existing virtual environments to locate security weaknesses, eliminate duplicate costs, and optimize bandwidth.' },
-      { title: 'Cloud Migration', desc: 'Safe transfer of databases, servers, and applications from on-premise hardware to secure container systems.' },
-      { title: 'Serverless Configurations', desc: 'Deploying serverless compute scripts that scale up dynamically during traffic surges and drop costs to zero when idle.' }
-    ],
-    technologies: ['AWS', 'Microsoft Azure', 'Google Cloud Platform', 'Terraform', 'Serverless Framework', 'Prometheus', 'Grafana'],
-    faqs: [
-      { q: 'What is a multi-cloud strategy?', a: 'Multi-cloud computing distributes services across AWS, Azure, or GCP to prevent vendor lock-in, optimize regional latency, and ensure near-zero downtime in the event of provider outages.' },
-      { q: 'How do you minimize cloud migration downtime?', a: 'We establish staging instances, synchronizing database transactions in real-time, and run gradual DNS transfers to switch traffic safely without service interruptions.' },
-      { q: 'Do you support serverless hosting setups?', a: 'Yes. We configure serverless functions (like AWS Lambda) to handle transactional endpoints, dramatically reducing infrastructure costs for irregular traffic loads.' }
-    ]
-  },
-  'cybersecurity': {
-    title: 'Cybersecurity',
-    subtitle: 'Secure digital assets, protect codebases, and maintain strict data privacy compliance.',
-    category: 'infrastructure',
-    capabilities: [
-      { title: 'Penetration Testing', desc: 'Simulating active network attacks to locate security exploits, system vulnerabilities, and access control issues.' },
-      { title: 'Security Audits', desc: 'Detailed analysis of code bases, employee access rules, server setups, and network firewalls.' },
-      { title: 'Vulnerability Assessment', desc: 'Running continuous scanner suites to catch new security leaks, library version exploits, and package vulnerabilities.' },
-      { title: 'Compliance Counseling', desc: 'Aligning enterprise network setups and data processes with strict GDPR, SOC2, HIPAA, and ISO certifications.' }
-    ],
-    technologies: ['OWASP Top 10 Standards', 'Kali Linux diagnostic tools', 'Zero-Trust Access tools', 'SOC2 Compliance audits', 'Static Code Analysis tools'],
-    faqs: [
-      { q: 'What is a vulnerability assessment?', a: 'A vulnerability assessment uses automated scans and code analyzers to catalog security gaps, software version exploits, and network configuration errors in your ecosystem.' },
-      { q: 'Do you help align with SOC2 compliance?', a: 'Yes. We audit your access logs, configure data encryption policies, set up network rules, and prepare the engineering documentation required to pass formal SOC2 audits.' },
-      { q: 'How often should an enterprise run penetration testing?', a: 'We recommend scheduling penetration tests annually, or immediately after launching major software updates, to intercept new security vulnerabilities.' }
-    ]
-  },
-  'devops': {
-    title: 'DevOps',
-    subtitle: 'Accelerate your software release cycles safely using GitOps container automation and IaC frameworks.',
-    category: 'infrastructure',
-    capabilities: [
-      { title: 'CI/CD Pipeline Automation', desc: 'Configuring Git workflows that automatically run tests, build Docker containers, and deploy to staging or production.' },
-      { title: 'Container Orchestration', desc: 'Deploying Kubernetes clusters to coordinate containers, scale pods automatically, and balance server traffic.' },
-      { title: 'Infrastructure as Code (IaC)', desc: 'Writing Terraform scripts to define and provision database networks and server instances programmatically.' },
-      { title: 'Continuous System Monitoring', desc: 'Setting up automated system checks, error trackers, and load alerts that warn technicians before servers crash.' }
-    ],
-    technologies: ['Docker', 'Kubernetes', 'Terraform', 'GitHub Actions', 'GitLab CI', 'Prometheus & Grafana', 'Helm charts'],
-    faqs: [
-      { q: 'What is GitOps CI/CD?', a: 'GitOps CI/CD automates software deployments by using Git repositories as the single source of truth for infrastructure configurations, triggering builds and testing routines on code commits.' },
-      { q: 'How does Kubernetes assist operational scaling?', a: 'Kubernetes monitors application traffic and resource consumption, scaling pod instances up or down to ensure stable performance during traffic spikes while reducing costs during idle periods.' },
-      { q: 'What is Infrastructure as Code (IaC)?', a: 'Infrastructure as Code lets engineers define cloud resources (databases, servers, network routes) using readable configurations (like Terraform) to deploy identical environments reliably.' }
-    ]
-  },
-  'data-engineering': {
-    title: 'Data Engineering',
-    subtitle: 'Aggregate, clean, and structure raw business datasets into secure warehouse pipelines.',
+  'erp': {
+    title: 'ERP System Development',
+    subtitle: 'We build custom ERP software, inventory systems, CRM, HRMS, and business management tools for growing companies.',
     category: 'engineering',
     capabilities: [
-      { title: 'ETL Pipeline Design', desc: 'Automating scripts that extract, clean, and load large dataset batches.' },
-      { title: 'Data Warehousing', desc: 'Constructing optimized schema directories on Snowflake or Redshift.' },
-      { title: 'Big Data Processing', desc: 'Deploying stream processing tools like Apache Spark to analyze high-frequency traffic.' },
-      { title: 'Business Intelligence', desc: 'Exposing pipeline directories to visualization dashboards like PowerBI.' }
+      { title: 'Manufacturing & Retail ERP', desc: 'Custom ERP solutions for factory production tracking, supply flow, and retail store management.' },
+      { title: 'Inventory & Warehouse Management', desc: 'Real-time stock tracking, warehouse organization, stock alerts, and supplier management tools.' },
+      { title: 'CRM & Billing Software', desc: 'Customer management portals, automated invoicing, POS integrations, and transaction history.' },
+      { title: 'School, Hospital & HRMS ERP', desc: 'Specialized management software for educational institutions, medical clinics, and HR staff tracking.' }
     ],
-    technologies: ['Python', 'PostgreSQL', 'Snowflake', 'Apache Spark', 'Airflow', 'Kafka'],
+    technologies: ['React', 'Next.js', 'Node.js', 'TypeScript', 'PostgreSQL', 'MongoDB', 'Redis'],
     faqs: [
-      { q: 'What is data engineering?', a: 'Data engineering is the practice of designing and building systems that aggregate, clean, and organize raw transactional data so that business intelligence systems can run queries.' },
-      { q: 'Do you configure data pipelines in real-time?', a: 'Yes. We configure telemetry pipelines using Kafka and Apache Spark to capture and route transactions as they occur.' },
-      { q: 'Which data warehouses do you support?', a: 'We build schemas and coordinate transfers for Snowflake, Amazon Redshift, and Google BigQuery based on your cloud framework.' }
+      { q: 'What types of ERP software do you build?', a: 'We build Manufacturing ERP, Inventory Management Systems, CRM, HRMS, School ERP, Hospital ERP, Warehouse Management, Retail ERP, Billing & POS software.' },
+      { q: 'Why choose custom ERP over ready-made software?', a: 'Custom ERP fits your exact workflows without unnecessary subscription fees or rigid processes that force you to change how you work.' },
+      { q: 'Can custom ERP connect with existing billing or POS systems?', a: 'Yes. We build custom API connectors to sync data between your ERP, payment gateways, and POS hardware.' }
     ]
   },
-  'mobile-app-development': {
-    title: 'Mobile App Development',
-    subtitle: 'Build responsive, secure cross-platform and native mobile applications.',
+  'software-redesign': {
+    title: 'Software Redesign & Modernization',
+    subtitle: 'We help you update legacy, slow, or outdated software so it runs faster, looks modern, and is easy to maintain.',
     category: 'engineering',
     capabilities: [
-      { title: 'Cross-Platform Applications', desc: 'Deploying Flutter and React Native setups to sync layouts across platforms.' },
-      { title: 'Native iOS & Android', desc: 'Writing Swift and Kotlin configurations for specialized mobile hardware.' },
-      { title: 'Offline-First Telemetry', desc: 'Setting up SQLite databases inside clients to process inputs offline.' },
-      { title: 'Biometric Identifications', desc: 'Integrating face and touch validation scripts to secure data assets.' }
+      { title: 'Legacy System Modernization', desc: 'Rebuilding older software with modern frameworks to improve speed, security, and reliability.' },
+      { title: 'Code Refactoring & Cleanup', desc: 'Fixing messy codebases and structural bugs to make software easy to update.' },
+      { title: 'UI/UX Interface Redesign', desc: 'Updating screen layouts and user flows so your software looks modern and intuitive.' },
+      { title: 'Database Migration', desc: 'Safely transferring data from legacy systems to modern database architecture.' }
     ],
-    technologies: ['Flutter', 'React Native', 'Swift', 'Kotlin', 'SQLite', 'Firebase'],
+    technologies: ['React', 'Next.js', 'Node.js', 'TypeScript', 'PostgreSQL', 'MongoDB'],
     faqs: [
-      { q: 'Do you write native mobile applications?', a: 'Yes. We program native applications in Swift and Kotlin when access to complex device hardware or low-level threading is required.' },
-      { q: 'What is your cross-platform strategy?', a: 'We build hybrid mobile apps in Flutter or React Native, utilizing a single code base to reduce development timelines while ensuring responsive interface animations.' },
-      { q: 'Can mobile apps store data offline?', a: 'Yes. We configure secure SQLite data layers that cache inputs locally, syncing records to cloud backends once network connections are restored.' }
+      { q: 'When should software be modernized?', a: 'If your current system is slow, hard to update, or lacking security, modernization restores performance.' },
+      { q: 'Will existing data be preserved during modernization?', a: 'Yes. We execute data backups and safe migration scripts without loss.' }
     ]
   },
   'web-development': {
     title: 'Web Development',
-    subtitle: 'Deploy high-performance frontend designs and secure server integrations.',
+    subtitle: 'We build fast, modern websites and web applications designed to perform well on desktop and mobile devices.',
     category: 'engineering',
     capabilities: [
-      { title: 'Next.js & React Apps', desc: 'Building responsive web pages, admin screens, and client dashboard panels.' },
-      { title: 'Secure API Backends', desc: 'Writing robust backend controllers in Node.js, Go, or Python.' },
-      { title: 'Performance Engineering', desc: 'Optimizing web vitals, image loading, and caching patterns to ensure fast indexing.' },
-      { title: 'Corporate Sync Portals', desc: 'Creating directory pages and client portal databases.' }
+      { title: 'Business Websites', desc: 'Fast, responsive corporate websites built to represent your brand and convert visitors.' },
+      { title: 'Web Applications', desc: 'Interactive portals, customer dashboards, and admin web systems.' },
+      { title: 'E-commerce Platforms', desc: 'Online stores with product catalogs, shopping carts, checkout, and order tracking.' },
+      { title: 'PageSpeed & Performance', desc: 'Clean HTML and Next.js optimization for fast loading times.' }
     ],
-    technologies: ['React', 'Next.js', 'Node.js', 'Express', 'TypeScript', 'Vite', 'PostgreSQL'],
+    technologies: ['React', 'Next.js', 'Node.js', 'TypeScript', 'PostgreSQL', 'MongoDB'],
     faqs: [
-      { q: 'Do you specialize in React or Next.js?', a: 'We configure both. We use Next.js for portal setups that benefit from server-side rendering, and React with Vite for fast client dashboards.' },
-      { q: 'How do you optimize web load speeds?', a: 'We enforce modular script splitting, image resizing, and cache routing to minimize load assets, maintaining fast Core Web Vitals.' },
-      { q: 'Are your web portals responsive?', a: 'Yes. All layouts are designed using responsive styling grids to ensure usability across mobile, tablet, and widescreen layouts.' }
+      { q: 'What web development frameworks do you use?', a: 'We build primarily with Next.js, React, Node.js, and TypeScript.' },
+      { q: 'Are all websites responsive on mobile?', a: 'Yes. All websites adapt seamlessly to smartphone, tablet, and desktop screens.' }
     ]
   },
-  'ui-ux': {
-    title: 'UI/UX Design',
-    subtitle: 'Design clean user interfaces and interactive prototypes using system components.',
-    category: 'design',
+  'android-app-development': {
+    title: 'Android App Development',
+    subtitle: 'We build fast, reliable Android mobile apps ready for launch on the Google Play Store.',
+    category: 'engineering',
     capabilities: [
-      { title: 'User Journey Mapping', desc: 'Researching page click flows and identifying layout bottlenecks.' },
-      { title: 'Wireframe Blueprints', desc: 'Drafting structural page grids in Figma before coding.' },
-      { title: 'Figma Design Systems', desc: 'Organizing standardized color values, buttons, inputs, and layouts.' },
-      { title: 'Responsive Prototypes', desc: 'Providing interactive mockups to test layout usability.' }
+      { title: 'Native Android Apps', desc: 'Android applications engineered for performance and full hardware compatibility.' },
+      { title: 'Clean User Interface', desc: 'Intuitive screen design adhering to mobile usability standards.' },
+      { title: 'Offline Functionality', desc: 'Local storage caching to keep apps functional without network connectivity.' },
+      { title: 'Play Store Publishing', desc: 'Complete deployment setup for publishing to Google Play.' }
     ],
-    technologies: ['Figma', 'Interactive Prototyping tools', 'Responsive CSS Grids', 'Design Spec Guidelines'],
+    technologies: ['React Native', 'Flutter', 'Node.js', 'TypeScript', 'PostgreSQL', 'MongoDB'],
     faqs: [
-      { q: 'Why is a design system important?', a: 'A global Figma design system establishes unified buttons, colors, and layout metrics, ensuring visual consistency while accelerating development.' },
-      { q: 'Do you run usability testing?', a: 'Yes. We draft interactive journey prototypes to test user navigation and form completions before coding begins.' },
-      { q: 'Can you work with our existing brand guidelines?', a: 'Yes. We ingest your color assets and branding symbols to build custom, compliant interface components.' }
+      { q: 'Do you help publish the app to Google Play Store?', a: 'Yes. We manage the submission process through Google Play Console.' }
     ]
   },
-  'it-consulting': {
-    title: 'IT Strategy Consulting',
-    subtitle: 'Align your technology investments with your commercial goals. We counsel leadership through digital transformation.',
-    category: 'consulting',
+  'ios-app-development': {
+    title: 'iOS App Development',
+    subtitle: 'We build iPhone and iPad apps designed for high performance and smooth App Store approval.',
+    category: 'engineering',
     capabilities: [
-      { title: 'Digital Transformation', desc: 'Analyzing legacy processes, scoping modern software replacements, and mapping structural change guides.' },
-      { title: 'Fractional CTO Advisory', desc: 'Providing executive engineering leadership on tap to structure team roles, review designs, and audit vendors.' },
-      { title: 'Product Architecture Discovery', desc: 'Conducting discovery sprints, mapping scopes, drafting database schemas, and calculating realistic milestones.' },
-      { title: 'Startup Consulting', desc: 'Advising founders on database scaling, cloud cost minimizations, and technical MVP scope boundaries.' }
+      { title: 'Native iOS Apps', desc: 'Custom iOS applications optimized for speed and device security.' },
+      { title: 'Apple Interface Design', desc: 'Clean navigation tailored specifically for Apple device users.' },
+      { title: 'Push Notifications', desc: 'Automated messaging and notification alerts for user retention.' },
+      { title: 'App Store Publishing', desc: 'Complete management of the Apple App Store approval process.' }
     ],
-    technologies: ['Enterprise Architecture Mapping', 'Discovery Sprints', 'Framer / Figma wireframing', 'Agile scrum setups', 'Compliance roadmapping'],
+    technologies: ['React Native', 'Flutter', 'Node.js', 'TypeScript', 'PostgreSQL', 'MongoDB'],
     faqs: [
-      { q: 'What is digital transformation consulting?', a: 'Digital transformation consulting evaluates a company\'s manual or legacy procedures and outlines how to deploy modern cloud software to increase efficiency and data accuracy.' },
-      { q: 'What is CTO as a Service?', a: 'CTO as a Service provides fractional access to a senior technology leader to guide system choices, interview developers, and represent technical needs in executive meetings.' },
-      { q: 'Do you work with early-stage startups?', a: 'Yes. We guide startup founders through MVP definitions, database selections, and cost-effective cloud setups to launch digital products rapidly.' }
+      { q: 'How long does App Store submission take?', a: 'Apple review typically takes between 24 and 48 hours once submitted.' }
     ]
   },
-  'automation': {
-    title: 'Automation',
-    subtitle: 'Eliminate manual bottlenecks. We develop automated scripts, robotic bots, and database triggers.',
+  'cross-platform-app-development': {
+    title: 'Cross Platform App Development',
+    subtitle: 'We build mobile apps that run on both Android and iOS using a single shared codebase.',
+    category: 'engineering',
+    capabilities: [
+      { title: 'Flutter App Development', desc: 'High-speed cross-platform apps built with Google Flutter.' },
+      { title: 'React Native Apps', desc: 'Cross-platform mobile applications using React Native.' },
+      { title: 'Shared Backend API', desc: 'Single server infrastructure powering both mobile apps.' },
+      { title: 'Unified UI Experience', desc: 'Consistent layout and functionality across Android and iOS.' }
+    ],
+    technologies: ['Flutter', 'React Native', 'Node.js', 'TypeScript', 'PostgreSQL', 'MongoDB'],
+    faqs: [
+      { q: 'Why choose cross-platform mobile development?', a: 'Cross-platform reduces cost and time by maintaining one codebase for both platforms.' }
+    ]
+  },
+  'game-development': {
+    title: 'Game Development',
+    subtitle: 'We develop casual and 2D mobile games for Android and iOS devices.',
+    category: 'engineering',
+    capabilities: [
+      { title: 'Mobile Game Development', desc: 'Engaging mobile games with smooth touch controls and graphics.' },
+      { title: '2D & Casual Games', desc: 'Puzzle, arcade, and card games designed for quick play sessions.' },
+      { title: 'Game Monetization', desc: 'Integration of reward ads, in-app purchases, and store setups.' },
+      { title: 'App Store Deployment', desc: 'Full publishing support for Android and iOS gaming stores.' }
+    ],
+    technologies: ['React Native', 'Flutter', 'Node.js', 'MongoDB', 'Redis'],
+    faqs: [
+      { q: 'Can you publish games on both Android and iOS?', a: 'Yes. We prepare game builds for both platforms.' }
+    ]
+  },
+  'ai-integration': {
+    title: 'AI Integration',
+    subtitle: 'We integrate AI features like chatbots, OpenAI APIs, and smart search into your software.',
     category: 'intelligent',
     capabilities: [
-      { title: 'Workflow Automation', desc: 'Building custom scripts that connect distinct APIs, transfer data, and trigger notifications on specific actions.' },
-      { title: 'CRM & ERP Synchronization', desc: 'Automating calculations and syncing record updates between client registries, accounting ledgers, and CRM directories.' },
-      { title: 'Robotic Process Automation', desc: 'Creating RPA bots that automate repetitive, legacy manual operations that lack native API interfaces.' },
-      { title: 'AI-Driven Automatons', desc: 'Combining LLM classification nodes with automated workflows to categorize, summarize, and route user tickets.' }
+      { title: 'AI Chatbot Development', desc: 'Customer support chatbots powered by OpenAI that answer questions using your data.' },
+      { title: 'OpenAI API Integration', desc: 'Connecting GPT models to assist with content creation, summarization, and task drafting.' },
+      { title: 'Smart Search', desc: 'Search tools that understand user intent and deliver accurate results.' },
+      { title: 'Data Summarization', desc: 'Automated extraction of key information from customer records and documents.' }
     ],
-    technologies: ['Python scripts', 'Node.js actions', 'Zapier developer APIs', 'Make enterprise integrations', 'RPA engines', 'OpenAI APIs'],
+    technologies: ['OpenAI', 'LangChain', 'Node.js', 'Python', 'PostgreSQL', 'MongoDB'],
     faqs: [
-      { q: 'What is Business Process Automation?', a: 'Business Process Automation uses software scripts to automate repetitive operational tasks, such as importing data, generating status sheets, or updating user records, without human error.' },
-      { q: 'How do you integrate AI into workflow automation?', a: 'We embed AI classification nodes in your pipelines, allowing automated scripts to evaluate email text, classify incoming inquiries, and route them to corresponding departments.' },
-      { q: 'Can you automate legacy systems?', a: 'Yes. We build Robotic Process Automation (RPA) bots that interact with user interfaces to transfer data safely.' }
+      { q: 'Can AI be added to our existing website or software?', a: 'Yes. We integrate AI features directly via modern API connectors.' },
+      { q: 'Is company data kept private?', a: 'Yes. Data used in private OpenAI API integrations is protected and not used for public model training.' }
     ]
   },
-  'branding': {
-    title: 'Branding',
-    subtitle: 'Shape professional brand identities, corporate logos, and graphic layouts.',
-    category: 'design',
+  'ai-automation': {
+    title: 'AI Automation',
+    subtitle: 'We build automated workflows powered by AI to eliminate repetitive tasks and save manual hours.',
+    category: 'intelligent',
     capabilities: [
-      { title: 'Brand Guidelines', desc: 'Establishing corporate color assets, font scales, and spacing standards.' },
-      { title: 'Logo Vector Layouts', desc: 'Designing responsive vector logos that scale cleanly across print and browser headers.' },
-      { title: 'Product Interface Styling', desc: 'Coordinating visual brand guidelines with software design systems.' },
-      { title: 'Visual Graphic layouts', desc: 'Constructing clean vectors, diagrams, and operational charts.' }
+      { title: 'Workflow Automation', desc: 'Scripts that automate data entry, record updates, and task routing.' },
+      { title: 'Email & Ticket Processing', desc: 'AI filters that categorize incoming client support requests automatically.' },
+      { title: 'Document Reading', desc: 'Extracting invoice, receipt, and contract data into your software.' },
+      { title: 'Process Optimization', desc: 'Connecting internal business tools to reduce manual steps.' }
     ],
-    technologies: ['Figma style guides', 'SVG vector templates', 'Typography scales', 'Corporate brand guidelines'],
+    technologies: ['OpenAI', 'LangChain', 'Node.js', 'Python', 'PostgreSQL', 'Redis'],
     faqs: [
-      { q: 'What is included in brand guidelines?', a: 'Brand guidelines define your typography systems, color assets, spacing parameters, and logo configurations to maintain visual consistency across all media.' },
-      { q: 'Do you deliver vector SVG files?', a: 'Yes. All logo designs, charts, and icons are delivered in vector SVG format to ensure they scale crisply on high-resolution displays.' },
-      { q: 'How do you align branding with software interface designs?', a: 'We translate your brand guidelines into usable design variables (CSS variables and Figma components) to style your application menus and layouts.' }
+      { q: 'What tasks can AI automation handle?', a: 'Common uses include document processing, email sorting, invoice data extraction, and CRM record syncing.' }
+    ]
+  },
+  'seo': {
+    title: 'SEO Services',
+    subtitle: 'We help your business rank higher on Google through Technical SEO, Local SEO, and content optimization.',
+    category: 'growth',
+    capabilities: [
+      { title: 'Technical SEO', desc: 'Fixing site speed, mobile usability, HTML semantics, and indexing issues.' },
+      { title: 'On-Page SEO', desc: 'Optimizing titles, meta tags, heading structures, and targeted business keywords.' },
+      { title: 'Local SEO Company', desc: 'Optimizing local search presence and business directory listings.' },
+      { title: 'SEO Audits & Strategy', desc: 'Detailed technical reporting and step-by-step keyword growth planning.' }
+    ],
+    technologies: ['Next.js', 'HTML5', 'Google Search Console', 'Schema.org JSON-LD', 'Google Analytics'],
+    faqs: [
+      { q: 'What is Technical SEO?', a: 'Technical SEO ensures Google can easily crawl, index, and render your website pages fast.' },
+      { q: 'How long before SEO results appear?', a: 'Initial technical improvements take effect in 4 to 8 weeks, with steady growth over 3 to 6 months.' }
     ]
   }
 };

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Calendar, ShieldCheck, ArrowRight } from 'lucide-react';
+import { Mail, ShieldCheck, ArrowRight } from 'lucide-react';
 import { useAppNavigation } from '@/lib/utils/useNavigation';
 
 interface FreeAuditCTAProps {
@@ -11,9 +11,9 @@ interface FreeAuditCTAProps {
 }
 
 export const FreeAuditCTA: React.FC<FreeAuditCTAProps> = ({
-  title = 'Request an Enterprise Architecture & Codebase Audit',
-  description = 'Our principal staff engineers review your existing backend scalability, cloud security posture, and API performance. Receive a detailed report within 48 hours.',
-  buttonLabel = 'Schedule Technical Audit',
+  title = 'Have a Software, ERP or App Project in Mind?',
+  description = 'Tell us about your project requirements — whether you need custom software, an ERP system, a mobile app, AI features, or SEO services. We will get back to you with a clear plan and estimate.',
+  buttonLabel = 'Get Free Consultation',
 }) => {
   const { navigate } = useAppNavigation();
 
@@ -48,7 +48,7 @@ export const FreeAuditCTA: React.FC<FreeAuditCTAProps> = ({
         className="btn btn-primary"
         style={{ padding: '0.85rem 2rem', fontSize: '0.95rem', marginTop: '0.5rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
       >
-        <Calendar size={18} />
+        <Mail size={18} />
         {buttonLabel}
         <ArrowRight size={16} />
       </button>

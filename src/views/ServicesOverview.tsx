@@ -7,13 +7,13 @@ export const ServicesOverview: React.FC = () => {
       <div className="container" style={{ textAlign: 'left', marginBottom: '2rem' }}>
         <header style={{ maxWidth: '800px', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <span style={{ fontSize: '0.85rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--accent)', letterSpacing: '0.15em' }}>
-            Capabilities Directory
+            Our Services
           </span>
           <h1 style={{ fontSize: '3.5rem', fontWeight: 800, lineHeight: 1.15, letterSpacing: '-0.02em' }} className="text-gradient">
             Services &amp; Solutions
           </h1>
           <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-            We provide structured engineering, cognitive systems, secure hosting, and digital growth services tailored to your objectives.
+            We build custom software, websites, mobile apps, games, AI-powered solutions and help businesses grow with SEO.
           </p>
         </header>
       </div>

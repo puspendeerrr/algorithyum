@@ -136,37 +136,29 @@ export const Navbar: React.FC<NavbarProps> = ({
                       </button>
                       <div className={styles.megaMenu} role="menu" aria-label="Services Directory">
                         <div className={styles.megaColumn}>
-                          <h4 className={styles.megaColumnTitle}>Engineering</h4>
+                          <h4 className={styles.megaColumnTitle}>Software</h4>
                           <ul className={styles.megaLinkList}>
                             <li><a href="/services/software-development" onClick={(e) => { e.preventDefault(); handleNavClick('/services/software-development'); }} className={styles.megaLink}>Software Development</a></li>
+                            <li><a href="/services/erp" onClick={(e) => { e.preventDefault(); handleNavClick('/services/erp'); }} className={styles.megaLink}>ERP Development</a></li>
+                            <li><a href="/services/software-redesign" onClick={(e) => { e.preventDefault(); handleNavClick('/services/software-redesign'); }} className={styles.megaLink}>Software Redesign</a></li>
                             <li><a href="/services/web-development" onClick={(e) => { e.preventDefault(); handleNavClick('/services/web-development'); }} className={styles.megaLink}>Web Development</a></li>
-                            <li><a href="/services/mobile-app-development" onClick={(e) => { e.preventDefault(); handleNavClick('/services/mobile-app-development'); }} className={styles.megaLink}>Mobile App Dev</a></li>
-                            <li><a href="/services/ui-ux" onClick={(e) => { e.preventDefault(); handleNavClick('/services/ui-ux'); }} className={styles.megaLink}>UI/UX Design</a></li>
                           </ul>
                         </div>
                         <div className={styles.megaColumn}>
-                          <h4 className={styles.megaColumnTitle}>Advanced Tech</h4>
+                          <h4 className={styles.megaColumnTitle}>Mobile Apps</h4>
                           <ul className={styles.megaLinkList}>
-                            <li><a href="/services/ai" onClick={(e) => { e.preventDefault(); handleNavClick('/services/ai'); }} className={styles.megaLink}>Artificial Intelligence</a></li>
-                            <li><a href="/services/data-engineering" onClick={(e) => { e.preventDefault(); handleNavClick('/services/data-engineering'); }} className={styles.megaLink}>Data Engineering</a></li>
-                            <li><a href="/services/automation" onClick={(e) => { e.preventDefault(); handleNavClick('/services/automation'); }} className={styles.megaLink}>Automation</a></li>
-                            <li><a href="/services/it-consulting" onClick={(e) => { e.preventDefault(); handleNavClick('/services/it-consulting'); }} className={styles.megaLink}>IT Consulting</a></li>
+                            <li><a href="/services/android-app-development" onClick={(e) => { e.preventDefault(); handleNavClick('/services/android-app-development'); }} className={styles.megaLink}>Android App Development</a></li>
+                            <li><a href="/services/ios-app-development" onClick={(e) => { e.preventDefault(); handleNavClick('/services/ios-app-development'); }} className={styles.megaLink}>iOS App Development</a></li>
+                            <li><a href="/services/cross-platform-app-development" onClick={(e) => { e.preventDefault(); handleNavClick('/services/cross-platform-app-development'); }} className={styles.megaLink}>Cross Platform Apps</a></li>
+                            <li><a href="/services/game-development" onClick={(e) => { e.preventDefault(); handleNavClick('/services/game-development'); }} className={styles.megaLink}>Game Development</a></li>
                           </ul>
                         </div>
                         <div className={styles.megaColumn}>
-                          <h4 className={styles.megaColumnTitle}>Cloud &amp; Ops</h4>
+                          <h4 className={styles.megaColumnTitle}>AI & Growth</h4>
                           <ul className={styles.megaLinkList}>
-                            <li><a href="/services/cloud" onClick={(e) => { e.preventDefault(); handleNavClick('/services/cloud'); }} className={styles.megaLink}>Cloud Computing</a></li>
-                            <li><a href="/services/devops" onClick={(e) => { e.preventDefault(); handleNavClick('/services/devops'); }} className={styles.megaLink}>DevOps &amp; GitOps</a></li>
-                            <li><a href="/services/cybersecurity" onClick={(e) => { e.preventDefault(); handleNavClick('/services/cybersecurity'); }} className={styles.megaLink}>Cybersecurity</a></li>
-                          </ul>
-                        </div>
-                        <div className={styles.megaColumn}>
-                          <h4 className={styles.megaColumnTitle}>Growth &amp; Design</h4>
-                          <ul className={styles.megaLinkList}>
-                            <li><a href="/services/seo" onClick={(e) => { e.preventDefault(); handleNavClick('/services/seo'); }} className={styles.megaLink}>Technical SEO</a></li>
-                            <li><a href="/services/digital-marketing" onClick={(e) => { e.preventDefault(); handleNavClick('/services/digital-marketing'); }} className={styles.megaLink}>Digital Marketing</a></li>
-                            <li><a href="/services/branding" onClick={(e) => { e.preventDefault(); handleNavClick('/services/branding'); }} className={styles.megaLink}>Branding Systems</a></li>
+                            <li><a href="/services/ai-integration" onClick={(e) => { e.preventDefault(); handleNavClick('/services/ai-integration'); }} className={styles.megaLink}>AI Integration</a></li>
+                            <li><a href="/services/ai-automation" onClick={(e) => { e.preventDefault(); handleNavClick('/services/ai-automation'); }} className={styles.megaLink}>AI Automation</a></li>
+                            <li><a href="/services/seo" onClick={(e) => { e.preventDefault(); handleNavClick('/services/seo'); }} className={styles.megaLink}>SEO Services</a></li>
                           </ul>
                         </div>
                       </div>
@@ -190,7 +182,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       </button>
                       <div className={styles.megaMenu} role="menu" aria-label="Technologies Stack">
                         <div className={styles.megaColumn}>
-                          <h4 className={styles.megaColumnTitle}>Frontend &amp; Mobile</h4>
+                          <h4 className={styles.megaColumnTitle}>Frontend & Mobile</h4>
                           <ul className={styles.megaLinkList}>
                             <li><a href="/react" onClick={(e) => { e.preventDefault(); handleNavClick('/react'); }} className={styles.megaLink}>React</a></li>
                             <li><a href="/nextjs" onClick={(e) => { e.preventDefault(); handleNavClick('/nextjs'); }} className={styles.megaLink}>Next.js</a></li>
@@ -200,25 +192,15 @@ export const Navbar: React.FC<NavbarProps> = ({
                           </ul>
                         </div>
                         <div className={styles.megaColumn}>
-                          <h4 className={styles.megaColumnTitle}>Backend &amp; Logic</h4>
+                          <h4 className={styles.megaColumnTitle}>Backend & APIs</h4>
                           <ul className={styles.megaLinkList}>
                             <li><a href="/nodejs" onClick={(e) => { e.preventDefault(); handleNavClick('/nodejs'); }} className={styles.megaLink}>Node.js</a></li>
                             <li><a href="/services/software-development" onClick={(e) => { e.preventDefault(); handleNavClick('/services/software-development'); }} className={styles.megaLink}>Go (Golang)</a></li>
-                            <li><a href="/services/ai" onClick={(e) => { e.preventDefault(); handleNavClick('/services/ai'); }} className={styles.megaLink}>Python</a></li>
+                            <li><a href="/services/ai-integration" onClick={(e) => { e.preventDefault(); handleNavClick('/services/ai-integration'); }} className={styles.megaLink}>Python</a></li>
                           </ul>
                         </div>
                         <div className={styles.megaColumn}>
-                          <h4 className={styles.megaColumnTitle}>Cloud &amp; Platforms</h4>
-                          <ul className={styles.megaLinkList}>
-                            <li><a href="/aws" onClick={(e) => { e.preventDefault(); handleNavClick('/aws'); }} className={styles.megaLink}>AWS</a></li>
-                            <li><a href="/azure" onClick={(e) => { e.preventDefault(); handleNavClick('/azure'); }} className={styles.megaLink}>Microsoft Azure</a></li>
-                            <li><a href="/google-cloud" onClick={(e) => { e.preventDefault(); handleNavClick('/google-cloud'); }} className={styles.megaLink}>Google Cloud</a></li>
-                            <li><a href="/docker" onClick={(e) => { e.preventDefault(); handleNavClick('/docker'); }} className={styles.megaLink}>Docker</a></li>
-                            <li><a href="/kubernetes" onClick={(e) => { e.preventDefault(); handleNavClick('/kubernetes'); }} className={styles.megaLink}>Kubernetes</a></li>
-                          </ul>
-                        </div>
-                        <div className={styles.megaColumn}>
-                          <h4 className={styles.megaColumnTitle}>Data &amp; Core Tech</h4>
+                          <h4 className={styles.megaColumnTitle}>AI & Databases</h4>
                           <ul className={styles.megaLinkList}>
                             <li><a href="/postgresql" onClick={(e) => { e.preventDefault(); handleNavClick('/postgresql'); }} className={styles.megaLink}>PostgreSQL</a></li>
                             <li><a href="/mongodb" onClick={(e) => { e.preventDefault(); handleNavClick('/mongodb'); }} className={styles.megaLink}>MongoDB</a></li>
@@ -264,9 +246,9 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={handleConsultation}
               className="btn btn-primary"
               style={{ padding: '0.5rem 1.25rem', fontSize: '0.85rem' }}
-              aria-label="Request a technical strategy consultation"
+              aria-label="Get in touch with us"
             >
-              Consultation
+              Get in Touch
               <ArrowRight size={14} aria-hidden="true" />
             </button>
 
@@ -316,7 +298,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 className="btn btn-primary"
                 style={{ width: '100%' }}
               >
-                Book Consultation
+                Get in Touch
                 <ArrowRight size={16} />
               </button>
             </div>

@@ -23,10 +23,10 @@ export const ContactPage: React.FC = () => {
             Get in Touch
           </span>
           <h1 style={{ fontSize: '3.5rem', fontWeight: 800, lineHeight: 1.15, letterSpacing: '-0.02em' }} className="text-gradient">
-            Let&apos;s Build Something Exceptional
+            Let&apos;s Talk About Your Project
           </h1>
           <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-            Have a software project, AI solution, website, mobile app, cloud migration, or digital transformation requirement? Our team would be happy to discuss your project.
+            Need a software, website, mobile app, game, AI or SEO solution? We&apos;d love to hear about your project.
           </p>
         </header>
 
@@ -40,13 +40,13 @@ export const ContactPage: React.FC = () => {
                 <Mail size={24} />
               </div>
               <div>
-                <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Official Mailbox</span>
+                <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Email Us</span>
                 <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--text-primary)' }}>info@algorithyum.in</h2>
               </div>
             </div>
 
             <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-              Send your project specifications, RFP documents, or architecture requirements directly to our engineering lead team.
+              Tell us about your project — what you need, your timeline, and your budget. We&apos;ll get back to you with an honest assessment and a clear plan.
             </p>
 
             <div>
@@ -63,7 +63,7 @@ export const ContactPage: React.FC = () => {
 
             <div style={{ paddingTop: '1rem', borderTop: '1px solid var(--border-color)', display: 'flex', alignItems: 'center', gap: '0.75rem', color: 'var(--text-muted)', fontSize: '0.9rem' }}>
               <Clock size={16} style={{ color: 'var(--accent-light)' }} />
-              <span>We usually respond within 24 business hours.</span>
+              <span>We usually reply within 24 business hours.</span>
             </div>
           </div>
 

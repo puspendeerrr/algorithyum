@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Calendar, Sparkles } from 'lucide-react';
+import { ArrowRight, Mail, Sparkles } from 'lucide-react';
 import { useAppNavigation } from '@/lib/utils/useNavigation';
 import styles from './Hero.module.css';
 
@@ -158,7 +158,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
           className={styles.badge}
         >
           <Sparkles size={14} />
-          Innovation Reimagined
+          Software & AI Solutions
         </motion.div>
 
         {/* Animated Headline */}
@@ -168,8 +168,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className={styles.headline}
         >
-          Engineering the Future with <br />
-          <span className="text-gradient">Intelligent Technology</span>.
+          Custom Software, ERP, Mobile Apps <br />
+          <span className="text-gradient">& AI Solutions</span>
         </motion.h1>
 
         {/* Animated Subheadline */}
@@ -179,7 +179,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
           transition={{ duration: 0.6, delay: 0.25 }}
           className={styles.subheadline}
         >
-          Algorithyum empowers startups, enterprises, and governments through cutting-edge software, AI, cloud infrastructure, cybersecurity, and digital transformation solutions.
+          We build custom software, ERP systems, websites, mobile apps, games, AI-powered solutions and help businesses grow with SEO.
         </motion.p>
 
         {/* Action Buttons */}
@@ -190,13 +190,13 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
           className={styles.btnGroup}
         >
           <button onClick={handleGetStarted} className="btn btn-primary">
-            Get Started
+            Get Free Consultation
             <ArrowRight size={18} />
           </button>
-          <button onClick={onOpenConsultation} className="btn btn-secondary">
-            <Calendar size={18} />
-            Schedule Consultation
-          </button>
+          <a href="mailto:info@algorithyum.in" className="btn btn-secondary">
+            <Mail size={18} />
+            Email Us
+          </a>
         </motion.div>
       </div>
     </section>

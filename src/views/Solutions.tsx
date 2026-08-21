@@ -3,8 +3,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  RefreshCw, Cpu, Layers, BarChart3, Calendar, 
-  CheckCircle2, ArrowRight, Settings, Sparkles 
+  RefreshCw, Cpu, Smartphone, BarChart3, 
+  CheckCircle2, ArrowRight, Settings, Sparkles, Code, Globe, Layers
 } from 'lucide-react';
 import { useAppNavigation } from '@/lib/utils/useNavigation';
 import styles from './Solutions.module.css';
@@ -25,87 +25,125 @@ interface Solution {
 
 export const Solutions: React.FC<SolutionsProps> = () => {
   const { navigate } = useAppNavigation();
-  const [selectedBottleneck, setSelectedBottleneck] = useState<string>('modernization');
+  const [selectedBottleneck, setSelectedBottleneck] = useState<string>('software');
 
   const solutionData: Solution[] = [
     {
-      title: 'Monolithic Legacy Modernization',
-      icon: <RefreshCw size={24} />,
-      challenge: 'Legacy codebases and siloed database systems are difficult to scale, leading to service faults and high developer maintenance costs.',
-      delivery: 'We run codebase audits, refactor codebases into decoupled microservices, secure data migrations, and configure modern Docker containers.',
-      metric: '99.99% Uptime',
-      tags: ['Docker', 'Microservices', 'REST APIs', 'PostgreSQL'],
+      title: 'Custom Software for Your Business',
+      icon: <Code size={24} />,
+      challenge: 'Off-the-shelf software doesn\'t fit your business. You\'re working around limitations, using multiple disconnected tools, or doing things manually.',
+      delivery: 'We build custom software designed specifically for how your business works — one system that does exactly what you need.',
+      metric: 'Built for You',
+      tags: ['React', 'Node.js', 'TypeScript', 'PostgreSQL'],
       glowColor: 'rgba(0, 82, 255, 0.15)'
     },
     {
-      title: 'Secure Generative AI Integration',
-      icon: <Cpu size={24} />,
-      challenge: 'Enterprises want to deploy generative large language models but cannot expose proprietary data to open public API registries.',
-      delivery: 'We build private Retrieval-Augmented Generation (RAG) models, design autonomous agent tools, and deploy guards to prevent hallucinations.',
-      metric: 'Zero-Leak Security',
-      tags: ['OpenAI', 'RAG', 'LangChain', 'Python'],
+      title: 'Custom ERP & Management Software',
+      icon: <Layers size={24} />,
+      challenge: 'Managing inventory, billing, manufacturing, sales, and HR across separate tools creates confusion and data errors.',
+      delivery: 'We build custom ERP software, CRM systems, inventory management, and POS software to run your whole business in one place.',
+      metric: 'All-in-One ERP',
+      tags: ['React', 'Next.js', 'Node.js', 'PostgreSQL', 'Redis'],
+      glowColor: 'rgba(59, 130, 246, 0.15)'
+    },
+    {
+      title: 'Modernize Outdated Software',
+      icon: <RefreshCw size={24} />,
+      challenge: 'Your current software is slow, looks outdated, uses old technology, and is becoming harder and more expensive to maintain.',
+      delivery: 'We redesign and rebuild your software using modern technologies — making it faster, more reliable, and easier to update.',
+      metric: 'Modern & Fast',
+      tags: ['React', 'Next.js', 'Node.js', 'MongoDB'],
       glowColor: 'rgba(139, 92, 246, 0.15)'
     },
     {
-      title: 'Infrastructure Scaling & DevOps CI/CD',
-      icon: <Layers size={24} />,
-      challenge: 'Manual deployment pipelines slow feature launches, while static server structures cause downtime during traffic surges.',
-      delivery: 'We configure GitOps CI/CD pipelines, provision Kubernetes networks, and write Terraform templates to automate cloud deployment.',
-      metric: '10x Build Speed',
-      tags: ['Kubernetes', 'Terraform', 'GitHub Actions', 'AWS'],
+      title: 'Mobile Apps for Android & iOS',
+      icon: <Smartphone size={24} />,
+      challenge: 'Your customers expect a mobile app, but building separate apps for Android and iOS is expensive and time-consuming.',
+      delivery: 'We build cross-platform apps with Flutter or React Native — one codebase that works on both platforms, saving time and money.',
+      metric: 'Both Platforms',
+      tags: ['Flutter', 'React Native', 'Node.js', 'MongoDB'],
       glowColor: 'rgba(6, 182, 212, 0.15)'
     },
     {
-      title: 'Dynamic Organic Search Visibility (SEO)',
-      icon: <BarChart3 size={24} />,
-      challenge: 'Traditional ad platforms yield high client acquisition costs, while slow page speeds limit organic search indexing.',
-      delivery: 'We build fast, accessible Next.js site templates, write dynamic JSON-LD schemas, and implement programmatic search visibility strategies.',
-      metric: '99+ LightHouse',
-      tags: ['Next.js', 'JSON-LD', 'Programmatic SEO', 'Lighthouse'],
+      title: 'AI-Powered Features for Your Software',
+      icon: <Cpu size={24} />,
+      challenge: 'You want to add AI features like chatbots, smart search, or automation to your existing software but don\'t know where to start.',
+      delivery: 'We integrate AI into your existing software — adding chatbots, content generation, document processing, and workflow automation.',
+      metric: 'Smart & Automated',
+      tags: ['OpenAI', 'LangChain', 'Python', 'Node.js'],
+      glowColor: 'rgba(245, 158, 11, 0.15)'
+    },
+    {
+      title: 'Websites That Rank on Google',
+      icon: <Globe size={24} />,
+      challenge: 'Your website is slow, doesn\'t rank well on Google, and isn\'t bringing in new customers or leads.',
+      delivery: 'We build fast, modern websites with Next.js and optimize them for search engines so more people find your business online.',
+      metric: 'SEO Optimized',
+      tags: ['Next.js', 'React', 'SEO', 'JSON-LD'],
       glowColor: 'rgba(16, 185, 129, 0.15)'
     }
   ];
 
   const diagnosticRecommendations: Record<string, { title: string; checklist: string[]; metric: string }> = {
-    modernization: {
-      title: 'Legacy Modernization Blueprint',
+    software: {
+      title: 'Custom Software Development',
       checklist: [
-        'Perform modular codebase dependencies audit',
-        'Extract microservices & establish API contracts',
-        'Dockerize services & coordinate migrations securely',
-        'Establish automated integrations unit testing checks'
+        'Understand your business requirements',
+        'Plan the features and technical approach',
+        'Design a clean, user-friendly interface',
+        'Build, test, and launch your software'
       ],
-      metric: '99.99% Operational Availability'
+      metric: 'Built Around Your Needs'
+    },
+    erp: {
+      title: 'ERP System Development',
+      checklist: [
+        'Analyze business operations & inventory workflows',
+        'Design custom ERP modules (CRM, Inventory, Billing, HRMS)',
+        'Build database pipelines & POS connections',
+        'Deploy, train staff, and support'
+      ],
+      metric: 'Centralized Business Operations'
+    },
+    modernize: {
+      title: 'Software Modernization',
+      checklist: [
+        'Audit your current software and identify problems',
+        'Plan the upgrade path and technology choices',
+        'Rebuild using modern, maintainable code',
+        'Migrate your data safely and go live'
+      ],
+      metric: 'Faster & More Reliable'
+    },
+    mobile: {
+      title: 'Mobile App Development',
+      checklist: [
+        'Define app features and user flows',
+        'Choose the right framework (Flutter or React Native)',
+        'Build and test on both Android and iOS',
+        'Publish to Google Play and Apple App Store'
+      ],
+      metric: 'Android + iOS from One Codebase'
     },
     ai: {
-      title: 'Secure Generative AI Setup',
+      title: 'AI Integration & Automation',
       checklist: [
-        'Audit private data structures & storage pools',
-        'Deploy Retrieval-Augmented Generation (RAG) loops',
-        'Integrate LangChain autonomous workflow scripts',
-        'Set up safety guardrails to prevent data leaks'
+        'Identify tasks that can be automated with AI',
+        'Choose the right AI tools and models',
+        'Integrate AI features into your existing software',
+        'Test and optimize for accuracy and speed'
       ],
-      metric: 'Zero Leak Security Guarantee'
-    },
-    devops: {
-      title: 'Infrastructure DevOps Automations',
-      checklist: [
-        'Configure GitOps continuous deployment loops',
-        'Deploy isolated multi-region Kubernetes nodes',
-        'Write reusable Terraform cloud blueprints',
-        'Establish Prometheus alert notification cycles'
-      ],
-      metric: '10x Build Cycle Accelerations'
+      metric: 'Save Hours of Manual Work'
     },
     seo: {
-      title: 'Technical SEO Scaling Platform',
+      title: 'SEO & Web Performance',
       checklist: [
-        'Build server-rendered Next.js layouts',
-        'Configure JSON-LD schema search entities',
-        'Optimize images, static caching, & compression',
-        'Launch programmatic database-linked index loops'
+        'Audit your website for technical SEO issues',
+        'Optimize page speed and mobile experience',
+        'Improve content, titles, and meta descriptions',
+        'Set up tracking and measure improvements'
       ],
-      metric: '+300% Organic Rank Performance'
+      metric: 'More Organic Traffic'
     }
   };
 
@@ -118,13 +156,13 @@ export const Solutions: React.FC<SolutionsProps> = () => {
         {/* Page Header */}
         <header className={styles.pageHeader}>
           <span className={styles.subtitle}>
-            Operational Alignments
+            How We Help
           </span>
           <h1 className={`${styles.title} text-gradient`}>
-            Business Solutions
+            Solutions for Real Business Problems
           </h1>
           <p className={styles.desc}>
-            We design secure software, optimize server loads, and scale digital visibility to solve actual business challenges.
+            We build software, ERP systems, mobile apps, and AI tools that solve actual business challenges — not theoretical ones.
           </p>
         </header>
 
@@ -167,12 +205,12 @@ export const Solutions: React.FC<SolutionsProps> = () => {
 
               <div className={styles.sectionsWrapper}>
                 <div className={styles.infoSection}>
-                  <span className={styles.sectionLabel}>The Challenge</span>
+                  <span className={styles.sectionLabel}>The Problem</span>
                   <p className={styles.sectionText}>{sol.challenge}</p>
                 </div>
                 
                 <div className={styles.infoSection}>
-                  <span className={styles.sectionLabel}>Our Delivery</span>
+                  <span className={styles.sectionLabel}>Our Solution</span>
                   <p className={styles.deliveryText}>{sol.delivery}</p>
                 </div>
               </div>
@@ -194,11 +232,11 @@ export const Solutions: React.FC<SolutionsProps> = () => {
           <div className="section-header">
             <span className="section-subtitle" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <Settings size={14} className="spinning" />
-              Blueprint Diagnostics
+              Find Your Solution
             </span>
-            <h2 className={styles.diagnosticsTitle}>Interactive Solutions Configurator</h2>
+            <h2 className={styles.diagnosticsTitle}>What Do You Need Help With?</h2>
             <p className={styles.diagnosticsSubtitle}>
-              Select your organization's primary technical bottleneck to generate a targeted engineering blueprint with recommended steps and metrics.
+              Select your main challenge and we&apos;ll show you how we can help.
             </p>
           </div>
 
@@ -207,18 +245,57 @@ export const Solutions: React.FC<SolutionsProps> = () => {
               
               {/* Left Column: Selector */}
               <div>
-                <span className={styles.widgetLabel}>Identify Primary Bottleneck</span>
+                <span className={styles.widgetLabel}>What&apos;s Your Main Challenge?</span>
                 <div className={styles.optionsList}>
                   <button 
-                    onClick={() => setSelectedBottleneck('modernization')}
-                    className={`${styles.optionBtn} ${selectedBottleneck === 'modernization' ? styles.activeOptionBtn : ''}`}
+                    onClick={() => setSelectedBottleneck('software')}
+                    className={`${styles.optionBtn} ${selectedBottleneck === 'software' ? styles.activeOptionBtn : ''}`}
                   >
                     <div>
-                      <span className={styles.optionTitle}>Legacy Database &amp; Codebases</span>
-                      <span className={styles.optionDesc}>Refactor monolithic codebases into containerized microservices.</span>
+                      <span className={styles.optionTitle}>I Need Custom Software</span>
+                      <span className={styles.optionDesc}>Off-the-shelf tools don&apos;t fit my business needs.</span>
                     </div>
                     <div className={styles.optionCheck}>
-                      {selectedBottleneck === 'modernization' && <ArrowRight size={14} />}
+                      {selectedBottleneck === 'software' && <ArrowRight size={14} />}
+                    </div>
+                  </button>
+
+                  <button 
+                    onClick={() => setSelectedBottleneck('erp')}
+                    className={`${styles.optionBtn} ${selectedBottleneck === 'erp' ? styles.activeOptionBtn : ''}`}
+                  >
+                    <div>
+                      <span className={styles.optionTitle}>I Need an ERP or Management System</span>
+                      <span className={styles.optionDesc}>I need to manage inventory, billing, CRM or operations in one place.</span>
+                    </div>
+                    <div className={styles.optionCheck}>
+                      {selectedBottleneck === 'erp' && <ArrowRight size={14} />}
+                    </div>
+                  </button>
+
+                  <button 
+                    onClick={() => setSelectedBottleneck('modernize')}
+                    className={`${styles.optionBtn} ${selectedBottleneck === 'modernize' ? styles.activeOptionBtn : ''}`}
+                  >
+                    <div>
+                      <span className={styles.optionTitle}>My Software is Outdated</span>
+                      <span className={styles.optionDesc}>My current software is slow, old, or hard to maintain.</span>
+                    </div>
+                    <div className={styles.optionCheck}>
+                      {selectedBottleneck === 'modernize' && <ArrowRight size={14} />}
+                    </div>
+                  </button>
+
+                  <button 
+                    onClick={() => setSelectedBottleneck('mobile')}
+                    className={`${styles.optionBtn} ${selectedBottleneck === 'mobile' ? styles.activeOptionBtn : ''}`}
+                  >
+                    <div>
+                      <span className={styles.optionTitle}>I Need a Mobile App</span>
+                      <span className={styles.optionDesc}>I want an app for Android, iOS, or both.</span>
+                    </div>
+                    <div className={styles.optionCheck}>
+                      {selectedBottleneck === 'mobile' && <ArrowRight size={14} />}
                     </div>
                   </button>
 
@@ -227,24 +304,11 @@ export const Solutions: React.FC<SolutionsProps> = () => {
                     className={`${styles.optionBtn} ${selectedBottleneck === 'ai' ? styles.activeOptionBtn : ''}`}
                   >
                     <div>
-                      <span className={styles.optionTitle}>AI Adoption &amp; Data Privacy</span>
-                      <span className={styles.optionDesc}>Deploy private RAG architectures without public API leakage.</span>
+                      <span className={styles.optionTitle}>I Want to Add AI Features</span>
+                      <span className={styles.optionDesc}>I want chatbots, automation, or AI tools in my software.</span>
                     </div>
                     <div className={styles.optionCheck}>
                       {selectedBottleneck === 'ai' && <ArrowRight size={14} />}
-                    </div>
-                  </button>
-
-                  <button 
-                    onClick={() => setSelectedBottleneck('devops')}
-                    className={`${styles.optionBtn} ${selectedBottleneck === 'devops' ? styles.activeOptionBtn : ''}`}
-                  >
-                    <div>
-                      <span className={styles.optionTitle}>Pipeline Failures &amp; Cloud Speeds</span>
-                      <span className={styles.optionDesc}>Standardize environments with Kubernetes and GitOps templates.</span>
-                    </div>
-                    <div className={styles.optionCheck}>
-                      {selectedBottleneck === 'devops' && <ArrowRight size={14} />}
                     </div>
                   </button>
 
@@ -253,8 +317,8 @@ export const Solutions: React.FC<SolutionsProps> = () => {
                     className={`${styles.optionBtn} ${selectedBottleneck === 'seo' ? styles.activeOptionBtn : ''}`}
                   >
                     <div>
-                      <span className={styles.optionTitle}>Low Organic Search Traffic</span>
-                      <span className={styles.optionDesc}>Deploy server-side Next.js indexes and clean metadata schemas.</span>
+                      <span className={styles.optionTitle}>My Website Doesn&apos;t Rank on Google</span>
+                      <span className={styles.optionDesc}>I need better SEO and more organic traffic.</span>
                     </div>
                     <div className={styles.optionCheck}>
                       {selectedBottleneck === 'seo' && <ArrowRight size={14} />}
@@ -265,7 +329,7 @@ export const Solutions: React.FC<SolutionsProps> = () => {
 
               {/* Right Column: Blueprint recommendation */}
               <div>
-                <span className={styles.widgetLabel}>Recommended Architecture</span>
+                <span className={styles.widgetLabel}>How We&apos;ll Help</span>
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={selectedBottleneck}
@@ -306,9 +370,9 @@ export const Solutions: React.FC<SolutionsProps> = () => {
                     <button 
                       onClick={() => navigate('/contact')}
                       className={`btn btn-primary ${styles.blueprintCTA}`}
-                      aria-label={`Get started with our ${selectedRecommendation.title}`}
+                      aria-label={`Get started with ${selectedRecommendation.title}`}
                     >
-                      Initialize Blueprint Build
+                      Get Free Consultation
                       <Sparkles size={16} style={{ marginLeft: '0.5rem' }} />
                     </button>
                   </motion.div>
@@ -322,18 +386,18 @@ export const Solutions: React.FC<SolutionsProps> = () => {
         {/* Action Panel */}
         <section className={styles.ctaBanner}>
           <div className={styles.ctaGlow} />
-          <h2 className={styles.ctaTitle}>Align your systems with modern technology solutions</h2>
+          <h2 className={styles.ctaTitle}>Have a project in mind? Let&apos;s talk.</h2>
           <p className={styles.ctaDesc}>
-            Partner with Algorithyum to migrate legacy services, deploy secure AI tooling, or automate DevOps pipelines. Let's start building today.
+            Whether you need custom software, ERP development, a mobile app, AI features, or SEO help — we&apos;re ready to help you get started.
           </p>
           <button 
             onClick={() => navigate('/contact')} 
             className="btn btn-primary" 
-            aria-label="Book a virtual briefing session with our directors"
+            aria-label="Get in touch with us about your project"
             style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', zIndex: 1 }}
           >
-            Book Briefing Session
-            <Calendar size={18} aria-hidden="true" />
+            Get in Touch
+            <ArrowRight size={18} aria-hidden="true" />
           </button>
         </section>
 

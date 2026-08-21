@@ -57,7 +57,7 @@ export const Footer: React.FC<FooterProps> = ({
               <span>Algorithyum</span>
             </div>
             <p className={styles.brandDesc}>
-              Engineering secure, intelligent, and scalable technological infrastructure for enterprise businesses and government bodies globally.
+              We build custom software, websites, mobile apps, games, AI solutions and provide SEO services to help businesses grow.
             </p>
             <div className={styles.socials}>
               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="Twitter">
@@ -134,17 +134,17 @@ export const Footer: React.FC<FooterProps> = ({
           <div className={styles.newsletterCol}>
             <span className={styles.colTitle}>Newsletter</span>
             <p className={styles.newsletterText}>
-              Subscribe to receive quarterly technical analysis on emerging technologies and systems architectures.
+              Get useful tips on software development, AI, and growing your business online.
             </p>
             <form onSubmit={handleSubscribe} className={styles.form}>
               <input
                 type="email"
-                placeholder="Enter corporate email"
+                placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className={styles.input}
                 required
-                aria-label="Corporate Email Address"
+                aria-label="Email Address"
               />
               <button type="submit" className="btn btn-primary styles.submitBtn">
                 {isSubscribed ? <Check size={16} /> : <Send size={16} />}

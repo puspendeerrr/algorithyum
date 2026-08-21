@@ -6,7 +6,7 @@ import styles from './TechStack.module.css';
 
 interface TechItem {
   name: string;
-  category: 'frontend' | 'backend' | 'cloud' | 'data';
+  category: 'frontend' | 'backend' | 'data';
   logo: React.ReactNode;
 }
 
@@ -21,7 +21,6 @@ export const TechStack: React.FC<TechStackProps> = ({ hideHeader = false }) => {
     { id: 'all', label: 'All Technologies' },
     { id: 'frontend', label: 'Frontend & Mobile' },
     { id: 'backend', label: 'Backend & APIs' },
-    { id: 'cloud', label: 'Cloud & DevOps' },
     { id: 'data', label: 'AI, ML & Databases' },
   ];
 
@@ -129,61 +128,7 @@ export const TechStack: React.FC<TechStackProps> = ({ hideHeader = false }) => {
         </svg>
       )
     },
-    // Cloud
-    {
-      name: 'AWS',
-      category: 'cloud',
-      logo: (
-        <svg viewBox="0 0 256 256" width="100%" height="100%">
-          <path d="M128 30 C70 30 40 65 40 105 c0 35 25 55 45 55 10 0 15-5 15-12 0-10-10-25-10-40 0-25 20-45 50-45 25 0 45 15 45 35 0 20-15 35-35 35-10 0-20-5-25-10 l-10 20 c10 10 25 15 40 15 35 0 65-25 65-65 0-50-45-88-100-88z" fill="#ff9900"/>
-          <path d="M50 190 Q128 230 206 190" fill="none" stroke="#ff9900" strokeWidth="10" strokeLinecap="round"/>
-          <path d="M206 190 L190 175 M206 190 L195 208" stroke="#ff9900" strokeWidth="10" strokeLinecap="round"/>
-        </svg>
-      )
-    },
-    {
-      name: 'Azure',
-      category: 'cloud',
-      logo: (
-        <svg viewBox="0 0 256 256" width="100%" height="100%">
-          <path d="M25 190 L100 50 L175 110 Z" fill="#0089d6"/>
-          <path d="M100 50 L230 190 L130 190 Z" fill="#0072c6"/>
-        </svg>
-      )
-    },
-    {
-      name: 'Google Cloud',
-      category: 'cloud',
-      logo: (
-        <svg viewBox="0 0 256 256" width="100%" height="100%">
-          <path d="M128 20 L220 73 L220 180 L128 233 L36 180 L36 73 Z" fill="none" stroke="#4285f4" strokeWidth="12"/>
-          <path d="M128 75 L180 105 L180 165 L128 195 L76 165 L76 105 Z" fill="#4285f4"/>
-        </svg>
-      )
-    },
-    {
-      name: 'Docker',
-      category: 'cloud',
-      logo: (
-        <svg viewBox="0 0 256 256" width="100%" height="100%">
-          <path d="M30 140 Q80 110 140 140 T226 140 L226 160 Q170 190 30 160 Z" fill="#2496ed"/>
-          <rect x="70" y="90" width="22" height="22" fill="#2496ed" rx="2"/>
-          <rect x="98" y="90" width="22" height="22" fill="#2496ed" rx="2"/>
-          <rect x="126" y="90" width="22" height="22" fill="#2496ed" rx="2"/>
-          <rect x="98" y="62" width="22" height="22" fill="#2496ed" rx="2"/>
-        </svg>
-      )
-    },
-    {
-      name: 'Kubernetes',
-      category: 'cloud',
-      logo: (
-        <svg viewBox="0 0 256 256" width="100%" height="100%">
-          <path d="M128 10 L223 55 L223 158 L128 245 L33 158 L33 55 Z" fill="none" stroke="#326ce5" strokeWidth="12"/>
-          <path d="M128 60 L185 87 L185 145 L128 195 L71 145 L71 87 Z" fill="#326ce5"/>
-        </svg>
-      )
-    },
+    // (Cloud & DevOps items removed — not a service we provide)
     // Data & AI
     {
       name: 'PostgreSQL',
@@ -269,9 +214,9 @@ export const TechStack: React.FC<TechStackProps> = ({ hideHeader = false }) => {
         {!hideHeader && (
           <div className="section-header">
             <span className="section-subtitle">Technology Stack</span>
-            <h2 className="section-title">Enterprise-Grade Tooling & Infrastructure</h2>
+            <h2 className="section-title">Technologies We Use</h2>
             <p className="section-desc">
-              We design, build, and support software platforms using industry-proven developer ecosystems and cognitive frameworks.
+              We build software using modern, reliable technologies that are well-supported and trusted by developers worldwide.
             </p>
           </div>
         )}

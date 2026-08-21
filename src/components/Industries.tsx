@@ -3,8 +3,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  Heart, Coins, ShoppingBag, Factory, GraduationCap, 
-  Landmark, Truck, Home, Car, Film, ArrowRight 
+  Heart, GraduationCap, ShoppingBag, Factory, Truck, 
+  Coins, Rocket, Layers, Store, Coffee, ArrowRight 
 } from 'lucide-react';
 import { useAppNavigation } from '@/lib/utils/useNavigation';
 import styles from './Industries.module.css';
@@ -26,108 +26,108 @@ interface IndustriesProps {
 
 export const Industries: React.FC<IndustriesProps> = ({ hideHeader = false }) => {
   const { navigate } = useAppNavigation();
-  const [selectedId, setSelectedId] = useState<string>('finance');
+  const [selectedId, setSelectedId] = useState<string>('healthcare');
 
   const industries: IndustryItem[] = [
     {
       id: 'healthcare',
-      title: 'Healthcare',
+      title: 'Healthcare & Medical',
       icon: <Heart size={28} />,
-      shortDesc: 'HIPAA-aligned databases, telehealth routes, and patient diagnostic assist configurations.',
-      longDesc: 'We construct secure healthcare solutions that synchronize clinical workflows, route database records, and assist patient telehealth systems safely.',
-      solution: 'Encrypted telemetry databases and telehealth connection routes',
-      focusArea: 'Data Privacy Standards',
-      focusDesc: 'HIPAA alignment configurations'
+      shortDesc: 'Patient appointment software, clinic ERP systems, medical records, and telemedicine apps.',
+      longDesc: 'We build custom software, Hospital ERPs, patient scheduling portals, and mobile apps for clinics, doctors, and medical providers.',
+      solution: 'Custom Hospital ERP, Patient Portals & Telehealth Apps',
+      focusArea: 'Patient Privacy',
+      focusDesc: 'Secure data storage & privacy'
     },
     {
-      id: 'finance',
-      title: 'Finance',
-      icon: <Coins size={28} />,
-      shortDesc: 'Cryptographic ledger books, automated fraud tracking, and transactional API routes.',
-      longDesc: 'Empowering banking and payment operators with transaction syncing ledgers, anomaly detection scripts, and strict identity authentication systems.',
-      solution: 'Secure transaction pipelines and ledger validation checks',
-      focusArea: 'Identity Authentication',
-      focusDesc: 'Multi-factor access rules'
+      id: 'education',
+      title: 'Education & Schools',
+      icon: <GraduationCap size={28} />,
+      shortDesc: 'School ERP systems, student management portals, online learning apps, and attendance tracking.',
+      longDesc: 'We build custom School ERPs, Learning Management Systems (LMS), student portals, and mobile apps for schools and colleges.',
+      solution: 'School ERP, Student Management & LMS Software',
+      focusArea: 'School Operations',
+      focusDesc: 'Fee, attendance & grade management'
     },
     {
       id: 'retail',
       title: 'Retail & E-commerce',
       icon: <ShoppingBag size={28} />,
-      shortDesc: 'Inventory management triggers, shopping cart workflows, and recommendation indexing.',
-      longDesc: 'We connect inventory databases with multi-region web portals and mobile checkouts to synchronize inventory items in real-time.',
-      solution: 'Real-time database sync and secure checkout paths',
-      focusArea: 'Inventory Syncing',
-      focusDesc: 'Database-triggered updates'
+      shortDesc: 'Retail ERP systems, inventory software, online shopping stores, and POS billing tools.',
+      longDesc: 'We build custom Retail ERP software, POS billing solutions, e-commerce websites, and inventory tracking systems for store owners.',
+      solution: 'Retail ERP, POS Billing & E-commerce Websites',
+      focusArea: 'Inventory & POS',
+      focusDesc: 'Real-time stock & sales tracking'
     },
     {
       id: 'manufacturing',
       title: 'Manufacturing',
       icon: <Factory size={28} />,
-      shortDesc: 'Embedded device telemetry trackers, operational dashboards, and hardware diagnostic checkers.',
-      longDesc: 'Connecting shopfloor systems with cloud servers to display sensor readings, record operational alerts, and notify maintenance pods.',
-      solution: 'IoT sensor telemetry networks and diagnostic dashboards',
-      focusArea: 'Device Telemetry',
-      focusDesc: 'Real-time sensor logs'
-    },
-    {
-      id: 'education',
-      title: 'Education',
-      icon: <GraduationCap size={28} />,
-      shortDesc: 'Student LMS databases, grading modules, and remote classroom connection pathways.',
-      longDesc: 'We develop study platforms that store content securely, coordinate course catalogs, and display progress metrics cleanly.',
-      solution: 'Corporate training platforms and database LMS software',
-      focusArea: 'LMS Configurations',
-      focusDesc: 'Secure database portals'
-    },
-    {
-      id: 'government',
-      title: 'Government',
-      icon: <Landmark size={28} />,
-      shortDesc: 'Encrypted civic directories, request forms routing, and authenticated citizen portals.',
-      longDesc: 'Helping municipal departments digitize document requests, secure information access, and coordinate municipal pipelines securely.',
-      solution: 'Secure document request routers and registry databases',
-      focusArea: 'Access Governance',
-      focusDesc: 'Zero-trust infrastructure configuration'
+      shortDesc: 'Manufacturing ERP, production tracking, raw material management, and inventory systems.',
+      longDesc: 'We build custom Manufacturing ERP software to track raw materials, production output, factory inventory, and order fulfillment.',
+      solution: 'Manufacturing ERP & Production Tracking Systems',
+      focusArea: 'Factory Operations',
+      focusDesc: 'Material & production control'
     },
     {
       id: 'logistics',
-      title: 'Logistics & Supply Chain',
+      title: 'Logistics & Warehouse',
       icon: <Truck size={28} />,
-      shortDesc: 'Transit telemetry monitors, automated route calculators, and dispatch dashboards.',
-      longDesc: 'Optimizing warehouse inventory tracking, shipment logs, and fleet telemetry reporting using secure database triggers.',
-      solution: 'Automated dispatch scripts and transit log databases',
-      focusArea: 'Transit Logs',
-      focusDesc: 'Automated route indicators'
+      shortDesc: 'Warehouse management systems, fleet tracking apps, inventory software, and dispatch management.',
+      longDesc: 'We build custom Warehouse Management Systems (WMS), shipment tracking tools, and mobile apps for logistics and delivery operators.',
+      solution: 'Warehouse ERP & Shipment Tracking Apps',
+      focusArea: 'Warehouse Tracking',
+      focusDesc: 'Stock movements & shipment logs'
     },
     {
-      id: 'real-estate',
-      title: 'Real Estate',
-      icon: <Home size={28} />,
-      shortDesc: 'MLS sync templates, property lease databases, and contract document builders.',
-      longDesc: 'We develop transaction managers that index property listings, log client agreements, and route maintenance requests.',
-      solution: 'Real-time MLS syncing databases and tenant portals',
-      focusArea: 'Listing Syncing',
-      focusDesc: 'MLS API integrations'
+      id: 'finance',
+      title: 'Finance & Banking',
+      icon: <Coins size={28} />,
+      shortDesc: 'Custom accounting software, billing systems, financial dashboards, and payment portals.',
+      longDesc: 'We build secure financial portals, custom billing software, accounting management systems, and mobile payment apps.',
+      solution: 'Custom Financial Software & Automated Billing Systems',
+      focusArea: 'Data Accuracy',
+      focusDesc: 'Secure transaction records'
     },
     {
-      id: 'automotive',
-      title: 'Automotive',
-      icon: <Car size={28} />,
-      shortDesc: 'Vehicle telemetry parsers, diagnostic telemetry, and battery status reporting.',
-      longDesc: 'Engineering vehicle connection gateways that report battery logs, engine error states, and travel paths securely.',
-      solution: 'Connected vehicle telemetry APIs and logging platforms',
-      focusArea: 'API Gateways',
-      focusDesc: 'Telemetry payload processing'
+      id: 'startups',
+      title: 'Startups & Tech',
+      icon: <Rocket size={28} />,
+      shortDesc: 'MVP development, mobile app launches, web applications, and fast software builds.',
+      longDesc: 'We help startup founders transform ideas into working software, web apps, and mobile applications with clear timelines and budgets.',
+      solution: 'MVP Software Development & App Launching',
+      focusArea: 'Fast Launch',
+      focusDesc: 'Clean code & quick turnaround'
     },
     {
-      id: 'media',
-      title: 'Media & Entertainment',
-      icon: <Film size={28} />,
-      shortDesc: 'Streaming storage caches, metadata index systems, and media upload pathways.',
-      longDesc: 'Configuring servers and file cache layers to stream video formats, catalog metadata titles, and protect copyright files.',
-      solution: 'High-availability storage pools and content indexing tools',
-      focusArea: 'Content Caching',
-      focusDesc: 'Multi-region content availability'
+      id: 'saas',
+      title: 'SaaS Businesses',
+      icon: <Layers size={28} />,
+      shortDesc: 'Multi-tenant web products, subscription management, user dashboards, and API platforms.',
+      longDesc: 'We design and build multi-tenant SaaS products with user roles, subscription management, payment checkout, and API integrations.',
+      solution: 'Custom SaaS Web Applications & API Architecture',
+      focusArea: 'SaaS Platforms',
+      focusDesc: 'Scalable subscription software'
+    },
+    {
+      id: 'e-commerce',
+      title: 'E-commerce Brands',
+      icon: <Store size={28} />,
+      shortDesc: 'Custom online stores, mobile shopping apps, inventory sync, and payment gateway setups.',
+      longDesc: 'We build fast, conversion-optimized e-commerce websites and mobile shopping apps with custom inventory and order tracking.',
+      solution: 'Custom E-commerce Stores & Shopping Apps',
+      focusArea: 'Online Sales',
+      focusDesc: 'Fast checkout & inventory sync'
+    },
+    {
+      id: 'hospitality',
+      title: 'Hospitality & Hotels',
+      icon: <Coffee size={28} />,
+      shortDesc: 'Hotel booking engines, restaurant POS software, reservation apps, and guest portals.',
+      longDesc: 'We build reservation systems, hotel management software, restaurant POS tools, and guest ordering mobile applications.',
+      solution: 'Hotel Management ERP & Restaurant POS Software',
+      focusArea: 'Guest Services',
+      focusDesc: 'Bookings, POS & reservations'
     }
   ];
 
@@ -140,10 +140,10 @@ export const Industries: React.FC<IndustriesProps> = ({ hideHeader = false }) =>
         {/* Section Header */}
         {!hideHeader && (
           <div className="section-header">
-            <span className="section-subtitle">Industries We Serve</span>
-            <h2 className="section-title">Sector-Specific Solutions</h2>
+            <span className="section-subtitle">Industries We Work With</span>
+            <h2 className="section-title">Software Built for Your Specific Industry</h2>
             <p className="section-desc">
-              We adapt our core capabilities to address the compliance, scaling, and database needs of specific sectors.
+              We build custom software, ERP systems, mobile apps, and AI solutions tailored to the unique operational needs of your business.
             </p>
           </div>
         )}
@@ -192,12 +192,12 @@ export const Industries: React.FC<IndustriesProps> = ({ hideHeader = false }) =>
             </div>
 
             <div className={styles.detailText}>
-              <h3 className={styles.detailTitle}>{selectedIndustry.title} Infrastructure</h3>
+              <h3 className={styles.detailTitle}>{selectedIndustry.title} Software Solutions</h3>
               <p className={styles.detailBody}>{selectedIndustry.longDesc}</p>
               
               <div style={{ marginTop: '0.75rem' }}>
                 <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-muted)', textTransform: 'uppercase' }}>
-                  Core Algorithyum Delivery:
+                  What Algorithyum Delivers:
                 </span>
                 <p style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--accent-light)', marginTop: '0.25rem' }}>
                   {selectedIndustry.solution}
@@ -210,16 +210,16 @@ export const Industries: React.FC<IndustriesProps> = ({ hideHeader = false }) =>
                   <span className={styles.metricLabel}>{selectedIndustry.focusDesc}</span>
                 </div>
                 <div className={styles.metricItem}>
-                  <span className={styles.metricValue} style={{ fontSize: '1.2rem', lineHeight: '1.4' }}>SECURE ARCHITECTURE</span>
-                  <span className={styles.metricLabel}>Operational Alignment</span>
+                  <span className={styles.metricValue} style={{ fontSize: '1.2rem', lineHeight: '1.4' }}>CUSTOM SOLUTIONS</span>
+                  <span className={styles.metricLabel}>Tailored to Your Workflows</span>
                 </div>
               </div>
 
               <div style={{ marginTop: '2rem', display: 'flex', justifyContent: 'flex-start' }}>
                 <button
-                  onClick={() => navigate(`/industries/${selectedIndustry.id}`)}
+                  onClick={() => navigate(`/industries`)}
                   className="btn btn-primary"
-                  aria-label={`Explore our dedicated ${selectedIndustry.title} engineering solutions`}
+                  aria-label={`Explore ${selectedIndustry.title} software solutions`}
                 >
                   Explore {selectedIndustry.title} Solutions
                   <ArrowRight size={16} aria-hidden="true" />

@@ -1,46 +1,47 @@
-# Algorithyum — Enterprise Software Architecture & AI Engineering Platform
+# Algorithyum — Custom Software, ERP, Mobile Apps & AI Solutions
 
-> Algorithyum is a global enterprise technology consulting and software engineering firm specializing in bespoke software development, generative AI agent orchestration, cloud native architectures, zero-trust cybersecurity, and digital transformation.
+> Algorithyum is a software development company. We build custom software, ERP systems, web applications, mobile apps (Android & iOS), games, AI-powered integrations, and help businesses grow with SEO services.
 
 ## Primary Entities & Corporate Information
-- **Name**: Algorithyum Systems Group
+- **Name**: Algorithyum
 - **Website**: https://algorithyum.in
-- **Core Domain**: Enterprise Software Architecture, Artificial Intelligence, Cloud Infrastructure
-- **Headquarters**: San Francisco, CA (USA) & Global Operations
-- **Contact**: contact@algorithyum.in
+- **Core Domain**: Custom Software Development, ERP Systems, Mobile Apps, AI Integration, SEO
+- **Contact**: info@algorithyum.in
 
 ## Core Capability Pillars
 
 ### 1. Custom Software Development
-- **URL**: https://algorithyum.in/services/software-development
-- **Overview**: Full-cycle bespoke application development using modern stacks (React, Next.js, Node.js, Go, Python, PostgreSQL). High-throughput microservices, scalable API gateways, and web/mobile apps.
+- **Overview**: Custom business software, SaaS products, business management applications, and backend API development built with React, Next.js, Node.js, TypeScript, PostgreSQL, and MongoDB.
 
-### 2. Generative AI & Autonomous AI Agents
-- **URL**: https://algorithyum.in/services/ai-agent-development
-- **Overview**: Enterprise LLM fine-tuning, Retrieval-Augmented Generation (RAG) pipelines, multi-agent workflow systems (LangChain, LlamaIndex, OpenAI, Anthropic), and automated decision pipelines.
+### 2. ERP System Development
+- **Overview**: Custom ERP software development including Manufacturing ERP, Inventory Management Systems, CRM Software, HRMS Software, School ERP, Hospital ERP, Warehouse Management Systems, Retail ERP, Billing Software, POS Software, and Business Management Software.
 
-### 3. Cloud Native Architecture & DevOps
-- **URL**: https://algorithyum.in/services/cloud-native-architecture
-- **Overview**: Cloud infrastructure on AWS, GCP, and Azure. Multi-region Kubernetes cluster orchestration, Terraform IaC, automated CI/CD pipelines, and cost optimization.
+### 3. Software Redesign & Modernization
+- **Overview**: Legacy software modernization, code refactoring, interface redesign, and database migration to improve speed and reliability.
 
-### 4. Zero-Trust Cybersecurity
-- **URL**: https://algorithyum.in/services/cybersecurity
-- **Overview**: Penetration testing, end-to-end encryption, SOC2/HIPAA compliance engineering, identity access management (IAM), and continuous vulnerability scanning.
+### 4. Web Development
+- **Overview**: Fast, responsive business websites, web applications, and e-commerce platforms built with Next.js and React.
 
-### 5. Data Engineering & Big Data Systems
-- **URL**: https://algorithyum.in/services/data-engineering
-- **Overview**: Enterprise data warehouse design (BigQuery, Snowflake), real-time streaming pipelines (Kafka, Flink), ETL/ELT data pipelines, and analytics infrastructure.
+### 5. Mobile App Development (Android, iOS & Cross Platform)
+- **Overview**: Mobile app development for Android and iOS using native tools or cross-platform frameworks (Flutter & React Native).
+
+### 6. Game Development
+- **Overview**: Casual and 2D mobile game development for Android and iOS devices.
+
+### 7. AI Integration & Automation
+- **Overview**: Integrating OpenAI APIs, LangChain, custom AI chatbots, document processing, and automated workflows into business software.
+
+### 8. SEO Services
+- **Overview**: Technical SEO, On-Page SEO, Local SEO, and search visibility optimization to help businesses rank higher on Google.
+
+## Technologies Used
+- Frontend & Mobile: React, Next.js, TypeScript, Flutter, React Native
+- Backend & APIs: Node.js, Python, Go
+- Databases & AI: PostgreSQL, MongoDB, Redis, OpenAI, LangChain
 
 ## Key Content Directories & Resources
-- **Services Directory**: https://algorithyum.in/services
-- **Technologies Stack**: https://algorithyum.in/technologies
-- **Industry Solutions**: https://algorithyum.in/industries
-- **Engineering Guides**: https://algorithyum.in/guides
-- **Technical Blog**: https://algorithyum.in/blog
-- **Cost & Pricing Guides**: https://algorithyum.in/cost/custom-software-development-cost-guide-2026
-- **XML Sitemap**: https://algorithyum.in/sitemap.xml
-- **RSS Feed**: https://algorithyum.in/rss.xml
-
-## System Standards & Compliance
-- Security: Zero-Trust architecture, TLS 1.3, AES-256 at rest, SOC2 compliant design.
-- Quality: Automated testing, code review standards, 99.99% uptime target for client infrastructure.
+- **Services**: https://algorithyum.in/services
+- **Technologies**: https://algorithyum.in/technologies
+- **Solutions**: https://algorithyum.in/solutions
+- **Blog**: https://algorithyum.in/blog
+- **Contact**: https://algorithyum.in/contact
