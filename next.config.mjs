@@ -12,7 +12,7 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: '/(.*)',
+        source: '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|avif|css|js)$).*)',
         headers: [
           {
             key: 'X-DNS-Prefetch-Control',
@@ -76,15 +76,6 @@ const nextConfig = {
           {
             key: 'Cache-Control',
             value: 'public, max-age=3600, s-maxage=86400, stale-while-revalidate',
-          },
-        ],
-      },
-      {
-        source: '/(fonts|logo.svg|.*\\.webp|.*\\.avif)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
           },
         ],
       },

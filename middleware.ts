@@ -4,7 +4,7 @@ import type { NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
   const response = NextResponse.next();
 
-  // Enterprise Security & Robots Headers Enforcement
+  // Security Headers for Page Responses
   response.headers.set('X-Frame-Options', 'DENY');
   response.headers.set('X-Content-Type-Options', 'nosniff');
   response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
@@ -29,11 +29,11 @@ export const config = {
   matcher: [
     /*
      * Match all request paths except for:
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     * - static public assets (.svg, .png, .jpg, .css, .js, .xml, .txt)
+     * - _next (static files, chunks, images)
+     * - favicon.ico
+     * - robots.txt, sitemap.xml, rss.xml
+     * - static assets (.svg, .png, .jpg, .jpeg, .gif, .webp, .avif, .css, .js, .xml, .txt, .ico)
      */
-    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|avif|css|js|xml|txt)$).*)',
+    '/((?!_next|favicon.ico|robots.txt|sitemap.xml|rss.xml|.*\\.(?:svg|png|jpg|jpeg|gif|webp|avif|css|js|xml|txt|ico)$).*)',
   ],
 };
