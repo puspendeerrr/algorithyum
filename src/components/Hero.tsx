@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Mail, Sparkles } from 'lucide-react';
 import { useAppNavigation } from '@/lib/utils/useNavigation';
+import { trackCTAClick } from '@/lib/analytics';
 import styles from './Hero.module.css';
 
 interface HeroProps {
@@ -138,6 +139,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
   }, []);
 
   const handleGetStarted = () => {
+    trackCTAClick('Get Free Consultation', 'Hero Section');
     navigate('/contact');
   };
 

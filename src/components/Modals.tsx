@@ -5,6 +5,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, Check, Calendar, ArrowRight, ChevronLeft, AlertTriangle } from 'lucide-react';
 import styles from './Modals.module.css';
 import emailjs from '@emailjs/browser';
+import {
+  trackFormSubmission,
+  trackCTAClick,
+  trackBlogArticleOpen,
+  trackCareerApplicationClick,
+} from '@/lib/analytics';
+
 
 interface ModalBaseProps {
   isOpen: boolean;
@@ -108,9 +115,17 @@ export const ConsultationModal: React.FC<ModalBaseProps> = ({ isOpen, onClose })
 
       setIsSuccess(true);
       setValidationErrors({});
+      trackFormSubmission('Consultation Modal Form', true, {
+        service: formData.service,
+        timeline: formData.timeline,
+      });
+      trackCTAClick('Schedule Strategy Consultation', 'Consultation Modal');
     } catch (err: any) {
-      setErrorMessage(err.text || err.message || 'Failed to schedule consultation session.');
+      const errMsg = err.text || err.message || 'Failed to schedule consultation session.';
+      setErrorMessage(errMsg);
+      trackFormSubmission('Consultation Modal Form', false, { error: errMsg });
     } finally {
+
       setIsSubmitting(false);
     }
   };
@@ -274,7 +289,14 @@ export const ConsultationModal: React.FC<ModalBaseProps> = ({ isOpen, onClose })
    2. CAREERS MODAL
    ========================================================================== */
 export const CareersModal: React.FC<ModalBaseProps> = ({ isOpen, onClose }) => {
+  React.useEffect(() => {
+    if (isOpen) {
+      trackCareerApplicationClick('Careers Engineering Pod Modal');
+    }
+  }, [isOpen]);
+
   return (
+
     <AnimatePresence>
       {isOpen && (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className={styles.modalOverlay} onClick={onClose}>
@@ -472,7 +494,15 @@ export const BlogModal: React.FC<ModalBaseProps> = ({ isOpen, onClose }) => {
 
                 <div className={styles.blogGrid}>
                   {articles.map((art) => (
-                    <div key={art.id} className={styles.blogCard} onClick={() => setSelectedArticle(art)}>
+                    <div
+                      key={art.id}
+                      className={styles.blogCard}
+                      onClick={() => {
+                        setSelectedArticle(art);
+                        trackBlogArticleOpen(art.id, art.title);
+                      }}
+                    >
+
                       <div className={styles.blogCardContent}>
                         <span className={styles.blogTag}>{art.tag}</span>
                         <h4 className={styles.blogTitle}>{art.title}</h4>
@@ -507,8 +537,10 @@ export const ContactModal: React.FC<ModalBaseProps> = ({ isOpen, onClose }) => {
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSuccess(true);
+      trackFormSubmission('Contact Modal Form', true, { subject: formData.subject });
     }, 1500);
   };
+
 
   const handleReset = () => {
     setIsSuccess(false);

@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Mail } from 'lucide-react';
 import styles from './CTA.module.css';
+import { trackCTAClick } from '@/lib/analytics';
 
 interface CTAProps {
   onOpenConsultation: () => void;
@@ -30,7 +31,13 @@ export const CTA: React.FC<CTAProps> = ({ onOpenConsultation, onOpenContact }) =
             </p>
 
             <div className={styles.actions}>
-              <button onClick={onOpenContact} className="btn btn-primary">
+              <button
+                onClick={() => {
+                  trackCTAClick('Get Free Consultation', 'CTA Banner');
+                  onOpenContact();
+                }}
+                className="btn btn-primary"
+              >
                 Get Free Consultation
                 <ArrowRight size={18} />
               </button>
@@ -39,6 +46,7 @@ export const CTA: React.FC<CTAProps> = ({ onOpenConsultation, onOpenContact }) =
                 Email Us
               </a>
             </div>
+
           </div>
         </motion.div>
       </div>
