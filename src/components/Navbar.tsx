@@ -136,29 +136,33 @@ export const Navbar: React.FC<NavbarProps> = ({
                       </button>
                       <div className={styles.megaMenu} role="menu" aria-label="Services Directory">
                         <div className={styles.megaColumn}>
-                          <h4 className={styles.megaColumnTitle}>Software</h4>
+                          <h4 className={styles.megaColumnTitle}>Software & ERP</h4>
                           <ul className={styles.megaLinkList}>
-                            <li><a href="/services/software-development" onClick={(e) => { e.preventDefault(); handleNavClick('/services/software-development'); }} className={styles.megaLink}>Software Development</a></li>
-                            <li><a href="/services/erp" onClick={(e) => { e.preventDefault(); handleNavClick('/services/erp'); }} className={styles.megaLink}>ERP Development</a></li>
+                            <li><a href="/services/software-development" onClick={(e) => { e.preventDefault(); handleNavClick('/services/software-development'); }} className={styles.megaLink}>Custom Software</a></li>
+                            <li><a href="/services/erp" onClick={(e) => { e.preventDefault(); handleNavClick('/services/erp'); }} className={styles.megaLink}>ERP Software</a></li>
                             <li><a href="/services/software-redesign" onClick={(e) => { e.preventDefault(); handleNavClick('/services/software-redesign'); }} className={styles.megaLink}>Software Redesign</a></li>
                             <li><a href="/services/web-development" onClick={(e) => { e.preventDefault(); handleNavClick('/services/web-development'); }} className={styles.megaLink}>Web Development</a></li>
+                            <li><a href="/services/cloud" onClick={(e) => { e.preventDefault(); handleNavClick('/services/cloud'); }} className={styles.megaLink}>Cloud Services</a></li>
                           </ul>
                         </div>
                         <div className={styles.megaColumn}>
                           <h4 className={styles.megaColumnTitle}>Mobile Apps</h4>
                           <ul className={styles.megaLinkList}>
-                            <li><a href="/services/android-app-development" onClick={(e) => { e.preventDefault(); handleNavClick('/services/android-app-development'); }} className={styles.megaLink}>Android App Development</a></li>
-                            <li><a href="/services/ios-app-development" onClick={(e) => { e.preventDefault(); handleNavClick('/services/ios-app-development'); }} className={styles.megaLink}>iOS App Development</a></li>
-                            <li><a href="/services/cross-platform-app-development" onClick={(e) => { e.preventDefault(); handleNavClick('/services/cross-platform-app-development'); }} className={styles.megaLink}>Cross Platform Apps</a></li>
+                            <li><a href="/services/mobile-app-development" onClick={(e) => { e.preventDefault(); handleNavClick('/services/mobile-app-development'); }} className={styles.megaLink}>Mobile App Engineering</a></li>
+                            <li><a href="/services/android-app-development" onClick={(e) => { e.preventDefault(); handleNavClick('/services/android-app-development'); }} className={styles.megaLink}>Android App Dev</a></li>
+                            <li><a href="/services/ios-app-development" onClick={(e) => { e.preventDefault(); handleNavClick('/services/ios-app-development'); }} className={styles.megaLink}>iOS App Dev</a></li>
+                            <li><a href="/services/cross-platform-app-development" onClick={(e) => { e.preventDefault(); handleNavClick('/services/cross-platform-app-development'); }} className={styles.megaLink}>Cross-Platform Apps</a></li>
                             <li><a href="/services/game-development" onClick={(e) => { e.preventDefault(); handleNavClick('/services/game-development'); }} className={styles.megaLink}>Game Development</a></li>
                           </ul>
                         </div>
                         <div className={styles.megaColumn}>
-                          <h4 className={styles.megaColumnTitle}>AI & Growth</h4>
+                          <h4 className={styles.megaColumnTitle}>AI, Security & Growth</h4>
                           <ul className={styles.megaLinkList}>
+                            <li><a href="/services/ai" onClick={(e) => { e.preventDefault(); handleNavClick('/services/ai'); }} className={styles.megaLink}>AI Services</a></li>
                             <li><a href="/services/ai-integration" onClick={(e) => { e.preventDefault(); handleNavClick('/services/ai-integration'); }} className={styles.megaLink}>AI Integration</a></li>
                             <li><a href="/services/ai-automation" onClick={(e) => { e.preventDefault(); handleNavClick('/services/ai-automation'); }} className={styles.megaLink}>AI Automation</a></li>
                             <li><a href="/services/seo" onClick={(e) => { e.preventDefault(); handleNavClick('/services/seo'); }} className={styles.megaLink}>SEO Services</a></li>
+                            <li><a href="/services/cybersecurity" onClick={(e) => { e.preventDefault(); handleNavClick('/services/cybersecurity'); }} className={styles.megaLink}>Cybersecurity</a></li>
                           </ul>
                         </div>
                       </div>

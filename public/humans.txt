@@ -1,9 +1,9 @@
 /* TEAM */
   Architect & Founder: Algorithyum Engineering Group
-  Contact: contact@algorithyum.in
+  Contact: info@algorithyum.in
   Site: https://algorithyum.in
   Twitter: @algorithyum
-  Location: San Francisco, CA & Global Remote
+  Location: Chandigarh, India & Global Remote
 
 /* THANKS */
   Open Source Community: React, Next.js, TypeScript, Node.js, Lucide Icons, Framer Motion

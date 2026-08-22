@@ -32,7 +32,11 @@ export function generateEntityMetadata(
   const canonicalUrl = `https://algorithyum.in${cleanPath}`;
 
   // Image resolution
-  const ogImageUrl = rawData?.ogImage || rawData?.twitterImage || 'https://algorithyum.in/logo.svg';
+  const ogImageUrl = (rawData?.ogImage && rawData.ogImage !== 'https://algorithyum.in/logo.svg')
+    ? rawData.ogImage
+    : (rawData?.twitterImage && rawData.twitterImage !== 'https://algorithyum.in/logo.svg')
+    ? rawData.twitterImage
+    : 'https://algorithyum.in/og-image.png';
   const ogImageWidth = Number(rawData?.ogImageWidth) || 1200;
   const ogImageHeight = Number(rawData?.ogImageHeight) || 630;
   const ogImageAlt = title.split('|')[0].trim() || 'Algorithyum Engineering & AI Solutions';

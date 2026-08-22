@@ -35,10 +35,10 @@ export const metadata: Metadata = {
     description: 'Algorithyum builds custom software, AI agent pipelines, cloud systems, cybersecurity topologies, performance marketing, and digital transformation strategy for enterprises globally.',
     images: [
       {
-        url: 'https://algorithyum.in/logo.svg',
+        url: 'https://algorithyum.in/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Algorithyum Corporate Logo',
+        alt: 'Algorithyum Custom Software, ERP & AI Solutions',
       },
     ],
   },

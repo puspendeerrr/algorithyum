@@ -96,11 +96,13 @@ export const DynamicPageTemplate: React.FC<DynamicPageTemplateProps> = ({ pageTy
           
           {/* Breadcrumb Hierarchy Links */}
           <nav aria-label="Breadcrumb" className={styles.breadcrumbs}>
-            <span onClick={() => navigate('/')} style={{ cursor: 'pointer' }}>Home</span>
+            <a href="/" onClick={(e) => { e.preventDefault(); navigate('/'); }}>Home</a>
             {parentBreadcrumb && (
               <>
                 <span aria-hidden="true">/</span>
-                <span onClick={() => navigate(parentBreadcrumb.path)} style={{ cursor: 'pointer' }}>{parentBreadcrumb.label}</span>
+                <a href={parentBreadcrumb.path} onClick={(e) => { e.preventDefault(); navigate(parentBreadcrumb.path); }}>
+                  {parentBreadcrumb.label}
+                </a>
               </>
             )}
             <span aria-hidden="true">/</span>

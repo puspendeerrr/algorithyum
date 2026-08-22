@@ -14,36 +14,31 @@ export function getOrganizationSchema() {
     },
     image: 'https://algorithyum.in/logo.svg',
     description: 'Enterprise software development, artificial intelligence solutions, cloud architecture, cybersecurity, and digital transformation consulting.',
-    telephone: '+1-800-ALGORITHYUM',
-    email: 'contact@algorithyum.in',
+    telephone: '+91 9485769108',
+    email: 'info@algorithyum.in',
     address: {
       '@type': 'PostalAddress',
-      addressCountry: 'US',
-      addressRegion: 'CA',
-      addressLocality: 'San Francisco',
+      addressCountry: 'IN',
+      addressLocality: 'Chandigarh',
     },
     contactPoint: [
       {
         '@type': 'ContactPoint',
-        telephone: '+1-800-ALGORITHYUM',
-        contactType: 'technical support',
-        availableLanguage: ['English'],
+        telephone: '+91 9485769108',
+        contactType: 'customer service',
+        availableLanguage: ['English', 'Hindi'],
       },
       {
         '@type': 'ContactPoint',
-        email: 'sales@algorithyum.in',
+        email: 'info@algorithyum.in',
         contactType: 'sales',
-        availableLanguage: ['English'],
+        availableLanguage: ['English', 'Hindi'],
       },
     ],
-    sameAs: [
-      'https://x.com',
-      'https://linkedin.com',
-      'https://github.com',
-    ],
+    sameAs: [],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'Software Engineering & AI Consulting Services',
+      name: 'Software Engineering, Mobile Apps & AI Services',
       itemListElement: [
         {
           '@type': 'Offer',
@@ -57,16 +52,56 @@ export function getOrganizationSchema() {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Artificial Intelligence & Machine Learning',
-            url: 'https://algorithyum.in/services/ai',
+            name: 'ERP System Development',
+            url: 'https://algorithyum.in/services/erp',
           },
         },
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'Cloud Infrastructure & DevOps',
+            name: 'Web Development',
+            url: 'https://algorithyum.in/services/web-development',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Mobile App Development',
+            url: 'https://algorithyum.in/services/mobile-app-development',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'AI Integration Services',
+            url: 'https://algorithyum.in/services/ai-integration',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'SEO Services',
+            url: 'https://algorithyum.in/services/seo',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Cloud Services',
             url: 'https://algorithyum.in/services/cloud',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Cybersecurity Services',
+            url: 'https://algorithyum.in/services/cybersecurity',
           },
         },
       ],

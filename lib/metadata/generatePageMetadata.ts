@@ -18,7 +18,7 @@ export function generatePageMetadata(path: string): Metadata {
       url: canonicalUrl,
       images: [
         {
-          url: data.ogImage || 'https://algorithyum.in/logo.svg',
+          url: (data.ogImage && data.ogImage !== 'https://algorithyum.in/logo.svg') ? data.ogImage : 'https://algorithyum.in/og-image.png',
           width: 1200,
           height: 630,
         },
@@ -28,7 +28,7 @@ export function generatePageMetadata(path: string): Metadata {
       card: 'summary_large_image',
       title: data.title,
       description: data.description,
-      images: [data.twitterImage || 'https://algorithyum.in/logo.svg'],
+      images: [(data.twitterImage && data.twitterImage !== 'https://algorithyum.in/logo.svg') ? data.twitterImage : 'https://algorithyum.in/og-image.png'],
     },
     robots: {
       index: true,

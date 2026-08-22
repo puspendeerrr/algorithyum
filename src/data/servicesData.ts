@@ -19,7 +19,7 @@ export interface ServicePageData {
 
 export const serviceMap: Record<string, ServicePageData> = {
   'software-development': {
-    title: 'Custom Software Development',
+    title: 'Custom Software Development Company in India',
     subtitle: 'We build custom software tailored to your business needs — from custom workflow tools to full SaaS applications.',
     category: 'engineering',
     capabilities: [
@@ -36,7 +36,7 @@ export const serviceMap: Record<string, ServicePageData> = {
     ]
   },
   'erp': {
-    title: 'ERP System Development',
+    title: 'Custom ERP Software Development Company in India',
     subtitle: 'We build custom ERP software, inventory systems, CRM, HRMS, and business management tools for growing companies.',
     category: 'engineering',
     capabilities: [
@@ -53,7 +53,7 @@ export const serviceMap: Record<string, ServicePageData> = {
     ]
   },
   'software-redesign': {
-    title: 'Software Redesign & Modernization',
+    title: 'Software Redesign & Modernization Services',
     subtitle: 'We help you update legacy, slow, or outdated software so it runs faster, looks modern, and is easy to maintain.',
     category: 'engineering',
     capabilities: [
@@ -69,7 +69,7 @@ export const serviceMap: Record<string, ServicePageData> = {
     ]
   },
   'web-development': {
-    title: 'Web Development',
+    title: 'Custom Web Development Company in India',
     subtitle: 'We build fast, modern websites and web applications designed to perform well on desktop and mobile devices.',
     category: 'engineering',
     capabilities: [
@@ -84,8 +84,23 @@ export const serviceMap: Record<string, ServicePageData> = {
       { q: 'Are all websites responsive on mobile?', a: 'Yes. All websites adapt seamlessly to smartphone, tablet, and desktop screens.' }
     ]
   },
+  'mobile-app-development': {
+    title: 'Mobile App Development Company in India',
+    subtitle: 'We build fast, reliable Android, iOS, Flutter, and React Native mobile apps ready for store launch.',
+    category: 'engineering',
+    capabilities: [
+      { title: 'Android App Development', desc: 'Native and cross-platform Android mobile applications engineered for performance.' },
+      { title: 'iOS App Development', desc: 'Custom iPhone and iPad applications built for security and App Store approval.' },
+      { title: 'Cross-Platform Mobile Apps', desc: 'Single codebase mobile apps built with Flutter or React Native.' },
+      { title: 'App Store Publishing', desc: 'Complete deployment management for Google Play Store and Apple App Store.' }
+    ],
+    technologies: ['Flutter', 'React Native', 'Node.js', 'TypeScript', 'PostgreSQL', 'MongoDB'],
+    faqs: [
+      { q: 'Do you publish mobile apps on Play Store and App Store?', a: 'Yes. We handle the full submission and publishing process on both stores.' }
+    ]
+  },
   'android-app-development': {
-    title: 'Android App Development',
+    title: 'Android App Development Company in India',
     subtitle: 'We build fast, reliable Android mobile apps ready for launch on the Google Play Store.',
     category: 'engineering',
     capabilities: [
@@ -100,7 +115,7 @@ export const serviceMap: Record<string, ServicePageData> = {
     ]
   },
   'ios-app-development': {
-    title: 'iOS App Development',
+    title: 'iOS App Development Company in India',
     subtitle: 'We build iPhone and iPad apps designed for high performance and smooth App Store approval.',
     category: 'engineering',
     capabilities: [
@@ -115,7 +130,7 @@ export const serviceMap: Record<string, ServicePageData> = {
     ]
   },
   'cross-platform-app-development': {
-    title: 'Cross Platform App Development',
+    title: 'Cross Platform App Development Company in India',
     subtitle: 'We build mobile apps that run on both Android and iOS using a single shared codebase.',
     category: 'engineering',
     capabilities: [
@@ -130,7 +145,7 @@ export const serviceMap: Record<string, ServicePageData> = {
     ]
   },
   'game-development': {
-    title: 'Game Development',
+    title: 'Game Development Company in India',
     subtitle: 'We develop casual and 2D mobile games for Android and iOS devices.',
     category: 'engineering',
     capabilities: [
@@ -144,8 +159,23 @@ export const serviceMap: Record<string, ServicePageData> = {
       { q: 'Can you publish games on both Android and iOS?', a: 'Yes. We prepare game builds for both platforms.' }
     ]
   },
+  'ai': {
+    title: 'AI Development Company for Businesses',
+    subtitle: 'We build custom AI agent pipelines, RAG systems, and generative AI solutions for enterprise applications.',
+    category: 'intelligent',
+    capabilities: [
+      { title: 'Generative AI & LLMs', desc: 'Custom AI applications built on OpenAI models and LLM APIs.' },
+      { title: 'RAG Vector Systems', desc: 'Connect AI models to your private documents for accurate factual answers.' },
+      { title: 'AI Agent Workflows', desc: 'Autonomous task execution and data processing agents.' },
+      { title: 'Enterprise Security', desc: 'Private API channels protecting business confidentiality.' }
+    ],
+    technologies: ['OpenAI', 'LangChain', 'Node.js', 'Python', 'PostgreSQL', 'Redis'],
+    faqs: [
+      { q: 'Is business data safe with custom AI systems?', a: 'Yes. We use private API connections ensuring data privacy.' }
+    ]
+  },
   'ai-integration': {
-    title: 'AI Integration',
+    title: 'AI Integration & Chatbot Development Services',
     subtitle: 'We integrate AI features like chatbots, OpenAI APIs, and smart search into your software.',
     category: 'intelligent',
     capabilities: [
@@ -161,7 +191,7 @@ export const serviceMap: Record<string, ServicePageData> = {
     ]
   },
   'ai-automation': {
-    title: 'AI Automation',
+    title: 'AI Automation & Workflow Optimization Services',
     subtitle: 'We build automated workflows powered by AI to eliminate repetitive tasks and save manual hours.',
     category: 'intelligent',
     capabilities: [
@@ -176,7 +206,7 @@ export const serviceMap: Record<string, ServicePageData> = {
     ]
   },
   'seo': {
-    title: 'SEO Services',
+    title: 'SEO Services Company in India',
     subtitle: 'We help your business rank higher on Google through Technical SEO, Local SEO, and content optimization.',
     category: 'growth',
     capabilities: [
@@ -189,6 +219,36 @@ export const serviceMap: Record<string, ServicePageData> = {
     faqs: [
       { q: 'What is Technical SEO?', a: 'Technical SEO ensures Google can easily crawl, index, and render your website pages fast.' },
       { q: 'How long before SEO results appear?', a: 'Initial technical improvements take effect in 4 to 8 weeks, with steady growth over 3 to 6 months.' }
+    ]
+  },
+  'cloud': {
+    title: 'Cloud Infrastructure & DevOps Services',
+    subtitle: 'Cloud architecture, DevOps automation, cloud migration, containerization, and monitoring.',
+    category: 'engineering',
+    capabilities: [
+      { title: 'Cloud Migration & Setup', desc: 'Migrating legacy servers to scalable AWS and GCP cloud environments.' },
+      { title: 'CI/CD Automation', desc: 'Automated deployment pipelines for fast, zero-downtime releases.' },
+      { title: 'Docker & Kubernetes', desc: 'Containerizing application microservices for high scalability.' },
+      { title: 'Monitoring & Uptime', desc: 'Database replication, SSL setup, and 24/7 server monitoring.' }
+    ],
+    technologies: ['AWS', 'Docker', 'Kubernetes', 'Node.js', 'PostgreSQL', 'Redis'],
+    faqs: [
+      { q: 'Which cloud providers do you support?', a: 'We build on AWS, Google Cloud Platform (GCP), and DigitalOcean.' }
+    ]
+  },
+  'cybersecurity': {
+    title: 'Cybersecurity & Application Security Services',
+    subtitle: 'Zero-trust security audits, data encryption, API security hardening, and vulnerability testing.',
+    category: 'engineering',
+    capabilities: [
+      { title: 'Application Security Audits', desc: 'Auditing code for OWASP vulnerabilities and security flaws.' },
+      { title: 'API Hardening & Encryption', desc: 'Securing API endpoints with SSL/TLS encryption and rate-limiting.' },
+      { title: 'Database Security', desc: 'Password hashing, database encryption, and access controls.' },
+      { title: 'Vulnerability Testing', desc: 'Penetration testing and continuous security monitoring.' }
+    ],
+    technologies: ['PostgreSQL', 'Node.js', 'TypeScript', 'OpenSSL', 'Cloudflare'],
+    faqs: [
+      { q: 'How often should software undergo security audits?', a: 'We recommend security audits at least once per year.' }
     ]
   }
 };
