@@ -18,7 +18,7 @@ export default function MarketingLayout({
         Skip to main content
       </a>
 
-      <Navbar onOpenConsultation={() => setIsConsultationOpen(true)} />
+      <Navbar />
 
       <main id="main-content" role="main">
         {children}

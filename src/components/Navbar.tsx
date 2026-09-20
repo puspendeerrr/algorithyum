@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sun, Moon, Menu, X, ArrowRight } from 'lucide-react';
 import styles from './Navbar.module.css';
@@ -10,11 +11,8 @@ interface NavbarProps {
   onOpenConsultation?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({
-  onOpenConsultation,
-}) => {
+export const Navbar: React.FC<NavbarProps> = () => {
   const { navigate, pathname: currentPath } = useAppNavigation();
-  const handleConsultation = onOpenConsultation || (() => navigate('/contact'));
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -246,15 +244,15 @@ export const Navbar: React.FC<NavbarProps> = ({
               {theme === 'dark' ? <Sun size={18} aria-hidden="true" /> : <Moon size={18} aria-hidden="true" />}
             </button>
 
-            <button
-              onClick={handleConsultation}
+            <Link
+              href="/contact"
               className="btn btn-primary"
-              style={{ padding: '0.5rem 1.25rem', fontSize: '0.85rem' }}
+              style={{ padding: '0.5rem 1.25rem', fontSize: '0.85rem', textDecoration: 'none' }}
               aria-label="Get in touch with us"
             >
               Get in Touch
               <ArrowRight size={14} aria-hidden="true" />
-            </button>
+            </Link>
 
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -294,17 +292,15 @@ export const Navbar: React.FC<NavbarProps> = ({
               ))}
             </ul>
             <div className={styles.mobileActions}>
-              <button
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  handleConsultation();
-                }}
+              <Link
+                href="/contact"
+                onClick={() => setIsMobileMenuOpen(false)}
                 className="btn btn-primary"
-                style={{ width: '100%' }}
+                style={{ width: '100%', textDecoration: 'none' }}
               >
                 Get in Touch
                 <ArrowRight size={16} />
-              </button>
+              </Link>
             </div>
           </motion.div>
         )}
