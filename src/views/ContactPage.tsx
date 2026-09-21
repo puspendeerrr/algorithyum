@@ -7,7 +7,6 @@ import {
   Check, 
   Copy, 
   ShieldCheck, 
-  Sparkles, 
   ExternalLink, 
   Clock, 
   Code, 
@@ -78,10 +77,6 @@ export const ContactPage: React.FC = () => {
       <div className="container">
         {/* Hero Section */}
         <section className={styles.heroSection}>
-          <div className={styles.badge}>
-            <Sparkles size={14} />
-            <span>Direct Engineering Access</span>
-          </div>
 
           <h1 className={styles.heroTitle}>
             Connect Directly With Our{' '}
