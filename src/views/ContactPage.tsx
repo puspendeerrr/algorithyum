@@ -1,168 +1,74 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Mail, 
-  Phone, 
-  MapPin, 
-  Clock, 
-  Calendar, 
+  MessageCircle, 
   Check, 
-  AlertTriangle, 
   Copy, 
   ShieldCheck, 
   Sparkles, 
-  ExternalLink,
-  Code,
-  Layers,
-  FileCheck
+  ExternalLink, 
+  Clock, 
+  Code, 
+  Layers, 
+  FileCheck,
+  ChevronDown,
+  CheckCircle2,
+  Zap,
+  ArrowRight,
+  Send
 } from 'lucide-react';
-import emailjs from '@emailjs/browser';
 import styles from './ContactPage.module.css';
-import { trackFormSubmission, trackCTAClick } from '@/lib/analytics';
+import { trackCTAClick } from '@/lib/analytics';
+
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+const contactFaqs: FAQItem[] = [
+  {
+    question: 'How quickly will we receive a response after emailing info@algorithyum.in?',
+    answer: 'Every inquiry sent to info@algorithyum.in is reviewed directly by our Principal Architects and technical leads. You will receive an initial technical evaluation or scheduling reply within 24 business hours (often within a few hours on weekdays).'
+  },
+  {
+    question: 'Do you execute Non-Disclosure Agreements (NDAs) before reviewing technical specifications?',
+    answer: 'Yes, absolutely. We regularly sign bilateral, mutual NDAs before reviewing proprietary architectures, private GitHub repositories, or confidential product requirements to ensure complete intellectual property protection.'
+  },
+  {
+    question: 'What details should we include in our email for the fastest and most accurate estimate?',
+    answer: 'A brief overview of your business problem, the type of software needed (e.g., custom ERP, web portal, AI workflow, mobile app), any existing tech stack constraints, your target timeline, and whether you prefer a fixed-cost milestone or a dedicated monthly engineering pod.'
+  },
+  {
+    question: 'Can we hire a dedicated engineering pod instead of a fixed-scope project?',
+    answer: 'Yes. We provide autonomous, senior-level engineering pods (frontend, backend, AI/ML, DevOps, and QA) that integrate directly into your sprint cycles, Jira boards, and Slack/Teams channels on a flexible monthly retainer model.'
+  },
+  {
+    question: 'Do you collaborate with international clients across North America, Europe, and APAC?',
+    answer: 'Yes. Our delivery and engineering hub serves clients globally. We schedule overlapping communication windows across US time zones (EST/PST), Europe (GMT/CET), and APAC, ensuring seamless standups and synchronous architectural reviews.'
+  }
+];
 
 export const ContactPage: React.FC = () => {
-  // Form State
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    phone: '',
-    service: 'custom-dev',
-    timeline: '3-months',
-    detail: '',
-  });
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
-  const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
   const [emailCopied, setEmailCopied] = useState(false);
-
-  // Form Validation
-  const validateForm = () => {
-    const errors: Record<string, string> = {};
-    if (formData.name.trim().length < 2) {
-      errors.name = 'Name must be at least 2 characters.';
-    }
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      errors.email = 'Please enter a valid business email address.';
-    }
-    if (formData.detail.trim().length < 10) {
-      errors.detail = 'Please provide project details of at least 10 characters.';
-    }
-    setValidationErrors(errors);
-    return Object.keys(errors).length === 0;
-  };
-
-  // Form Submission via EmailJS
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (isSubmitting) return;
-
-    if (!validateForm()) {
-      return;
-    }
-
-    setIsSubmitting(true);
-    setErrorMessage('');
-
-    console.log('Contact page consultation field values before submission:', {
-      name: formData.name,
-      email: formData.email,
-      company: formData.company,
-      phone: formData.phone,
-      service: formData.service,
-      timeline: formData.timeline,
-      detail: formData.detail,
-    });
-
-    const recipientEmail = formData.email.trim();
-    if (!recipientEmail) {
-      console.warn('Warning: Recipient email is empty!');
-    }
-
-    const templateParams = {
-      name: formData.name.trim(),
-      email: recipientEmail,
-      company: formData.company.trim() || 'Not Specified',
-      phone: formData.phone.trim() || 'Not Provided',
-      service: formData.service,
-      budget: `Timeline: ${formData.timeline}`,
-      subject: 'Consultation Booking Request',
-      message: formData.detail.trim(),
-      website: 'https://algorithyum.in',
-      timestamp: new Date().toLocaleString(),
-
-      // Aliases & Fallbacks
-      user_name: formData.name.trim(),
-      user_company: formData.company.trim() || 'Not Specified',
-      user_email: recipientEmail,
-      to_email: 'info@algorithyum.in',
-      reply_to: recipientEmail,
-      user_phone: formData.phone.trim() || 'Not Provided',
-      user_service: formData.service,
-      user_budget: `Timeline: ${formData.timeline}`,
-      email_subject: 'Consultation Booking Request',
-      email_message: formData.detail.trim(),
-      submission_time: new Date().toLocaleString(),
-    };
-
-    console.log('Complete templateParams object sent to EmailJS (Contact Page):', templateParams);
-
-    try {
-      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '';
-      const adminTemplateId = process.env.NEXT_PUBLIC_EMAILJS_ADMIN_TEMPLATE_ID || 'template_af14tdf';
-      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '';
-
-      if (!serviceId || !adminTemplateId || !publicKey) {
-        throw new Error('EmailJS environment configurations are missing.');
-      }
-
-      await emailjs.send(
-        serviceId,
-        process.env.NEXT_PUBLIC_EMAILJS_ADMIN_TEMPLATE_ID || adminTemplateId,
-        templateParams,
-        publicKey
-      );
-
-      setIsSuccess(true);
-      setValidationErrors({});
-      trackFormSubmission('Contact Page Consultation Form', true, {
-        service: formData.service,
-        timeline: formData.timeline,
-      });
-      trackCTAClick('Schedule Strategy Consultation', 'Contact Page');
-    } catch (err: any) {
-      const errMsg = err.text || err.message || 'Failed to schedule consultation session.';
-      setErrorMessage(errMsg);
-      trackFormSubmission('Contact Page Consultation Form', false, { error: errMsg });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const handleReset = () => {
-    setIsSuccess(false);
-    setErrorMessage('');
-    setFormData({
-      name: '',
-      email: '',
-      company: '',
-      phone: '',
-      service: 'custom-dev',
-      timeline: '3-months',
-      detail: '',
-    });
-    setValidationErrors({});
-  };
+  const [whatsappCopied, setWhatsappCopied] = useState(false);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText('info@algorithyum.in');
     setEmailCopied(true);
     setTimeout(() => setEmailCopied(false), 2500);
+  };
+
+  const handleCopyWhatsApp = () => {
+    navigator.clipboard.writeText('+91 94857 69108');
+    setWhatsappCopied(true);
+    setTimeout(() => setWhatsappCopied(false), 2500);
+  };
+
+  const toggleFaq = (index: number) => {
+    setOpenFaq(openFaq === index ? null : index);
   };
 
   return (
@@ -174,18 +80,18 @@ export const ContactPage: React.FC = () => {
         <section className={styles.heroSection}>
           <div className={styles.badge}>
             <Sparkles size={14} />
-            <span>Direct Engineering Hub</span>
+            <span>Direct Engineering Access</span>
           </div>
 
           <h1 className={styles.heroTitle}>
-            Let&apos;s Build Something{' '}
-            <span className={styles.heroTitleGradient}>Extraordinary Together</span>
+            Connect Directly With Our{' '}
+            <span className={styles.heroTitleGradient}>Solutions Team</span>
           </h1>
 
           <p className={styles.heroDesc}>
-            Whether you are modernizing legacy infrastructure, building custom ERP systems, 
-            deploying autonomous AI workflows, or launching scalable web and mobile applications — 
-            our dedicated software engineering pods are ready to partner with you.
+            Whether you have a detailed RFP ready, need a system audit, or want to discuss a new 
+            custom software or AI initiative — email us directly. No middle-tier sales layers, 
+            just direct technical collaboration with senior engineers.
           </p>
 
           <div className={styles.trustPills}>
@@ -199,423 +105,377 @@ export const ContactPage: React.FC = () => {
             </div>
             <div className={styles.trustPill}>
               <Code size={16} className={styles.trustIcon} />
-              <span>Direct Senior Architect Access</span>
+              <span>Direct Lead Architect Access</span>
             </div>
             <div className={styles.trustPill}>
               <Layers size={16} className={styles.trustIcon} />
-              <span>Milestone-Based Execution</span>
+              <span>Milestone-Based Delivery</span>
             </div>
           </div>
         </section>
 
-        {/* Main Content Grid */}
-        <div className={styles.mainGrid}>
-          
-          {/* Left Column: Complete Consultation Form */}
-          <div className={styles.formCard}>
-            <AnimatePresence mode="wait">
-              {!isSuccess ? (
-                <motion.div
-                  key="form"
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className={styles.formHeader}>
-                    <h2 className={styles.formTitle}>Schedule Strategy Consultation</h2>
-                    <p className={styles.formSubtitle}>
-                      Tell us about your project requirements. Our technical directors will audit your system constraints and email you within 24 business hours.
-                    </p>
-                  </div>
-
-                  {errorMessage && (
-                    <div className={styles.errorBanner} role="alert">
-                      <AlertTriangle size={18} style={{ flexShrink: 0 }} />
-                      <span>{errorMessage}</span>
-                    </div>
-                  )}
-
-                  <form onSubmit={handleSubmit} className={styles.contactForm} noValidate>
-                    {/* Name and Email */}
-                    <div className={styles.inputRow}>
-                      <div className={styles.fieldGroup}>
-                        <label className={styles.label} htmlFor="contact-name">
-                          Your Name *
-                        </label>
-                        <input
-                          type="text"
-                          id="contact-name"
-                          className={`${styles.input} ${validationErrors.name ? styles.inputInvalid : ''}`}
-                          required
-                          aria-required="true"
-                          aria-invalid={!!validationErrors.name}
-                          value={formData.name}
-                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          placeholder="e.g. Alex Morgan"
-                        />
-                        {validationErrors.name && (
-                          <span className={styles.errorText}>{validationErrors.name}</span>
-                        )}
-                      </div>
-
-                      <div className={styles.fieldGroup}>
-                        <label className={styles.label} htmlFor="contact-email">
-                          Corporate Email *
-                        </label>
-                        <input
-                          type="email"
-                          id="contact-email"
-                          className={`${styles.input} ${validationErrors.email ? styles.inputInvalid : ''}`}
-                          required
-                          aria-required="true"
-                          aria-invalid={!!validationErrors.email}
-                          value={formData.email}
-                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          placeholder="alex@company.com"
-                        />
-                        {validationErrors.email && (
-                          <span className={styles.errorText}>{validationErrors.email}</span>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Company and Phone (Optional for enterprise inquiries) */}
-                    <div className={styles.inputRow}>
-                      <div className={styles.fieldGroup}>
-                        <label className={styles.label} htmlFor="contact-company">
-                          Company / Organization
-                          <span className={styles.optionalTag}>Optional</span>
-                        </label>
-                        <input
-                          type="text"
-                          id="contact-company"
-                          className={styles.input}
-                          value={formData.company}
-                          onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                          placeholder="Acme Corp"
-                        />
-                      </div>
-
-                      <div className={styles.fieldGroup}>
-                        <label className={styles.label} htmlFor="contact-phone">
-                          Phone Number
-                          <span className={styles.optionalTag}>Optional</span>
-                        </label>
-                        <input
-                          type="tel"
-                          id="contact-phone"
-                          className={styles.input}
-                          value={formData.phone}
-                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          placeholder="+1 (555) 000-0000"
-                        />
-                      </div>
-                    </div>
-
-                    {/* Service Needed and Target Timeline */}
-                    <div className={styles.inputRow}>
-                      <div className={styles.fieldGroup}>
-                        <label className={styles.label} htmlFor="contact-service">
-                          Service Needed *
-                        </label>
-                        <select
-                          id="contact-service"
-                          className={styles.select}
-                          value={formData.service}
-                          onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                        >
-                          <option value="custom-dev">Custom Software Development</option>
-                          <option value="erp">ERP System Development</option>
-                          <option value="web">Web Development &amp; Modernization</option>
-                          <option value="mobile">Mobile App (iOS / Android / Flutter)</option>
-                          <option value="ai">AI Integration &amp; Automation</option>
-                          <option value="seo">Technical SEO &amp; Growth</option>
-                        </select>
-                      </div>
-
-                      <div className={styles.fieldGroup}>
-                        <label className={styles.label} htmlFor="contact-timeline">
-                          Target Launch *
-                        </label>
-                        <select
-                          id="contact-timeline"
-                          className={styles.select}
-                          value={formData.timeline}
-                          onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
-                        >
-                          <option value="1-month">&lt; 1 Month (Fast-track MVP)</option>
-                          <option value="3-months">1 – 3 Months (Standard Sprint)</option>
-                          <option value="6-months">3 – 6 Months (Enterprise Platform)</option>
-                          <option value="indefinite">R&amp;D / Ongoing Engineering Pod</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    {/* Project Goals & Scope */}
-                    <div className={styles.fieldGroup}>
-                      <label className={styles.label} htmlFor="contact-detail">
-                        System Goals &amp; Technical Scope *
-                      </label>
-                      <textarea
-                        id="contact-detail"
-                        className={`${styles.textarea} ${validationErrors.detail ? styles.inputInvalid : ''}`}
-                        rows={4}
-                        required
-                        aria-required="true"
-                        aria-invalid={!!validationErrors.detail}
-                        value={formData.detail}
-                        onChange={(e) => setFormData({ ...formData, detail: e.target.value })}
-                        placeholder="Outline your project scope, core features, existing tech stack, user scale, or specific challenges..."
-                      />
-                      {validationErrors.detail && (
-                        <span className={styles.errorText}>{validationErrors.detail}</span>
-                      )}
-                    </div>
-
-                    {/* Submit Button */}
-                    <button
-                      type="submit"
-                      className={`btn btn-primary ${styles.submitButton}`}
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? (
-                        <>Scheduling Session...</>
-                      ) : (
-                        <>
-                          Schedule Strategy Consultation
-                          <Calendar size={18} />
-                        </>
-                      )}
-                    </button>
-
-                    <p className={styles.formDisclaimer}>
-                      By submitting this form, your information is protected by our non-disclosure standards. 
-                      We never share client data or technical scopes with third parties.
-                    </p>
-                  </form>
-                </motion.div>
-              ) : (
-                /* Success View */
-                <motion.div
-                  key="success"
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ type: 'spring', damping: 25 }}
-                  className={styles.successWrapper}
-                >
-                  <div className={styles.successIconBadge}>
-                    <Check size={40} />
-                  </div>
-
-                  <h3 className={styles.successTitle}>Consultation Scheduled</h3>
-
-                  <p className={styles.successSubtitle}>
-                    A confirmation has been dispatched. Our solutions architects are reviewing 
-                    your project scope and will follow up with an introductory assessment within 24 business hours.
-                  </p>
-
-                  <div className={styles.successDetailsCard}>
-                    <div className={styles.detailRow}>
-                      <span className={styles.detailLabel}>Client:</span>
-                      <span className={styles.detailValue}>{formData.name}</span>
-                    </div>
-                    <div className={styles.detailRow}>
-                      <span className={styles.detailLabel}>Email:</span>
-                      <span className={styles.detailValue}>{formData.email}</span>
-                    </div>
-                    <div className={styles.detailRow}>
-                      <span className={styles.detailLabel}>Target Timeline:</span>
-                      <span className={styles.detailValue}>{formData.timeline}</span>
-                    </div>
-                    <div className={styles.detailRow}>
-                      <span className={styles.detailLabel}>Status:</span>
-                      <span className={styles.detailValue} style={{ color: '#10b981' }}>Queued for Architecture Review</span>
-                    </div>
-                  </div>
-
-                  <button onClick={handleReset} className="btn btn-secondary" style={{ marginTop: '0.5rem' }}>
-                    Submit Another Inquiry
-                  </button>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-
-          {/* Right Column: Contact Channels, Location Map & Process */}
-          <aside className={styles.infoColumn}>
+        {/* Primary Contact Channels Grid (Email Prioritized) */}
+        <section className={styles.channelsSection} aria-label="Direct Channels">
+          <div className={styles.channelsGrid}>
             
-            {/* Direct Communication Channels */}
-            <div className={styles.infoCard}>
-              <div className={styles.infoCardHeader}>
-                <div className={styles.infoCardIcon}>
-                  <Mail size={20} />
+            {/* Primary Channel: Email (Featured & Highlighted) */}
+            <div className={`${styles.channelCard} ${styles.emailHeroCard}`}>
+              <div className={styles.cardHighlightBadge}>
+                <Zap size={13} />
+                <span>Primary &amp; Recommended for RFPs</span>
+              </div>
+
+              <div className={styles.cardHeader}>
+                <div className={styles.emailIcon}>
+                  <Mail size={26} />
                 </div>
                 <div>
-                  <h3 className={styles.infoCardTitle}>Direct Channels</h3>
-                  <span style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>
-                    Immediate routes to reach our team
-                  </span>
+                  <span className={styles.channelLabel}>Primary Communication Channel</span>
+                  <a 
+                    href="mailto:info@algorithyum.in?subject=Project%20Inquiry%20-%20Algorithyum" 
+                    className={styles.emailValue}
+                    onClick={() => trackCTAClick('Email Address Click', 'Contact Page')}
+                  >
+                    info@algorithyum.in
+                  </a>
                 </div>
               </div>
 
-              <div className={styles.channelsList}>
-                {/* Email Channel */}
-                <div className={styles.channelItem}>
-                  <Mail size={18} className={styles.channelIcon} />
-                  <div className={styles.channelContent}>
-                    <span className={styles.channelLabel}>Primary Email</span>
-                    <a href="mailto:info@algorithyum.in" className={styles.channelValue}>
-                      info@algorithyum.in
-                    </a>
-                    <div className={styles.channelSubtext}>
-                      Monitored by our solutions engineering team
-                    </div>
-                    <div className={styles.channelActions}>
-                      <button onClick={handleCopyEmail} className={styles.copyBtn} aria-label="Copy email address">
-                        {emailCopied ? <Check size={14} color="#10b981" /> : <Copy size={14} />}
-                        {emailCopied ? 'Copied!' : 'Copy Email'}
-                      </button>
-                      <a
-                        href="mailto:info@algorithyum.in?subject=Project%20Inquiry%20-%20Algorithyum"
-                        className={styles.copyBtn}
-                      >
-                        <ExternalLink size={14} />
-                        Write Email
-                      </a>
-                    </div>
-                  </div>
-                </div>
+              <p className={styles.channelSubtext}>
+                Our central engineering inbox. Send your project brief, architecture specs, or RFPs. 
+                Monitored around the clock by our technical directors and solution leads.
+              </p>
 
-                {/* Phone Channel */}
-                <div className={styles.channelItem}>
-                  <Phone size={18} className={styles.channelIcon} />
-                  <div className={styles.channelContent}>
-                    <span className={styles.channelLabel}>Telephone / WhatsApp</span>
-                    <a href="tel:+919876543210" className={styles.channelValue}>
-                      +91 98765 43210
-                    </a>
-                    <div className={styles.channelSubtext}>
-                      Monday – Friday, 9:00 AM – 6:00 PM IST
-                    </div>
-                  </div>
+              <div className={styles.emailFeatures}>
+                <div className={styles.featureItem}>
+                  <CheckCircle2 size={16} className={styles.featureCheck} />
+                  <span>Reviewed by senior architects within 24 business hours</span>
                 </div>
+                <div className={styles.featureItem}>
+                  <CheckCircle2 size={16} className={styles.featureCheck} />
+                  <span>Direct technical feasibility assessment and preliminary roadmap</span>
+                </div>
+                <div className={styles.featureItem}>
+                  <CheckCircle2 size={16} className={styles.featureCheck} />
+                  <span>Mutual NDA execution prior to reviewing private codebases</span>
+                </div>
+              </div>
 
-                {/* Office Location */}
-                <div className={styles.channelItem}>
-                  <MapPin size={18} className={styles.channelIcon} />
-                  <div className={styles.channelContent}>
-                    <span className={styles.channelLabel}>Engineering Hub &amp; Delivery</span>
-                    <div className={styles.channelValue}>
-                      New Delhi, India
-                    </div>
-                    <div className={styles.channelSubtext}>
-                      Global Remote Pods serving US, Europe &amp; APAC clients
-                    </div>
-                  </div>
-                </div>
+              <div className={styles.channelActions}>
+                <a
+                  href="mailto:info@algorithyum.in?subject=Project%20Inquiry%20-%20Algorithyum"
+                  className={styles.actionBtnPrimary}
+                  onClick={() => trackCTAClick('Write Email Button', 'Contact Page')}
+                >
+                  <Send size={15} />
+                  Write Email Directly
+                </a>
+                <button 
+                  onClick={handleCopyEmail} 
+                  className={styles.actionBtn} 
+                  aria-label="Copy primary email address"
+                >
+                  {emailCopied ? <Check size={15} color="#10b981" /> : <Copy size={15} />}
+                  {emailCopied ? 'Email Copied!' : 'Copy Email Address'}
+                </button>
+              </div>
 
-                {/* Business Hours */}
-                <div className={styles.channelItem}>
-                  <Clock size={18} className={styles.channelIcon} />
-                  <div className={styles.channelContent}>
-                    <span className={styles.channelLabel}>Business Hours</span>
-                    <div className={styles.channelValue} style={{ fontSize: '0.95rem' }}>
-                      Mon – Fri: 9:00 AM – 6:00 PM IST (UTC+5:30)
-                    </div>
-                    <div className={styles.channelSubtext}>
-                      Urgent server alerts monitored 24/7 for active SLA clients
-                    </div>
-                  </div>
-                </div>
+              <div className={styles.emailSubjectTip}>
+                <span className={styles.tipLabel}>Subject Tip:</span>
+                <code>Project Inquiry: [Your Company / System Name]</code>
               </div>
             </div>
 
-            {/* Embedded Google Map */}
-            <div className={styles.mapCard}>
-              <div className={styles.mapHeader}>
-                <div className={styles.mapTitleGroup}>
-                  <MapPin size={18} style={{ color: 'var(--accent-light)' }} />
-                  <h3 className={styles.mapTitle}>Our Hub</h3>
+            {/* Quick Channel: WhatsApp */}
+            <div className={`${styles.channelCard} ${styles.whatsappCard}`}>
+              <div className={styles.cardHighlightBadgeGreen}>
+                <MessageCircle size={13} />
+                <span>Instant Messaging</span>
+              </div>
+
+              <div className={styles.cardHeader}>
+                <div className={styles.whatsappIcon}>
+                  <MessageCircle size={26} />
                 </div>
+                <div>
+                  <span className={styles.channelLabel}>Direct WhatsApp Support</span>
+                  <a 
+                    href="https://wa.me/919485769108?text=Hello%20Algorithyum%2C%20I%20would%20like%20to%20inquire%20about%20your%20services." 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className={styles.whatsappValue}
+                    onClick={() => trackCTAClick('WhatsApp Number Click', 'Contact Page')}
+                  >
+                    +91 94857 69108
+                  </a>
+                </div>
+              </div>
+
+              <p className={styles.channelSubtext}>
+                Prefer instant messaging? Connect with our technical coordination team for swift questions, 
+                timeline checks, or scheduling an architecture discovery session.
+              </p>
+
+              <div className={styles.whatsappFeatures}>
+                <div className={styles.featureItem}>
+                  <CheckCircle2 size={16} className={styles.featureCheckGreen} />
+                  <span>Rapid responses for scope questions and availability</span>
+                </div>
+                <div className={styles.featureItem}>
+                  <CheckCircle2 size={16} className={styles.featureCheckGreen} />
+                  <span>Immediate links to calendar invites and video briefings</span>
+                </div>
+                <div className={styles.featureItem}>
+                  <CheckCircle2 size={16} className={styles.featureCheckGreen} />
+                  <span>Active Mon – Fri: 9:00 AM – 6:00 PM IST (UTC+5:30)</span>
+                </div>
+              </div>
+
+              <div className={styles.channelActions}>
                 <a
-                  href="https://maps.google.com/?q=New+Delhi+India"
+                  href="https://wa.me/919485769108?text=Hello%20Algorithyum%2C%20I%20would%20like%20to%20inquire%20about%20your%20services."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={styles.mapExternalLink}
+                  className={styles.actionBtnWhatsApp}
+                  onClick={() => trackCTAClick('Chat on WhatsApp Button', 'Contact Page')}
                 >
-                  <span>Google Maps</span>
-                  <ExternalLink size={13} />
+                  <MessageCircle size={16} />
+                  Chat on WhatsApp
                 </a>
-              </div>
-
-              <div className={styles.mapFrameWrapper}>
-                <iframe
-                  title="Algorithyum Tech Hub Location"
-                  className={styles.mapIframe}
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224345.83923192776!2d77.06889754720078!3d28.52758200617607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5b347eb62d%3A0x37205b715389640!2sDelhi%2C%20India!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
-                  loading="lazy"
-                  allowFullScreen={false}
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-                <div className={styles.mapBadge}>
-                  <MapPin size={12} color="var(--accent-light)" />
-                  <span>Delhi NCR Tech Corridor &amp; Remote Delivery</span>
-                </div>
+                <button 
+                  onClick={handleCopyWhatsApp} 
+                  className={styles.actionBtn} 
+                  aria-label="Copy WhatsApp contact number"
+                >
+                  {whatsappCopied ? <Check size={15} color="#10b981" /> : <Copy size={15} />}
+                  {whatsappCopied ? 'Number Copied!' : 'Copy Number'}
+                </button>
               </div>
             </div>
 
-            {/* Engagement Process Card */}
-            <div className={styles.processCard}>
-              <div className={styles.infoCardHeader}>
-                <div className={styles.infoCardIcon}>
-                  <FileCheck size={20} />
-                </div>
-                <div>
-                  <h3 className={styles.infoCardTitle}>What Happens Next?</h3>
-                  <span style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>
-                    Our transparent 3-step onboarding
-                  </span>
-                </div>
+          </div>
+        </section>
+
+        {/* What to Include in Your Email / Brief */}
+        <section className={styles.briefSection}>
+          <div className={styles.sectionHeader}>
+            <span className={styles.sectionEyebrow}>Preparation Guide</span>
+            <h2 className={styles.sectionTitle}>What to Include in Your Email Inquiry</h2>
+            <p className={styles.sectionDesc}>
+              To help us evaluate your requirements swiftly, here are the key technical details our architects find most valuable:
+            </p>
+          </div>
+
+          <div className={styles.briefGrid}>
+            <div className={styles.briefCard}>
+              <div className={styles.briefNumber}>01</div>
+              <h3 className={styles.briefTitle}>System Goals &amp; Problem Statement</h3>
+              <p className={styles.briefText}>
+                Outline what you are looking to build or modernize (e.g., custom ERP, high-concurrency web app, automated AI agent pipeline, or mobile app).
+              </p>
+            </div>
+
+            <div className={styles.briefCard}>
+              <div className={styles.briefNumber}>02</div>
+              <h3 className={styles.briefTitle}>Existing Tech Stack &amp; Dependencies</h3>
+              <p className={styles.briefText}>
+                Mention your current infrastructure (e.g., React, Next.js, Node.js, Python, PostgreSQL, AWS/GCP, or legacy systems requiring modernization).
+              </p>
+            </div>
+
+            <div className={styles.briefCard}>
+              <div className={styles.briefNumber}>03</div>
+              <h3 className={styles.briefTitle}>Target Timeline &amp; Milestones</h3>
+              <p className={styles.briefText}>
+                State your expected milestones — whether you need a fast-track MVP within 4–6 weeks, a standard 3-month production release, or ongoing engineering support.
+              </p>
+            </div>
+
+            <div className={styles.briefCard}>
+              <div className={styles.briefNumber}>04</div>
+              <h3 className={styles.briefTitle}>Preferred Engagement Model</h3>
+              <p className={styles.briefText}>
+                Let us know if you prefer a fixed-price milestone delivery or an integrated, dedicated full-time engineering pod working alongside your product team.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Engagement Models Overview */}
+        <section className={styles.modelsSection}>
+          <div className={styles.sectionHeader}>
+            <span className={styles.sectionEyebrow}>Flexible Collaboration</span>
+            <h2 className={styles.sectionTitle}>How You Can Partner With Algorithyum</h2>
+            <p className={styles.sectionDesc}>
+              Tailored delivery structures designed to match your stage of technical maturity and scale.
+            </p>
+          </div>
+
+          <div className={styles.modelsGrid}>
+            <div className={styles.modelCard}>
+              <div className={styles.modelIcon}>
+                <Layers size={22} />
               </div>
+              <h3 className={styles.modelTitle}>Dedicated Engineering Pods</h3>
+              <p className={styles.modelText}>
+                Autonomous, cross-functional engineering teams (frontend, backend, DevOps, QA) embedded directly into your sprint rituals and code repositories.
+              </p>
+              <ul className={styles.modelList}>
+                <li>Direct GitHub/GitLab integration</li>
+                <li>Daily synchronous standups &amp; sprint demos</li>
+                <li>Scale pod capacity up or down as needs evolve</li>
+              </ul>
+            </div>
 
-              <div className={styles.timelineList}>
-                <div className={styles.timelineItem}>
-                  <div className={styles.timelineNumber}>1</div>
-                  <div className={styles.timelineContent}>
-                    <h4 className={styles.timelineTitle}>Technical Scope Audit</h4>
-                    <p className={styles.timelineDesc}>
-                      Our leads review your constraints, stack compatibility, and performance requirements within 24 hours.
-                    </p>
-                  </div>
-                </div>
+            <div className={styles.modelCard}>
+              <div className={styles.modelIcon}>
+                <Code size={22} />
+              </div>
+              <h3 className={styles.modelTitle}>Turnkey End-to-End Delivery</h3>
+              <p className={styles.modelText}>
+                Full lifecycle software construction from system architecture, database schema design, UI/UX implementation, and cloud deployment to post-launch SLAs.
+              </p>
+              <ul className={styles.modelList}>
+                <li>Guaranteed milestone deliverables</li>
+                <li>Rigorous CI/CD pipelines &amp; test coverage</li>
+                <li>Complete IP and source code ownership</li>
+              </ul>
+            </div>
 
-                <div className={styles.timelineItem}>
-                  <div className={styles.timelineNumber}>2</div>
-                  <div className={styles.timelineContent}>
-                    <h4 className={styles.timelineTitle}>30-Min Strategy Call</h4>
-                    <p className={styles.timelineDesc}>
-                      A direct discovery session with a dedicated senior engineer to align on system architecture and milestones.
-                    </p>
-                  </div>
-                </div>
+            <div className={styles.modelCard}>
+              <div className={styles.modelIcon}>
+                <FileCheck size={22} />
+              </div>
+              <h3 className={styles.modelTitle}>Architecture &amp; Code Audits</h3>
+              <p className={styles.modelText}>
+                Deep-dive diagnostic evaluations of legacy systems, bottleneck identification, cloud infrastructure spend optimization, and security audits.
+              </p>
+              <ul className={styles.modelList}>
+                <li>Performance &amp; latency profiling</li>
+                <li>Vulnerability &amp; compliance screening</li>
+                <li>Actionable remediation roadmap</li>
+              </ul>
+            </div>
+          </div>
+        </section>
 
-                <div className={styles.timelineItem}>
-                  <div className={styles.timelineNumber}>3</div>
-                  <div className={styles.timelineContent}>
-                    <h4 className={styles.timelineTitle}>Custom Roadmap &amp; SOW</h4>
-                    <p className={styles.timelineDesc}>
-                      You receive a detailed milestone breakdown, sprint schedule, and fixed or agile pricing estimate.
-                    </p>
-                  </div>
-                </div>
+        {/* 3-Step Engagement Process */}
+        <section className={styles.processSection}>
+          <div className={styles.processCard}>
+            <div className={styles.processHeader}>
+              <div className={styles.processIconWrapper}>
+                <FileCheck size={24} />
+              </div>
+              <div>
+                <span className={styles.sectionEyebrow} style={{ textAlign: 'left', margin: 0 }}>Transparent Methodology</span>
+                <h2 className={styles.processTitle}>Our 3-Step Onboarding Process</h2>
               </div>
             </div>
 
-          </aside>
+            <div className={styles.timelineGrid}>
+              <div className={styles.timelineItem}>
+                <div className={styles.timelineNumber}>1</div>
+                <div className={styles.timelineContent}>
+                  <h3 className={styles.timelineItemTitle}>Technical Scope Audit (&lt; 24h)</h3>
+                  <p className={styles.timelineItemDesc}>
+                    Once you email info@algorithyum.in, our senior technical architects review your requirements, technical constraints, and stack suitability within 24 hours.
+                  </p>
+                </div>
+              </div>
 
-        </div>
+              <div className={styles.timelineItem}>
+                <div className={styles.timelineNumber}>2</div>
+                <div className={styles.timelineContent}>
+                  <h3 className={styles.timelineItemTitle}>30-Min Discovery Session</h3>
+                  <p className={styles.timelineItemDesc}>
+                    A focused, engineer-to-engineer technical call to align on architecture choices, identify potential bottlenecks, and define key project milestones.
+                  </p>
+                </div>
+              </div>
+
+              <div className={styles.timelineItem}>
+                <div className={styles.timelineNumber}>3</div>
+                <div className={styles.timelineContent}>
+                  <h3 className={styles.timelineItemTitle}>Detailed Roadmap &amp; SOW</h3>
+                  <p className={styles.timelineItemDesc}>
+                    You receive an actionable execution roadmap with transparent milestone pricing, sprint timelines, deliverables breakdown, and mutual NDA terms.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQs Section */}
+        <section className={styles.faqSection}>
+          <div className={styles.sectionHeader}>
+            <span className={styles.sectionEyebrow}>Common Questions</span>
+            <h2 className={styles.sectionTitle}>Inquiry &amp; Consultation FAQs</h2>
+            <p className={styles.sectionDesc}>
+              Everything you need to know before reaching out to our engineering team.
+            </p>
+          </div>
+
+          <div className={styles.faqList}>
+            {contactFaqs.map((faq, idx) => {
+              const isOpen = openFaq === idx;
+              return (
+                <div key={idx} className={`${styles.faqCard} ${isOpen ? styles.faqCardOpen : ''}`}>
+                  <button
+                    className={styles.faqQuestionBtn}
+                    onClick={() => toggleFaq(idx)}
+                    aria-expanded={isOpen}
+                  >
+                    <span className={styles.faqQuestionText}>{faq.question}</span>
+                    <ChevronDown
+                      size={18}
+                      className={`${styles.faqChevron} ${isOpen ? styles.faqChevronRotate : ''}`}
+                    />
+                  </button>
+                  {isOpen && (
+                    <div className={styles.faqAnswerContainer}>
+                      <p className={styles.faqAnswerText}>{faq.answer}</p>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* Bottom Final CTA Banner */}
+        <section className={styles.ctaBanner}>
+          <div className={styles.ctaGlow} />
+          <div className={styles.ctaContent}>
+            <h2 className={styles.ctaTitle}>Ready to Architect Your Next Solution?</h2>
+            <p className={styles.ctaDesc}>
+              Drop our solutions architects a line at{' '}
+              <strong style={{ color: '#fff' }}>info@algorithyum.in</strong> or start a quick WhatsApp chat. 
+              We are ready to partner on your most ambitious engineering initiatives.
+            </p>
+            <div className={styles.ctaButtons}>
+              <a
+                href="mailto:info@algorithyum.in?subject=Project%20Inquiry%20-%20Algorithyum"
+                className={styles.actionBtnPrimary}
+                onClick={() => trackCTAClick('Bottom CTA Write Email', 'Contact Page')}
+              >
+                <Mail size={16} />
+                Email: info@algorithyum.in
+              </a>
+              <a
+                href="https://wa.me/919485769108?text=Hello%20Algorithyum%2C%20I%20would%20like%20to%20inquire%20about%20your%20services."
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.actionBtnWhatsApp}
+                onClick={() => trackCTAClick('Bottom CTA WhatsApp', 'Contact Page')}
+              >
+                <MessageCircle size={16} />
+                WhatsApp: +91 94857 69108
+              </a>
+            </div>
+          </div>
+        </section>
+
       </div>
     </div>
   );
